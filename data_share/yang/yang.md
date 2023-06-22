@@ -4,6 +4,9 @@
 2. 테이블 내용
 테이블 내용 : 
 3. 자동 테이블 업데이트?
+4. mbti 구현 자료 https://smore.im/quiz/EgdfFDlKub
+간단하게 질문지 만들어서 구현하는것도 좋아보임
+5. 
 
 
 # bmti의 성향 유저와 그룹화 
@@ -21,3 +24,8 @@
 4. 소개 페이지
 5. left-navbar ![img.png](img.png)
 6. top-navbar ![img_1.png](img_1.png)
+
+# 활용코드
+1. 이미지를 업로드 및 web 보여주는 코드 https://zenna9.tistory.com/36
+default img 필요 요망
+2. 
