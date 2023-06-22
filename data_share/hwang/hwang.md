@@ -60,3 +60,5 @@
 - ![게시판 예시1.PNG](%B0%D4%BD%C3%C6%C7%20%BF%B9%BD%C31.PNG)
 - ![게시판 예시2.PNG](%B0%D4%BD%C3%C6%C7%20%BF%B9%BD%C32.PNG)
 - ![게시판 예시3.PNG](%B0%D4%BD%C3%C6%C7%20%BF%B9%BD%C33.PNG)
+
+수정 완료
