@@ -5,7 +5,6 @@
 2. 프로잭트 개발 목표 : mbti를 활용하여 친구찾기? 시스템구축
 
 
-
 # 프로젝트 환경설정
 
 git : 파이참 clone->  setting메뉴 선택후 project:pybo-project 클릭 
@@ -21,11 +20,11 @@ git : 파이참 clone->  setting메뉴 선택후 project:pybo-project 클릭
 
 
 # 설계 개요
-1. db(models 설정)
-2. main page
-3. navbar page
-4. sing in page
-5. log in page
-6. content page
-7. bast work out page
-8. views 설계 
+1. db(models 설정) 담당자 : 이인,양경열
+2. main page 담당자 : 양경열 이인
+3. navbar page : 채규성
+4. sing in page : 황지원 
+5. log in page : 황지원
+6. content page  : 이인
+7. bast work out page : 미정
+8. views 설계 : page별 담당자 (예상)
