@@ -18,3 +18,14 @@ git : 파이참 clone->  setting메뉴 선택후 project:pybo-project 클릭
 
 # navbar 관련 페이지
 ![img_1.png](data_share%2Fimg_1.png)
+
+
+# 설계 개요
+1. db(models 설정)
+2. main page
+3. navbar page
+4. sing in page
+5. log in page
+6. content page
+7. bast work out page
+8. views 설계 
