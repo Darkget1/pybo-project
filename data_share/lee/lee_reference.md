@@ -25,5 +25,10 @@
 ![FILTERING.PNG](FILTERING.PNG)
 
 
-# MBTI 홈페이 레퍼런스
+# MBTI 홈페이지 레퍼런스
 1. https://www.mbtionline.com/en-US/
+
+# mbti 기반 운동 스타일
+1. https://www.16personalities.com/articles/a-strategy-to-win-personality-and-sports
+
+![sports.PNG](sports.PNG)
