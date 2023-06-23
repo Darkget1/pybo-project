@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-3">
+    <div class="row my-3">
+        <div class="col-4">
+            <h4>회원가입</h4>
+        </div>
+        <div class="col-8 text-right">
+            <span>또는 <a href="{% url 'common:login' %}">로그인 하세요.</a> </span>
+
+        </div>
+    </div>
+    <form method="post" class="post-form">
+        {% csrf_token %}
+        {% include "form_errors.html" %}
+
+
+
+         <div class="form-group">
+            <label for="username">ID</label>
+            <input type="text" class="form-control" name="username" id="username"
+            value="{{ form.username.vlaue|default_if_none:'' }}">
+
+        </div>
+
+         <div class="form-group">
+            <label for="first_name">성</label>
+            <input type="text" class="form-control" name="first_name" id="first_name"
+            value="{{ form.first_name.vlaue|default_if_none:'' }}">
+
+        </div>
+
+        <div class="form-group">
+            <label for="last_name">이름</label>
+            <input type="text" class="form-control" name="last_name" id="last_name"
+            value="{{ form.last_name.vlaue|default_if_none:'' }}">
+
+
+
+        <div class="form-group">
+            <label for="password1">비밀번호</label>
+            <input type="password" class="form-control" name="password1" id="password1"
+            value="{{ form.password1.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <label for="password2">비밀번호 확인</label>
+            <input type="password" class="form-control" name="password2"
+            id="password2" value="{{ form.password2.value|default_if_none:'' }}">
+        </div>
+
+
+        </div>
+
+         <div class="form-group">
+            <label for="nickname">닉네임</label>
+            <input type="text" class="form-control" name="nickname" id="nickname"
+            value="{{ form.nickname.vlaue|default_if_none:'' }}">
+
+        </div>
+        <div class="form-group">
+            <label for="gender">성별</label>
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                  <input type="radio" class="btn-check" name="gender" id="gender1" autocomplete="off" value="남자" checked>
+                  <label class="btn btn-outline-primary" for="gender">남자</label>
+
+                  <input type="radio" class="btn-check" name="gender" id="gender2" autocomplete="off" value="여자">
+                  <label class="btn btn-outline-primary" for="gender">여자</label>
+            </div>
+         </div>
+
+        <div class="form-group">
+            <label for="email">이메일</label>
+            <input type="text" class="form-control" name="email" id="email"
+            value="{{ form.email.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <label for="tel">전화번호</label>
+            <input type="text" class="form-control" name="tel" id="tel"
+            value="{{ form.tel.value|default_if_none:'' }}">
+        </div>
+        <button type="submit" class="btn btn-primary">생성하기</button>
+    </form>
+</div>
+{% endblock %}

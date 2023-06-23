@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from common.models import User
 class article(models.Model):
     #article 테이블
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_article')
@@ -43,6 +43,11 @@ class Comment(models.Model):
     modify_date = models.DateTimeField(null=True, blank=True)
     article = models.ForeignKey(article, null=True,blank=True,on_delete=models.CASCADE)
     #answer = models.ForeignKey(content,null=True,blank=True,on_delete=models.CASCADE)
+
+#수정중
+class pro(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
 
 
