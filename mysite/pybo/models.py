@@ -1,5 +1,18 @@
 from django.db import models
 from common.models import User
+
+class Posting(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE,
+                               related_name='author_posting')
+    subject = models.CharField(max_length=200)
+    content = models.TextField()
+    create_date = models.DateTimeField()
+    modify_date = models.DateTimeField(null=True, blank=True)
+    voter = models.ManyToManyField(User, related_name='voter_posting')
+    def __str__(self):
+        return self.subject
+
+
 class article(models.Model):
     #article 테이블
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_article')
