@@ -19,7 +19,35 @@
                    value="{{ form.nick.value|default_if_none:'' }}">
         </div>
         <!-- 프로필 사진 -->
+        <div class="input-group mb-3">
+            <input type="file" class="form-control" id="inputFile">
+            <label class="input-group-text" for="inputFile">Upload</label>
+        </div>
+
         <!-- MBTI -->
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="mbti">MBTI 선택</label>
+            <select class="form-select" id="mbti">
+                <option selected="">== 선택 ==</option>
+                <option value="ISTJ">ISTJ</option>
+                <option value="ISFJ">ISFJ</option>
+                <option value="INFJ">INFJ</option>
+                <option value="INTJ">INTJ</option>
+                <option value="ISTP">ISTP</option>
+                <option value="ISFP">ISFP</option>
+                <option value="INFP">INFP</option>
+                <option value="INTP">INTP</option>
+                <option value="ESTJ">ESTJ</option>
+                <option value="ESFJ">ESFJ</option>
+                <option value="ENFJ">ENFJ</option>
+                <option value="ENTJ">ENTJ</option>
+                <option value="ESTP">ESTP</option>
+                <option value="ESFP">ESFP</option>
+                <option value="ENFP">ENFP</option>
+                <option value="ENTP">ENTP</option>
+            </select>
+        </div>
+
         <!-- 해본 운동 / 경력 -->
         <!-- 관심 운동 -->
         <!-- 연락 받을 오픈 채팅 링크 -->
