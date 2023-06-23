@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate,login
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from common.forms import UserForm
 from common.models import Profile
+from django.utils import timezone
+
 
 def signup(request):
     if request.method == "POST":
@@ -18,22 +21,19 @@ def signup(request):
         form = UserForm()
     return render(request, 'common/test_signup.html',{'form':form})
 
-
-# Create your views here.
-
-def update_profile(request,):
-    if request.method == "POST":
-        # 폼에서 데이터를 받아와 변수화시키기
-
-        profile_img = request.FILES["input_file_img"]
-
-        # 정보를 파일에 저장하기
-        save_profile_img = Profile(
-            profile_img=profile_img
-        )
-        save_profile_img.save()
-
-    profile_img_list = Profile.objects.all()
-
-    return render(request, "common/test_profile.html", context={
-        "profile_img_list": profile_img_list})
+@login_required(login_url='common:login')
+def profile(request):
+    if request.method == 'POST':
+        #post일때
+        profile = Profile()
+        #업로드 이미지
+        profile.images = request.FILES.get('images')
+        #작성일
+        profile.pub_date = timezone.now()
+        #작성한 유저
+        profile.author = request.user
+        profile.save()
+        return redirect('pybo:main')
+    else:
+        #get일때
+        return render(request, 'common/test_profile.html')

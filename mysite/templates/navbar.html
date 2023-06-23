@@ -1,12 +1,12 @@
-<head>
-  <meta charset="UTF-8">
-</head>
-<link rel="stylesheet" type="text/css" href="bootstrap.min.css/">
-<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-<script src="{% static 'bootstrap.min.js' %}"></script>
+{#<head>#}
+{#  <meta charset="UTF-8">#}
+{#</head>#}
+{#<link rel="stylesheet" type="text/css" href="bootstrap.min.css/">#}
+{#<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>#}
+{#<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">#}
+{#<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>#}
+{#<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>#}
+{#<script src="{% static 'bootstrap.min.js' %}"></script>#}
 
 
 <nav class="navbar bg-dark navbar-dark sticky-top">
@@ -18,7 +18,13 @@
       <div class="justify-content-end">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="#">로그인</a>  <!-- 로그인 페이지 삽입 요망 -->
+              {% if user.is_authenticated %}
+                <a class="nav-link" href="{% url 'common:logout' %}">
+                    {{ user.suername }} (로그아웃)
+                </a>
+              {% else %}
+                <a class="nav-link" href="{% url 'common:login' %}">로그인</a>  <!-- 로그인 페이지 삽입 요망 -->
+              {% endif %}
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">회원가입</a> <!-- 회원 가입 페이지 삽입 요망 -->

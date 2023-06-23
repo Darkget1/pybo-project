@@ -1,9 +1,24 @@
-<div>
-    <br> 데이터를 업로드하세요! <br>
-    <form action="{% url 'common:profile_img' %}" method="post" enctype="multipart/form-data">
+{% extends "base.html" %}
+{% block content %}
 
-        {% csrf_token %}
-        <input type="file" name="input_file_img">
-        <input type="submit" value="등록하기">
-    </form>
+
+
+{#    <h5>{{ profile.count }}</h5>#}
+{#    <div>#}
+{#        <ul>#}
+{#            {% for profile in  %}#}
+{#        </ul>#}
+{#    </div>#}
+{#<br>#}
+<div class="container">
+	<form action="{% url 'common:profile' %}" enctype="multipart/form-data" method="POST">
+	  {% csrf_token %}
+	  <h4>사진: </h4>
+	  <input type="file" name="images" accept="image/*">
+	  <br>
+	  <br>
+	  <input type="submit" value="이미지 등록">
+  </form>
 </div>
+
+{% endblock %}
