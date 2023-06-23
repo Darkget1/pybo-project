@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-3">
+    <div class="row my-3">
+        <div class="col-4">
+            <h4>프로필 편집</h4>
+        </div>
+        <div class="col-8 text-right">
+            <span>또는 <a href="{% url 'common:login' %}">로그인</a></span>
+        </div>
+    </div>
+    <form method="post" class="post-form">
+        {% csrf_token %}
+        {% include "form_errors.html" %}
+        <!-- 닉네임 -->
+        <div class="form-group">
+            <label for="nick">닉네임</label>
+            <input type="text" class="form-control" name="nick" id="nick"
+                   value="{{ form.nick.value|default_if_none:'' }}">
+        </div>
+        <!-- 프로필 사진 -->
+        <!-- MBTI -->
+        <!-- 해본 운동 / 경력 -->
+        <!-- 관심 운동 -->
+        <!-- 연락 받을 오픈 채팅 링크 -->
+        <!-- 자기소개 -->
+        <!-- 취미 -->
+        <!-- 주량 -->
+        <button type="submit" class="btn btn-primary">편집하기</button>
+    </form>
+</div>
+{% endblock %}
