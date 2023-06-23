@@ -24,8 +24,8 @@ def index(request):
         posting_list = posting_list.filter(
             Q(subject__icontains=kw) |
             Q(content__icontains=kw) |
-            Q(author__username__icontains=kw) |
-            Q(answer__author__username__icontains=kw)
+            Q(author__username__icontains=kw)
+            # Q(answer__author__username__icontains=kw)
         ).distinct()
 
     paginator = Paginator(posting_list, 10)  # 페이지당 10개씩 보여주기

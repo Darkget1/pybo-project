@@ -4,7 +4,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 
 from ..forms import PostingForm
-from ..models import posting
+from ..models import Posting
+
 
 @login_required(login_url='common:login')
 def posting_create(request):

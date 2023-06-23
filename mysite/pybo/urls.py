@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import base_views
+from .views import base_views, posting_views, comment_views, vote_views
 
 app_name = 'pybo'
 
