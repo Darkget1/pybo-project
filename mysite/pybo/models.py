@@ -13,7 +13,7 @@ class Posting(models.Model):
         return self.subject
 
 
-class article(models.Model):
+class Article(models.Model):
     #article 테이블
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_article')
     #제목
@@ -34,7 +34,7 @@ class article(models.Model):
     create_date = models.DateTimeField()
     #유저 테이블에 링크가된다 .
     modify_date = models.DateTimeField(null=True,blank=True)
-    voter = models.ManyToManyField(User,related_name='voter_article') #voter추가
+    voter = models.ManyToManyField(User, related_name='voter_article') #voter추가
     def __str__(self):
         return self.subject
 
@@ -54,7 +54,8 @@ class Comment(models.Model):
     content = models.TextField()
     create_date = models.DateTimeField()
     modify_date = models.DateTimeField(null=True, blank=True)
-    article = models.ForeignKey(article, null=True,blank=True,on_delete=models.CASCADE)
+    posting = models.ForeignKey(Posting, null=True, blank=True, on_delete=models.CASCADE)
+    article = models.ForeignKey(Article, null=True,blank=True,on_delete=models.CASCADE)
     #answer = models.ForeignKey(content,null=True,blank=True,on_delete=models.CASCADE)
 
 #수정중
