@@ -13,10 +13,17 @@
         {% csrf_token %}
         {% include "form_errors.html" %}
         <!-- 이름 -->
+        <!-- 성 입력 last_name -->
         <div class="form-group">
-            <label for="name">이름</label>
-            <input type="text" class="form-control" name="name" id="name"
-                   value="{{ form.name.value|default_if_none:'' }}">
+            <label for="last_name">성</label>
+            <input type="text" class="form-control" name="last_name" id="last_name"
+                   value="{{ form.last_name.value|default_if_none:'' }}">
+        </div>
+        <!-- 이름 입력 first_name -->
+        <div class="form-group">
+            <label for="first_name">이름</label>
+            <input type="text" class="form-control" name="first_name" id="first_name"
+                   value="{{ form.first_name.value|default_if_none:'' }}">
         </div>
 
         <!-- 아이디 -->
@@ -63,10 +70,11 @@
 
         <!-- 성별 -->
         <div class="form-group">
-            <label for="gender1">남자</label>
+            <label>성별 선택</label><br>
             <input type="radio" id="gender1" name="gender" value="M" class="blind">
-            <label for="gender2">여자</label>
+            <label for="gender1">남자</label>
             <input type="radio" id="gender2" name="gender" value="F" class="blind">
+            <label for="gender2">여자</label>
         </div>
         <button type="submit" class="btn btn-primary">가입하기</button>
     </form>
