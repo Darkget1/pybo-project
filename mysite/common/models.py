@@ -9,5 +9,12 @@ class User(AbstractUser):
     gender = models.CharField('성별', max_length=20, null=True, blank=True)
     nickname = models.CharField('닉네임', max_length=20, null=True, blank=True)
 
+class Profile(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_profile')
+    pub_date = models.DateTimeField('date published')
+    images = models.ImageField(blank=True, upload_to="images", null=True)
+
+
+
 
 

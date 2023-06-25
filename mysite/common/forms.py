@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from common.models import User
+from common.models import User, Profile
 
 class UserForm(UserCreationForm):
 
@@ -15,3 +15,12 @@ class UserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ("username","first_name","last_name","email","tel","gender","nickname")
+
+# class ProfileForm(forms.ModelForm):
+#     class Meta:
+#         model = Profile
+#         fields = ['profile_img','profile_img_date']
+#         labels = {
+#             'profile_img' :'프로필이미지',
+#             'profile_img_date' : '프로필이미지저장날자',
+#         }
