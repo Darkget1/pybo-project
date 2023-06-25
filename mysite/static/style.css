@@ -3,3 +3,24 @@
     border-top: dotted 1px #ddd;
     font-size: 0.7em;
 }
+
+.bd-sidebar {
+  position: sticky;
+  top: 4rem;
+  z-index: 90;
+  height: 70%;
+  background: #eee;
+  border-right: 1px solid rgba(0,0,0,.1);
+  overflow: hidden;
+  min-width: 160px;
+  max-width: 220px;
+}
+
+.bd-sidebar .nav {
+  display: block;
+}
+.bd-sidebar .nav>li>a {
+  display: block;
+  padding: .25rem 1.5rem;
+  font-size: 90%;
+}
