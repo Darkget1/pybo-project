@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 
-
-
 {#    <h5>{{ profile.count }}</h5>#}
 {#    <div>#}
 {#        <ul>#}
@@ -10,35 +8,38 @@
 {#        </ul>#}
 {#    </div>#}
 {#<br>#}
-        <!-- 프로필 삽입 -->
+
 <div class="container">
-	<form action="{% url 'common:profile' %}" enctype="multipart/form-data" method="POST">
-	  {% csrf_token %}
+    <div class="row my-3">
+        <div class="col-5">
+            <h4>프로필 입력</h4>
+        </div>
+    </div>
+    <form action="{% url 'common:profile' %}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
         <!-- 프로필 삽입 -->
         <div class="input-group">
-	  <label class="input-group-text">프로필 사진</label>
-	  <input class="input-group-text" type="file" name="images" accept="image/*">
-	  <input class="input-group-text" type="submit" value="이미지 등록">
+            <label class="col-3 input-group-text">프로필 사진</label>
+            <input class="form-control" type="file" name="images" accept="image/*">
+            <input class="input-group-text" type="submit" value="이미지 등록">
         </div>
-
-  </form>
-</div>
-
+        <br/>
+        <!-- 닉네임 -->
         <div class="input-group mb-3">
-            <input type="file" class="form-control" id="inputFile">
-            <label class="input-group-text" for="inputFile">Upload</label>
+            <label class="col-3 input-group-text" for="nickname">닉네임</label>
+            <input type="text" class="form-control" name="nickname" id="nickname"
+                   value="{{ form.nickname.value|default_if_none:'' }}">
         </div>
-
         <!-- 생년월일(나이) -->
         <div class="input-group mb-3">
-            <label class="input-group-text" for="birthdate">생년월일</label>
+            <label class="col-3 input-group-text" for="birthdate">생년월일</label>
             <input type="date" class="form-control" name="birthdate" id="birthdate">
         </div>
         <br/>
 
-<!-- MBTI 선택 -->
-<div class="input-group mb-3">
-            <label class="input-group-text" for="mbti">MBTI 선택</label>
+        <!-- MBTI 선택 -->
+        <div class="input-group mb-3">
+            <label class="col-3 input-group-text" for="mbti">MBTI 선택</label>
             <select class="form-select" id="mbti">
                 <option selected="">== 선택하세요 ==</option>
                 <option value="ISTJ">ISTJ</option>
@@ -60,8 +61,8 @@
             </select>
         </div>
 
-<div class="input-group mb-3">
-            <label class="input-group-text" for="mbti2">MBTI 선택</label>
+        <div class="input-group mb-3">
+            <label class="col-3 input-group-text" for="mbti2">MBTI 선택</label>
             <select class="form-select" id="mbti2">
                 <option selected="">=== 선택하세요 ===</option>
                 <option value="ISTJ">ISTJ - 청렴결백한 논리주의자</option>
@@ -82,17 +83,24 @@
                 <option value="ENTP">ENTP - 논쟁을 즐기는 변론가</option>
             </select>
         </div>
-<!-- 자기소개 (취미, 주량, ... 등 )-->
-<div class="form-group">
+        <!-- 자기소개 (취미, 주량, ... 등 )-->
+        <div class="form-group">
             <label class="input-group-text" for="profile">자기소개</label>
             <textarea class="form-control" id="profile" rows="3"
                       placeholder="취미, 주량 등 자유롭게 자기소개를 적어주세요!"></textarea>
         </div>
 
- <!-- 연락 받을 오픈 채팅 url 링크 입력 -->
-<div class="form-group">
+        <!-- 연락 받을 오픈 채팅 url 링크 입력 -->
+        <div class="form-group">
             <label class="input-group-text" for="link">오픈채팅 url 링크를 넣어주세요</label>
             <input type="url" class="form-control" name="link" id="link"
-            placeholder="카카오톡 오픈채팅 링크 입력">
+                   placeholder="카카오톡 오픈채팅 링크 입력">
         </div>
+        <button type="submit" class="btn btn-secondary">저장하기</button>
+        <button type="submit" class="btn btn-outline-secondary">수정하기</button>
+        <button type="reset" class="btn btn-dark">초기화</button>
+    </form>
+</div>
+
+
 {% endblock %}
