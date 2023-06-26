@@ -29,7 +29,7 @@ def profile(request):
         #업로드 이미지
         profile.images = request.FILES.get('images')
         #작성일
-        profile.pub_date = timezone.now()
+        profile.create_date = timezone.now()
         #작성한 유저
         profile.author = request.user
         profile.save()

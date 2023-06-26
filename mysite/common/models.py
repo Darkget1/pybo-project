@@ -11,7 +11,7 @@ class User(AbstractUser):
 
 class Profile(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_profile')
-    pub_date = models.DateTimeField('date published')
+    create_date = models.DateTimeField('프로필생성일')
     images = models.ImageField(blank=True, upload_to="images", null=True)
 
 
