@@ -27,7 +27,7 @@
 
         <!-- 프로필 삽입 -->
         <div class="input-group">
-            <label class="col-3 input-group-text">프로필 사진</label>
+            <label class="col-3 input-group-text" for="images" id="images">프로필 사진</label>
             <input class="form-control" type="file" name="images" accept="image/*">
             <input class="input-group-text" type="submit" value="이미지 등록">
         </div>
@@ -42,8 +42,8 @@
 
         <!-- MBTI 선택 -->
         <div class="input-group mb-3">
-            <label class="col-3 input-group-text" for="mbti2">MBTI 선택</label>
-            <select class="form-select" id="mbti2">
+            <label class="col-3 input-group-text" for="mbti">MBTI 선택</label>
+            <select class="form-select" name="mbti" id="mbti">
                 <option selected="" class="text-center">===== 선택하세요 =====</option>
                 <option value="ISTJ">ISTJ - 청렴결백한 논리주의자</option>
                 <option value="ISFJ">ISFJ - 용감한 수호자</option>
@@ -68,124 +68,124 @@
         <div class="input-group mb-3">
 
             <label class="col-3 input-group-text" for="workout">관심 운동</label>
-            <label class="form-control text-center">
-                아래의 항목 중 관심 있는 운동 종목을 원하는 만큼 선택하세요</label>
-        </div>
+            <p class="form-control text-center">
+                아래의 항목 중 관심 있는 운동 종목을 원하는 만큼 선택하세요</p>
 
-        <div class="container text-center">
+            <div class="container text-center">
+                <input type="checkbox" class="btn-check" id="workout1" autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout1">댄스
+                    <img src="https://files.sportpartner.com/assets/images/sports/dancing.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout1" autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout1">댄스
-                <img src="https://files.sportpartner.com/assets/images/sports/dancing.svg"
-                     style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout2" checked autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout2">골프
+                    <img src="https://files.sportpartner.com/assets/images/sports/golf.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout2" checked autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout2">골프
-                <img src="https://files.sportpartner.com/assets/images/sports/golf.svg" style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout3" autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout3">러닝
+                    <img src="https://files.sportpartner.com/assets/images/sports/running.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout3" autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout3">러닝
-                <img src="https://files.sportpartner.com/assets/images/sports/running.svg"
-                     style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout4" autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout4">걷기
+                    <img src="https://files.sportpartner.com/assets/images/sports/walking.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout4" autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout4">걷기
-                <img src="https://files.sportpartner.com/assets/images/sports/walking.svg"
-                     style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout5" checked autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout5">자전거
+                    <img src="https://files.sportpartner.com/assets/images/sports/cycling.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout5" checked autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout5">자전거
-                <img src="https://files.sportpartner.com/assets/images/sports/cycling.svg"
-                     style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout6" autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout6">헬스
+                    <img src="https://files.sportpartner.com/assets/images/sports/fitness.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout6" autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout6">헬스
-                <img src="https://files.sportpartner.com/assets/images/sports/fitness.svg"
-                     style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout7" autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout7">테니스
+                    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/9717f77a-c366-4f66-9a2b-09dbfd17694f.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout7" autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout7">테니스
-                <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/9717f77a-c366-4f66-9a2b-09dbfd17694f.svg"
-                     style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout8" autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout8">패들
+                    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/8b7f5d07-fc46-4820-8edb-e2f7f8094586.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout8" autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout8">패들
-                <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/8b7f5d07-fc46-4820-8edb-e2f7f8094586.svg"
-                     style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout9" autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout9">하이킹
+                    <img src="https://files.sportpartner.com/assets/images/sports/hiking.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout9" autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout9">하이킹
-                <img src="https://files.sportpartner.com/assets/images/sports/hiking.svg"
-                     style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout10" autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout10">클라이밍
+                    <img src="https://files.sportpartner.com/assets/images/sports/climbing.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout10" autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout10">클라이밍
-                <img src="https://files.sportpartner.com/assets/images/sports/climbing.svg"
-                     style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout11" autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout11">보트 타기
+                    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/f0a07a11-fbc6-49e2-9264-d3afd6b290d5.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout11" autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout11">보트 타기
-                <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/f0a07a11-fbc6-49e2-9264-d3afd6b290d5.svg"
-                     style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout12" autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout12">낚시
+                    <img src="https://files.sportpartner.com/assets/images/sports/fishing.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout12" autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout12">낚시
-                <img src="https://files.sportpartner.com/assets/images/sports/fishing.svg"
-                     style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout13" autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout13">스쿼시
+                    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/c5c724e1-7b03-4820-80e0-2fb6d15e7641.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout13" autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout13">스쿼시
-                <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/c5c724e1-7b03-4820-80e0-2fb6d15e7641.svg"
-                     style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout14" autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout14">수영
+                    <img src="https://files.sportpartner.com/assets/images/sports/swimming.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout14" autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout14">수영
-                <img src="https://files.sportpartner.com/assets/images/sports/swimming.svg"
-                     style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout15" autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout15">스케이팅
+                    <img src="https://files.sportpartner.com/assets/images/sports/skating.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout15" autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout15">스케이팅
-                <img src="https://files.sportpartner.com/assets/images/sports/skating.svg"
-                     style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout16" autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout16">인라인 스케이팅
+                    <img src="https://files.sportpartner.com/assets/images/sports/iceskating.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout16" autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout16">인라인 스케이팅
-                <img src="https://files.sportpartner.com/assets/images/sports/iceskating.svg"
-                     style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout17" autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout17">브리지
+                    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/fecd876a-5680-49d8-9c41-676509106e67.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout17" autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout17">브리지
-                <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/fecd876a-5680-49d8-9c41-676509106e67.svg"
-                     style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout18" autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout18">배드민턴
+                    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/b26704a2-06fc-4831-8136-6a58abe51272.svg"
+                         style="width:40px;height:40px;">
+                </option>
 
-            <input type="checkbox" class="btn-check" id="workout18" autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout18">배드민턴
-                <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/b26704a2-06fc-4831-8136-6a58abe51272.svg"
-                     style="width:40px;height:40px;">
-            </label>
-
-            <input type="checkbox" class="btn-check" id="workout19" autocomplete="off"/>
-            <label class="btn btn-outline-secondary" for="workout19">스키
-                <img src="https://files.sportpartner.com/assets/images/sports/skiing.svg"
-                     style="width:40px;height:40px;">
-            </label>
+                <input type="checkbox" class="btn-check" id="workout19" autocomplete="off"/>
+                <option class="btn btn-outline-secondary" for="workout19">스키
+                    <img src="https://files.sportpartner.com/assets/images/sports/skiing.svg"
+                         style="width:40px;height:40px;">
+                </option>
+            </div>
         </div>
 
 
