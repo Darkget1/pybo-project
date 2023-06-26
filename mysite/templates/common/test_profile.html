@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
+
 {#    <h5>{{ profile.count }}</h5>#}
 {#    <div>#}
 {#        <ul>#}
@@ -83,6 +84,57 @@
                 <option value="ENTP">ENTP - 논쟁을 즐기는 변론가</option>
             </select>
         </div>
+
+
+        <!-- 관심 운동 -->
+        <label for="workout">운동</label>
+        <div class="container text-center">
+            <div class="row row-cols-2">
+                <div class="col">Column</div>
+                <div class="col">Column</div>
+                <div class="col">Column</div>
+                <div class="col">Column</div>
+            </div>
+        </div>
+        <div class="container text-center">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                <div class="col">Column</div>
+                <div class="col">Column</div>
+                <div class="col">Column</div>
+                <div class="col">Column</div>
+            </div>
+        </div>
+        <div class="row-2">
+            <div class="form-group">
+                <label for="workout">운동</label>
+                <div class="col-4">
+                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                        <input type="checkbox" class="btn-check" id="workout1" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="workout1">
+
+                            <input type="checkbox" class="btn-check" id="workout2" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="workout2">운동 2</label>
+
+                            <input type="checkbox" class="btn-check" id="workout3" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="workout3">운동 3</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                        <input type="checkbox" class="btn-check" id="workout4" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="workout4">운동 4</label>
+
+                        <input type="checkbox" class="btn-check" id="workout5" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="workout5">운동 5</label>
+
+                        <input type="checkbox" class="btn-check" id="workout6" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="workout6">운동 6</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <!-- 자기소개 (취미, 주량, ... 등 )-->
         <div class="form-group">
             <label class="input-group-text" for="profile">자기소개</label>
