@@ -16,11 +16,11 @@ def posting_create(request):
             posting.author = request.user
             posting.create_date = timezone.now()
             posting.save()
-            return redirect('pybo:index')
+            return redirect('pybo:main')
     else:
         form = PostingForm()
     context = {'form': form}
-    return render(request, 'pybo/posting_form.html', context)
+    return render(request, 'posting/posting_form.html', context)
 
 @login_required(login_url='common:login')
 def posting_modify(request, posting_id):
@@ -34,11 +34,11 @@ def posting_modify(request, posting_id):
             posting = form.save(commit=False)
             posting.modify_date = timezone.now()  # 수정일시 저장
             posting.save()
-            return redirect('pybo:detail', posting_id=posting.id)
+            return redirect('posting:detail', posting_id=posting.id)
     else:
         form = PostingForm(instance=posting)
     context = {'form': form}
-    return render(request, 'pybo/posting_form.html', context)
+    return render(request, 'posting/posting_form.html', context)
 
 @login_required(login_url='common:login')
 def posting_delete(request, posting_id):
@@ -47,5 +47,5 @@ def posting_delete(request, posting_id):
         messages.error(request, '삭제권한이 없습니다')
         return redirect('pybo:detail', posting_id=posting.id)
     posting.delete()
-    return redirect('pybo:index')
+    return redirect('pybo:main')
 

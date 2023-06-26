@@ -31,10 +31,10 @@ def index(request):
     paginator = Paginator(posting_list, 10)  # 페이지당 10개씩 보여주기
     page_obj = paginator.get_page(page)
     context = {'posting_list': page_obj, 'page': page, 'kw':kw, 'so':so}
-    return render(request, 'pybo/posting_list.html', context)
+    return render(request, 'posting/posting_list.html', context)
 
 
 def detail(request, posting_id):
     posting = get_object_or_404(Posting, pk=posting_id)
     context = {'posting': posting}
-    return render(request, 'pybo/posting_detail.html', context)
+    return render(request, 'posting/posting_detail.html', context)

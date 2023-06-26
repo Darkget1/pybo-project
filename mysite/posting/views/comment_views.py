@@ -23,7 +23,7 @@ def comment_create_posting(request, posting_id):
     else:
         form = CommentForm()
     context = {'form': form}
-    return render(request, 'pybo/comment_form.html', context)
+    return render(request, 'posting/comment_form.html', context)
 
 @login_required(login_url='common:login')
 def comment_modify_posting(request, comment_id):
@@ -45,7 +45,7 @@ def comment_modify_posting(request, comment_id):
     else:
         form = CommentForm(instance=comment)
     context = {'form': form}
-    return render(request, 'pybo/comment_form.html', context)
+    return render(request, 'posting/comment_form.html', context)
 
 @login_required(login_url='common:login')
 def comment_delete_posting(request, comment_id):
