@@ -9,9 +9,9 @@ class Article(models.Model):
     #제목
     subject = models.CharField(max_length=200)
     #모집 운동 종목
-    sport_type = models.CharField(max_length=20)
+    Sport_type = models.CharField(max_length=20)
     #모집 성별
-    gender = models.CharField(max_length=200)
+    gender = models.CharField(max_length=3)
     #모집 상태
     status = models.CharField(max_length=3)
     #모집 지역

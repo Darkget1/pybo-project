@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">운동 매칭 글 쓰기</h5>
+    <form method="post" class="post-form my-3">
+        {% csrf_token %}
+        <!--오류 표시  start-->
+        {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+            {% if field.errors %}
+                 <strong>{{ field.label }}</strong>
+            {{ field.errors }}
+            {% endif %}
+            {% endfor %}
+            </div>
+        {% endif %}
+        <!--오류 표시 END-->
+        <div class="form-group">
+            <label for="subject">제목</label>
+            <input type="text" class="form-control" name="subject" id="subject"
+                   value="{{ form.subject.value|default_if_none:'' }}">
+
+        </div>
+
+        <div class="form-group">
+            <label for="subject">운동 선택</label>
+            <input type="text" class="form-control" name="Sport_type" id="Sport_type:"
+                   value="{{ form.subject.value|default_if_none:'' }}">
+        </div>
+
+        <div class="form-group">
+            <label for="gender">성별</label><br>
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="gender" id="gender1" autocomplete="off" value="남자">
+                <label class="btn btn-outline-primary" for="gender1">남자</label>
+                <input type="radio" class="btn-check" name="gender" id="gender2" autocomplete="off" value="여자">
+                <label class="btn btn-outline-primary" for="gender2">여자</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="status">모집상태</label><br>
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="status" id="status1" autocomplete="off" value="recruitment" checked>
+                <label class="btn btn-outline-primary" for="status1">모집중</label>
+                <input type="radio" class="btn-check" name="status" id="status2" autocomplete="off" value="recruitment_complete">
+                <label class="btn btn-outline-primary" for="status2">모집완료</label>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="area">모집 지역</label>
+            <input type="text" class="form-control" name="area" id="area:"
+                   value="{{ form.subject.value|default_if_none:'' }}">
+        </div>
+
+        <div class="form-group">
+            <label for="sport_date">운동 할 날</label>
+            <input type="datetime-local" class="form-control" name="sport_date" id="sport_date:"
+                   value="{{ form.subject.value|default_if_none:'' }}">
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="form-group">
+            <label for="content">내용</label>
+            <textarea class="form-control" name="content" id="content"
+                      rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
+
+        </div>
+        <button type="submit" class="btn btn-primary">저장하기</button>
+    </form>
+</div>
+{% endblock %}
