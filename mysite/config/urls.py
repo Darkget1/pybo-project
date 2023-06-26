@@ -22,6 +22,7 @@ from django.conf import settings
 
 
 urlpatterns = [
+    path('posting/',include('posting.urls')),
     path('common/', include('common.urls')),
     path('admin/', admin.site.urls),
     path('pybo/',include('pybo.urls')),
