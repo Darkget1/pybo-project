@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
-
+<!--
 {#    <h5>{{ profile.count }}</h5>#}
-{#    <div>#}
-{#        <ul>#}
-{#            {% for profile in  %}#}
-{#        </ul>#}
-{#    </div>#}
-{#<br>#}
+{#<div>#}
+{#    <ul>#}
+{# {% for profile in %} #}
+{#    </ul>    #}
+{#</div>#}
+{#<br>#} -->
 
 <div class="container">
     <div class="row my-3">
@@ -34,38 +34,15 @@
         <!-- 생년월일(나이) -->
         <div class="input-group mb-3">
             <label class="col-3 input-group-text" for="birthdate">생년월일</label>
-            <input type="date" class="form-control" name="birthdate" id="birthdate">
+            <input type="date" class="form-control text-center" name="birthdate" id="birthdate">
         </div>
         <br/>
 
         <!-- MBTI 선택 -->
         <div class="input-group mb-3">
-            <label class="col-3 input-group-text" for="mbti">MBTI 선택</label>
-            <select class="form-select" id="mbti">
-                <option selected="">== 선택하세요 ==</option>
-                <option value="ISTJ">ISTJ</option>
-                <option value="ISFJ">ISFJ</option>
-                <option value="INFJ">INFJ</option>
-                <option value="INTJ">INTJ</option>
-                <option value="ISTP">ISTP</option>
-                <option value="ISFP">ISFP</option>
-                <option value="INFP">INFP</option>
-                <option value="INTP">INTP</option>
-                <option value="ESTJ">ESTJ</option>
-                <option value="ESFJ">ESFJ</option>
-                <option value="ENFJ">ENFJ</option>
-                <option value="ENTJ">ENTJ</option>
-                <option value="ESTP">ESTP</option>
-                <option value="ESFP">ESFP</option>
-                <option value="ENFP">ENFP</option>
-                <option value="ENTP">ENTP</option>
-            </select>
-        </div>
-
-        <div class="input-group mb-3">
             <label class="col-3 input-group-text" for="mbti2">MBTI 선택</label>
             <select class="form-select" id="mbti2">
-                <option selected="">=== 선택하세요 ===</option>
+                <option selected="" class="text-center">===== 선택하세요 =====</option>
                 <option value="ISTJ">ISTJ - 청렴결백한 논리주의자</option>
                 <option value="ISFJ">ISFJ - 용감한 수호자</option>
                 <option value="INFJ">INFJ - 선의의 옹호자</option>
@@ -89,49 +66,31 @@
         <!-- 관심 운동 -->
         <label for="workout">운동</label>
         <div class="container text-center">
-            <div class="row row-cols-2">
-                <div class="col">Column</div>
-                <div class="col">Column</div>
-                <div class="col">Column</div>
-                <div class="col">Column</div>
-            </div>
-        </div>
-        <div class="container text-center">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-                <div class="col">Column</div>
-                <div class="col">Column</div>
-                <div class="col">Column</div>
-                <div class="col">Column</div>
-            </div>
-        </div>
-        <div class="row-2">
-            <div class="form-group">
-                <label for="workout">운동</label>
-                <div class="col-4">
-                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                        <input type="checkbox" class="btn-check" id="workout1" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="workout1">
 
-                            <input type="checkbox" class="btn-check" id="workout2" autocomplete="off">
-                            <label class="btn btn-outline-primary" for="workout2">운동 2</label>
+            <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
+            <img src="D:/project1/mysite/templates/icon/dancing.svg">
+            <label class="btn btn-outline-primary" for="btn-check">댄스</label>
 
-                            <input type="checkbox" class="btn-check" id="workout3" autocomplete="off">
-                            <label class="btn btn-outline-primary" for="workout3">운동 3</label>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                        <input type="checkbox" class="btn-check" id="workout4" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="workout4">운동 4</label>
+            <input type="checkbox" class="btn-check" id="btn-check2" checked autocomplete="off"/>
+            <label class="btn btn-outline-primary" for="btn-check2">골프</label>
 
-                        <input type="checkbox" class="btn-check" id="workout5" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="workout5">운동 5</label>
+            <input type="checkbox" class="btn-check" id="btn-check3" autocomplete="off"/>
+            <label class="btn btn-outline-primary" for="btn-check3">Checkbox button</label>
 
-                        <input type="checkbox" class="btn-check" id="workout6" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="workout6">운동 6</label>
-                    </div>
-                </div>
-            </div>
+            <input type="checkbox" class="btn-check" id="btn-check4" autocomplete="off"/>
+            <label class="btn btn-outline-primary" for="btn-check4">Checkbox button</label>
+
+            <input type="checkbox" class="btn-check" id="btn-check5" checked autocomplete="off"/>
+            <label class="btn btn-outline-primary" for="btn-check5">Checkbox button</label>
+
+            <input type="checkbox" class="btn-check" id="btn-check6" autocomplete="off"/>
+            <label class="btn btn-outline-primary" for="btn-check6">Checkbox button</label>
+
+            <input type="checkbox" class="btn-check" id="btn-check7" autocomplete="off"/>
+            <label class="btn btn-outline-primary" for="btn-check7">Checkbox button</label>
+
+            <input type="checkbox" class="btn-check" id="btn-check8" autocomplete="off"/>
+            <label class="btn btn-outline-primary" for="btn-check8">Checkbox button</label>
         </div>
 
 
