@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from pybo.models import Article
+from pybo.models import Article,ArticleComment
 
 class ArticleForm(forms.ModelForm):
     class Meta:
@@ -20,6 +20,14 @@ class ArticleForm(forms.ModelForm):
             'sport_date' : '운동 할 날',
 
 
+        }
+
+class ArticleCommentForm(forms.ModelForm):
+    class Meta:
+        model = ArticleComment
+        fields = ['content']
+        labels = {
+            'content': '댓글내용',
         }
 
     # #모집 운동 종목

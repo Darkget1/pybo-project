@@ -13,7 +13,7 @@ class Article(models.Model):
     #모집 성별
     gender = models.CharField(max_length=3)
     #모집 상태
-    status = models.CharField(max_length=3)
+    status = models.CharField(max_length=10)
     #모집 지역
     area = models.CharField(max_length=200)
     #운동 할 날
@@ -27,6 +27,15 @@ class Article(models.Model):
     voter = models.ManyToManyField(User,related_name='voter_article') #voter추가
     def __str__(self):
         return self.subject
+
+
+class ArticleComment(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    create_date = models.DateTimeField()
+    modify_date = models.DateTimeField(null=True, blank=True)
+    article = models.ForeignKey(Article, null=True,blank=True,on_delete=models.CASCADE)
+
 
 
 

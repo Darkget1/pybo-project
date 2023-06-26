@@ -16,7 +16,7 @@ urlpatterns =[
     # path('posting/modify/<int:posting_id>/', article_views.posting_modify, name='posting_modify'),
     # path('posting/delete/<int:posting_id>/', article_views.posting_delete, name='posting_delete'),
 
-# comment_views.py
+# articleComment_views.py
     path('comment/create/posting/<int:posting_id>/', comment_views.comment_create_posting, name='comment_create_posting'),
     path('comment/modify/posting/<int:comment_id>/', comment_views.comment_modify_posting, name='comment_modify_posting'),
     path('comment/delete/posting/<int:comment_id>/', comment_views.comment_delete_posting, name='comment_delete_posting'),
