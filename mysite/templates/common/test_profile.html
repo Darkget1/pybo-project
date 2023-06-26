@@ -10,79 +10,15 @@
 {#        </ul>#}
 {#    </div>#}
 {#<br>#}
-        <!-- 프로필 삽입 -->
 <div class="container">
 	<form action="{% url 'common:profile' %}" enctype="multipart/form-data" method="POST">
 	  {% csrf_token %}
-	  <h4><label>사진:</label></h4>
+	  <h4>사진: </h4>
 	  <input type="file" name="images" accept="image/*">
 	  <br>
 	  <br>
 	  <input type="submit" value="이미지 등록">
   </form>
 </div>
-        <!-- 생년월일(나이) -->
-        <div class="input-group mb-3">
-            <label class="input-group-text" for="birthdate">생년월일</label>
-            <input type="date" class="form-control" name="birthdate" id="birthdate">
-        </div>
-        <br/>
-<!-- MBTI 선택 -->
-<div class="input-group mb-3">
-            <label class="input-group-text" for="mbti">MBTI 선택</label>
-            <select class="form-select" id="mbti">
-                <option selected="">== 선택하세요 ==</option>
-                <option value="ISTJ">ISTJ</option>
-                <option value="ISFJ">ISFJ</option>
-                <option value="INFJ">INFJ</option>
-                <option value="INTJ">INTJ</option>
-                <option value="ISTP">ISTP</option>
-                <option value="ISFP">ISFP</option>
-                <option value="INFP">INFP</option>
-                <option value="INTP">INTP</option>
-                <option value="ESTJ">ESTJ</option>
-                <option value="ESFJ">ESFJ</option>
-                <option value="ENFJ">ENFJ</option>
-                <option value="ENTJ">ENTJ</option>
-                <option value="ESTP">ESTP</option>
-                <option value="ESFP">ESFP</option>
-                <option value="ENFP">ENFP</option>
-                <option value="ENTP">ENTP</option>
-            </select>
-        </div>
 
-<div class="input-group mb-3">
-            <label class="input-group-text" for="mbti2">MBTI 선택</label>
-            <select class="form-select" id="mbti2">
-                <option selected="">=== 선택하세요 ===</option>
-                <option value="ISTJ">ISTJ - 청렴결백한 논리주의자</option>
-                <option value="ISFJ">ISFJ - 용감한 수호자</option>
-                <option value="INFJ">INFJ - 선의의 옹호자</option>
-                <option value="INTJ">INTJ - 용의주도한 전략가</option>
-                <option value="ISTP">ISTP - 만능 재주꾼</option>
-                <option value="ISFP">ISFP - 호기심 많은 예술가</option>
-                <option value="INFP">INFP - 열정적인 중재자</option>
-                <option value="INTP">INTP - 논리적인 사색가</option>
-                <option value="ESTJ">ESTJ - 엄격한 관리자</option>
-                <option value="ESFJ">ESFJ - 사교적인 외교관</option>
-                <option value="ENFJ">ENFJ - 정의로운 사회운동가</option>
-                <option value="ENTJ">ENTJ - 대담한 통솔자</option>
-                <option value="ESTP">ESTP - 모험을 즐기는 사업가</option>
-                <option value="ESFP">ESFP - 자유로운 영혼의 연예인</option>
-                <option value="ENFP">ENFP - 재기 발랄한 활동가</option>
-                <option value="ENTP">ENTP - 논쟁을 즐기는 변론가</option>
-            </select>
-        </div>
-<!-- 자기소개 (취미, 주량, ... 등 )-->
-<div class="form-group">
-            <label class="input-group-text" for="profile" class="form-label">자기소개</label>
-            <textarea class="form-control" id="profile" rows="3"
-                      placeholder="취미, 주량 등 자유롭게 자기소개를 적어주세요!"></textarea>
-        </div>
-
- <!-- 연락 받을 오픈 채팅 url 링크 입력 -->
-<div class="form-group">
-            <label for="link">오픈채팅 url 링크를 넣어주세요</label>
-            <input type="url" class="form-control" name="link" id="link">
-        </div>
 {% endblock %}
