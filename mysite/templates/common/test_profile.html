@@ -14,19 +14,28 @@
 <div class="container">
 	<form action="{% url 'common:profile' %}" enctype="multipart/form-data" method="POST">
 	  {% csrf_token %}
-	  <h4><label>사진:</label></h4>
-	  <input type="file" name="images" accept="image/*">
-	  <br>
-	  <br>
-	  <input type="submit" value="이미지 등록">
+        <!-- 프로필 삽입 -->
+        <div class="input-group">
+	  <label class="input-group-text">프로필 사진</label>
+	  <input class="input-group-text" type="file" name="images" accept="image/*">
+	  <input class="input-group-text" type="submit" value="이미지 등록">
+        </div>
+
   </form>
 </div>
+
+        <div class="input-group mb-3">
+            <input type="file" class="form-control" id="inputFile">
+            <label class="input-group-text" for="inputFile">Upload</label>
+        </div>
+
         <!-- 생년월일(나이) -->
         <div class="input-group mb-3">
             <label class="input-group-text" for="birthdate">생년월일</label>
             <input type="date" class="form-control" name="birthdate" id="birthdate">
         </div>
         <br/>
+
 <!-- MBTI 선택 -->
 <div class="input-group mb-3">
             <label class="input-group-text" for="mbti">MBTI 선택</label>
@@ -75,14 +84,15 @@
         </div>
 <!-- 자기소개 (취미, 주량, ... 등 )-->
 <div class="form-group">
-            <label class="input-group-text" for="profile" class="form-label">자기소개</label>
+            <label class="input-group-text" for="profile">자기소개</label>
             <textarea class="form-control" id="profile" rows="3"
                       placeholder="취미, 주량 등 자유롭게 자기소개를 적어주세요!"></textarea>
         </div>
 
  <!-- 연락 받을 오픈 채팅 url 링크 입력 -->
 <div class="form-group">
-            <label for="link">오픈채팅 url 링크를 넣어주세요</label>
-            <input type="url" class="form-control" name="link" id="link">
+            <label class="input-group-text" for="link">오픈채팅 url 링크를 넣어주세요</label>
+            <input type="url" class="form-control" name="link" id="link"
+            placeholder="카카오톡 오픈채팅 링크 입력">
         </div>
 {% endblock %}
