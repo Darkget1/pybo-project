@@ -15,9 +15,9 @@
         {% include "form_errors.html" %}
         <!-- 아이디 -->
         <div class="form-group">
-            <label for="userid">사용자 ID</label>
-            <input type="text" class="form-control" name="userid" id="userid"
-                   value="{{ form.userid.value|default_if_none:'' }}">
+            <label for="username">사용자 ID</label>
+            <input type="text" class="form-control" name="username" id="username"
+                   value="{{ form.username.value|default_if_none:'' }}">
         </div>
         <br/>
 
@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-4">
                 <!-- 성 입력 first_name -->
-               <div class="form-group">
+                <div class="form-group">
                     <label for="first_name">성</label>
                     <input type="text" class="form-control" name="first_name" id="first_name"
                            value="{{ form.first_name.value|default_if_none:'' }}">
@@ -68,10 +68,12 @@
         <div class="form-group">
             <label for="gender">성별</label><br>
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="gender" id="gender1" autocomplete="off" value="남자" checked>
-                <label class="btn btn-outline-primary" for="gender1">남자</label>
-                <input type="radio" class="btn-check" name="gender" id="gender2" autocomplete="off" value="여자">
-                <label class="btn btn-outline-primary" for="gender2">여자</label>
+                <div>
+                    <input type="radio" class="btn-check" name="gender" id="gender1" autocomplete="off" value="남자" checked>
+                    <label class="btn btn-outline-primary" for="gender1">남자</label>
+                    <input type="radio" class="btn-check" name="gender" id="gender2" autocomplete="off" value="여자">
+                    <label class="btn btn-outline-primary" for="gender2">여자</label>
+                </div>
             </div>
         </div>
         <br/>
