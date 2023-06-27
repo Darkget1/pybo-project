@@ -26,7 +26,7 @@ def article_modify(request,article_id):
     article = get_object_or_404(Article,pk=article_id)
     if request.user != article.author:
         messages.error(request,'수정권한이 없습니다')
-        return redirect('pybo:detail',question_id=article.id)
+        return redirect('pybo:detail',article_id=article.id)
 
     if request.method == "POST":
         form = ArticleForm(request.POST, instance=article)
@@ -35,7 +35,7 @@ def article_modify(request,article_id):
             article.author = request.user
             article.modify_date = timezone.now() #수정일시 저장
             article.save()
-            return redirect('pybo:detail',question_id=article.id)
+            return redirect('pybo:article_detail',article_id=article.id)
     else:
         form = ArticleForm(instance=article)
     context = {'form':form}
@@ -47,9 +47,9 @@ def article_delete(request, article_id):
     article = get_object_or_404(Article,pk=article_id)
     if request.user != article.author:
         messages.error(request,'삭제권한이 없습니다.')
-        return redirect('pybo:detail', question_id=article.id)
+        return redirect('pybo:article_detail', article_id=article.id)
     article.delete()
-    return redirect('pybo:main')
+    return redirect('pybo:article_list')
 
 def article_detail(request,article_id):
 

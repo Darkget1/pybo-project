@@ -70,16 +70,11 @@
                                     <td>{{ article.create_date }}</td>
                             </table>
 
-
-
-
-
                         <!-- 개시글 내용-->
                         <div class="card-text" style="white-space:pre-line;">
                             {{article.content}}
                         </div>
                         <div class="d-flex justify-content-end">
-
                             {% if article.modify_date %}
                                 <div class="badge badge-light p-2 text-left mx-3">
                                     <div class="mb-2">modified at</div>
@@ -111,4 +106,21 @@
     </div>
 
 
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".delete").on('click',function (){
+            if(confirm("정말로 삭제하시겠습니까?")){
+                location.href = $(this).data('uri');
+            }
+        });
+        $(".recommend").on('click',function (){
+            if(confirm("정말로 추천하시겠습니까?")){
+                location.href = $(this).data('uri');
+            }
+        });
+    });
+
+</script>
 {% endblock %}

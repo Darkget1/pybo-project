@@ -17,7 +17,7 @@ def articleComment_create_article(request, article_id):
             articleComment.create_date = timezone.now()
             articleComment.article = article
             articleComment.save()
-            return redirect('{}#ArticleComment_{}'.format(resolve_url('pybo:detail', article_id=articleComment.article.id)
+            return redirect('{}#ArticleComment_{}'.format(resolve_url('pybo:article_detail', article_id=articleComment.article.id)
                                                    , articleComment.id))
     else:
         form = ArticleCommentForm()
@@ -39,7 +39,7 @@ def articleComment_modify_article(request, articleComment_id):
             articleComment.author = request.user
             articleComment.modify_date = timezone.now()
             articleComment.save()
-            return redirect('{}#ArticleComment_{}'.format(resolve_url('pybo:detail', question_id=articleComment.article.id)
+            return redirect('{}#ArticleComment_{}'.format(resolve_url('pybo:article_detail', article_id=articleComment.article.id)
                                                    , articleComment.id))
     else:
         form = ArticleCommentForm()
@@ -49,9 +49,9 @@ def articleComment_modify_article(request, articleComment_id):
 @login_required(login_url='common:login')
 def articleComment_delete_article(request,articleComment_id):
     articleComment = get_object_or_404(ArticleComment,pk=articleComment_id)
-    if request.user != ArticleComment.author:
+    if request.user != articleComment.author:
         messages.error(request, '댓글삭제권한이 없습니다.')
-        return redirect('pybo:detail',question_id=articleComment.article_id)
+        return redirect('pybo:article_detail',article_id=articleComment.article_id)
     else:
         articleComment.delete()
-    return redirect('pybo:detail',question_id=articleComment.article.id)
+    return redirect('pybo:article_detail',article_id=articleComment.article.id)
