@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 {% if messages %}
 <div class="alert alert-danger my-3" role="alert">
@@ -82,38 +83,42 @@
 
 
     <!-- ver2 -->
-    HTML
+
 <section class="vh-100" style="background-color: white;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-12 col-xl-4">
+      <div class="col-md-12 col-xl-10">
 
         <div class="card" style="border-radius: 15px;">
           <div class="card-body text-center">
             <div class="mt-3 mb-4">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
                 class="rounded-circle img-fluid" style="width: 100px;" />
             </div>
-            <h4 class="mb-2">Julie L. Arsenault</h4>
-            <p class="text-muted mb-4">@Programmer <span class="mx-2">|</span> <a
-                href="#!">mdbootstrap.com</a></p>
+            <h4 class="mb-2">{{ article.author }}</h4>
+            <p class="text-muted mb-4">{{ article.subject}} <span class="mx-2">|</span> <a
+                >{{ article.create_date}}</a></p>
             <div class="mb-4 pb-2">
-              <button type="button" class="btn btn-outline-primary btn-floating">
-                <i class="fab fa-facebook-f fa-lg"></i>
-              </button>
-              <button type="button" class="btn btn-outline-primary btn-floating">
-                <i class="fab fa-twitter fa-lg"></i>
-              </button>
-              <button type="button" class="btn btn-outline-primary btn-floating">
-                <i class="fab fa-skype fa-lg"></i>
-              </button>
+                 <div  class="btn btn-outline-primary btn-floating">
+                    모집중
+                  </div>
+                  <div  class="btn btn-outline-primary btn-floating">
+                    <img src="{% static 'icon/cycling.svg' %}">
+                  </div>
+                  <div  class="btn btn-outline-primary btn-floating">
+                    <img src="{% static 'icon/gender-female.svg' %}">
+                  </div>
+              <div  class="btn btn-outline-primary btn-floating">
+                mbti
+              </div>
             </div>
+              <!--오픈챗-->
             <button type="button" class="btn btn-primary btn-rounded btn-lg">
               Message now
             </button>
             <div class="d-flex justify-content-between text-center mt-5 mb-2">
               <div>
-                <p class="mb-2 h5">8471</p>
+                <p class="mb-2 h5">12321</p>
                 <p class="text-muted mb-0">Wallets Balance</p>
               </div>
               <div class="px-3">
@@ -127,7 +132,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
