@@ -55,6 +55,5 @@ def article_detail(request,article_id):
 
 
     article = get_object_or_404(Article,pk=article_id)
-
     context={'article':article,}
     return render(request,'pybo/article_detail.html',context)
