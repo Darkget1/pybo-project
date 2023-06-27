@@ -16,7 +16,7 @@ def posting_create(request):
             posting.author = request.user
             posting.create_date = timezone.now()
             posting.save()
-            return redirect('pybo:main')
+            return redirect('posting:main')
     else:
         form = PostingForm()
     context = {'form': form}
@@ -27,7 +27,7 @@ def posting_modify(request, posting_id):
     posting = get_object_or_404(Posting, pk=posting_id)
     if request.user != posting.author:
         messages.error(request, '수정권한이 없습니다')
-        return redirect('pybo:detail', posting_id=posting.id)
+        return redirect('posting:detail', posting_id=posting.id)
     if request.method == "POST":
         form = PostingForm(request.POST, instance=posting)
         if form.is_valid():
@@ -45,7 +45,7 @@ def posting_delete(request, posting_id):
     posting = get_object_or_404(Posting, pk=posting_id)
     if request.user != posting.author:
         messages.error(request, '삭제권한이 없습니다')
-        return redirect('pybo:detail', posting_id=posting.id)
+        return redirect('posting:detail', posting_id=posting.id)
     posting.delete()
-    return redirect('pybo:main')
+    return redirect('posting:main')
 
