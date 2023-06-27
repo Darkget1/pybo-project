@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load posting_filter %}
 {% block content %}
     {% for answer in answer_list %}
         <div class="row my-3">
@@ -114,8 +115,6 @@
     {% endfor %}
 
     <div>
-
-
         <a href="{% url 'pybo:article_create' %}" class="btn btn-primary">질문 등록하기</a>
     </div>
 {% endblock %}

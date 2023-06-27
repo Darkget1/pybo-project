@@ -44,7 +44,7 @@
                 </span>
                 {% endif %}
             </td>
-            <td class="text-left"> <!-- 답변 개수 대신에 댓글 개수로 변경 -->
+            <td class="text-center"> <!-- 답변 개수 대신에 댓글 개수로 변경 -->
                 <a href="{% url 'posting:detail' posting.id %}">{{ posting.subject }}</a>
                 {% if posting.comment_set.count > 0 %}
                 <span class="text-danger small ml-2">{{ posting.comment_set.count }}</span>
@@ -103,7 +103,7 @@
     <!-- 페이징처리 끝 -->
     <a href="{% url 'posting:posting_create' %}" class="btn btn-primary">게시글 등록하기</a>
 </div>
-<form id="searchForm" method="get" action="{% url 'main' %}">
+<form id="searchForm" method="get" action="{% url 'posting:main' %}">
     <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
     <input type="hidden" id="page" name="page" value="{{ page }}">
     <input type="hidden" id="so" name="so" value="{{ so }}">
@@ -113,7 +113,7 @@
 <script type='text/javascript'>
  $(document).ready(function(){
     $(".page-link").on('click', function() {
-       $("#page").vale($(this).data("page"));
+       $("#page").val($(this).data("page"));
        $("#searchForm").submit();
     });
 
