@@ -1,28 +1,28 @@
- <nav class="navbar bg-dark navbar-dark sticky-top">
-  <!--좌상단 메뉴 버튼 -->
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!-- 상단 메뉴 로그인, 회원 가입 버튼-->
-    <div class="justify-content-end">
-      <ul class="nav">
-        <li class="nav-item">
-          {% if user.is_authenticated %}
-          <a class="nav-link" href="{% url 'common:logout' %}">
-            {{ user.username }} (로그아웃)
-          </a>
-          {% else %}
-          <a class="nav-link" href="{% url 'common:login' %}">로그인</a>
-          {% endif %}
-        </li>
+<nav class="navbar bg-dark navbar-dark sticky-top">
+    <!--좌상단 메뉴 버튼 -->
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- 상단 메뉴 로그인, 회원 가입 버튼-->
+        <div class="justify-content-end">
+            <ul class="nav">
+                <li class="nav-item">
+                    {% if user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'common:logout' %}">
+                        {{ user.username }} (로그아웃)
+                    </a>
+                    {% else %}
+                    <a class="nav-link" href="{% url 'common:login' %}">로그인</a>
+                    {% endif %}
+                </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'common:signup' %}">회원가입</a>
-        </li>
-      </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'common:signup' %}">회원가입</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
 <!-- sidebar -->
 <div class="container-fluid col-3 p-0 collapse navbar-collapse" id="navbarNav" style="float: left;">
@@ -84,63 +84,64 @@
                                     <label class="form-check-label" for="check8">INTP</label>
                                </div>
                             </li>
-                         <li class="dropdown-item">
-                             <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="ESFJ" id="check9">
-                                  <label class="form-check-label" for="check9">ESFJ</label>
+                            <li class="dropdown-item">
+                                 <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" value="ESFJ" id="check9">
+                                     <label class="form-check-label" for="check9">ESFJ</label>
+                                 </div>
+                            </li>
+                            <li class="dropdown-item">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="ESTJ" id="check10">
+                                    <label class="form-check-label" for="check10">ESTJ</label>
                                 </div>
-                         </li>
-                <li class="dropdown-item">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="ESTJ" id="check10">
-                      <label class="form-check-label" for="check10">ESTJ</label>
+                            </li>
+                            <li class="dropdown-item">
+                                 <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" value="ENFP" id="check11">
+                                     <label class="form-check-label" for="check11">ENFP</label>
+                                </div>
+                            </li>
+                            <li class="dropdown-item">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="ESFP" id="check12">
+                                    <label class="form-check-label" for="check12">ESFP</label>
+                                </div>
+                            </li>
+                            <li class="dropdown-item">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="ENFJ" id="check13">
+                                    <label class="form-check-label" for="check13">ENFJ</label>
+                                </div>
+                            </li>
+                            <li class="dropdown-item">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="ENTJ" id="check14">
+                                    <label class="form-check-label" for="check14">ENTJ</label>
+                                </div>
+                            </li>
+                            <li class="dropdown-item">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="ESTP" id="check15">
+                                    <label class="form-check-label" for="check15">ESTP</label>
+                                </div>
+                            </li>
+                            <li class="dropdown-item">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="ENTP" id="check16">
+                                    <label class="form-check-label" for="check16">ENTP</label>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                </li>
-                <li class="dropdown-item">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="ENFP" id="check11">
-                      <label class="form-check-label" for="check11">ENFP</label>
-                    </div>
-                </li>
-                <li class="dropdown-item">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="ESFP" id="check12">
-                      <label class="form-check-label" for="check12">ESFP</label>
-                    </div>
-                </li>
-                <li class="dropdown-item">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="ENFJ" id="check13">
-                      <label class="form-check-label" for="check13">ENFJ</label>
-                    </div>
-                </li>
-                <li class="dropdown-item">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="ENTJ" id="check14">
-                      <label class="form-check-label" for="check14">ENTJ</label>
-                    </div>
-                </li>
-                <li class="dropdown-item">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="ESTP" id="check15">
-                      <label class="form-check-label" for="check15">ESTP</label>
-                    </div>
-                </li>
-                <li class="dropdown-item">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="ENTP" id="check16">
-                      <label class="form-check-label" for="check16">ENTP</label>
-                  </div>
-              </li>
+                <!-- 나머지 목록 -->
+                <li class="nav-item"><a href="#">MBTI 검사</a></li>
             </ul>
-          </div>
-          <!-- 나머지 목록 -->
-          <li class="nav-item"><a href="#">MBTI 검사</a></li>
-        </ul>
-      </div>
+        </div>
     </div>
 </div>
 
+{% block script %}
 <script>
   $('input[type=checkbox]').on('change', function (e) {
     if ($('input[type=checkbox]:checked').length > 3) {
@@ -149,3 +150,4 @@
     }
 });
 </script>
+{% endblock %}
