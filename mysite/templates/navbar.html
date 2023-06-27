@@ -1,4 +1,4 @@
- <!--{% load static %}
+<!--{% load static %}
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="bootstrap.min.css/">
@@ -39,147 +39,110 @@
   </div>
 </nav>
 <!-- sidebar -->
-<div class="collapse navbar-collapse" id="navbarNav" style="float:left;">
-  <div class="container-fluid">
+<div class="container-fluid col-3 p-0 collapse navbar-collapse" id="navbarNav" style="float: left;">
     <div class="row flex-nowrap">
-      <div class="col-12 bd-sidebar">
+      <div class="col-9 px-4 bd-sidebar" style="background: rgba(227, 247, 146, 1);">
         <ul class="navbar-nav" style="list-style-type: circle;">
           <li class="nav-item dropdown">
             <div class="btn-group">
-              <button class="btn dropdown-toggle" id="dropdownMenuButton" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                MBTI
-              </button>
               <!-- dropdown 메뉴 -->
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li>
-                  <a class="dropdown-item" href="#">
+                <li class="dropdown-item">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="ISTJ" id="check1">
+                      <input class="form-check-input" name="ck" type="checkbox" value="ISTJ" id="check1">
                       <label class="form-check-label" for="check1">ISTJ</label>
                     </div>
-                  </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
+                <li class="dropdown-item">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="ISFJ" id="check2">
+                      <input class="form-check-input" name="ck" type="checkbox" value="ISFJ" id="check2">
                       <label class="form-check-label" for="check2">ISFJ</label>
                     </div>
-                  </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
+                <li class="dropdown-item">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="INFP" id="check3">
+                      <input class="form-check-input" name="ck" type="checkbox" value="INFP" id="check3">
                       <label class="form-check-label" for="check3">INFP</label>
                     </div>
-                  </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
+                <li class="dropdown-item">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="ISFP" id="check4">
+                      <input class="form-check-input" name="ck" type="checkbox" value="ISFP" id="check4">
                       <label class="form-check-label" for="check4">ISFP</label>
                     </div>
-                  </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
+                <li class="dropdown-item">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="INFJ" id="check5">
                       <label class="form-check-label" for="check5">INFJ</label>
                     </div>
-                  </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
+                <li class="dropdown-item">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="INTJ" id="check6">
                       <label class="form-check-label" for="check6">INTJ</label>
                     </div>
-                  </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
+                <li class="dropdown-item">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="ISTP" id="check7">
                       <label class="form-check-label" for="check7">ISTP</label>
                     </div>
-                  </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
+                <li class="dropdown-item">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="INTP" id="check8">
                       <label class="form-check-label" for="check8">INTP</label>
                     </div>
-                  </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
+                <li class="dropdown-item">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="ESFJ" id="check9">
                       <label class="form-check-label" for="check9">ESFJ</label>
                     </div>
-                  </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
+                <li class="dropdown-item">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="ESTJ" id="check10">
                       <label class="form-check-label" for="check10">ESTJ</label>
                     </div>
-                  </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
+                <li class="dropdown-item">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="ENFP" id="check11">
                       <label class="form-check-label" for="check11">ENFP</label>
                     </div>
-                  </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
+                <li class="dropdown-item">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="ESFP" id="check12">
                       <label class="form-check-label" for="check12">ESFP</label>
                     </div>
-                  </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
+                <li class="dropdown-item">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="ENFJ" id="check13">
                       <label class="form-check-label" for="check13">ENFJ</label>
                     </div>
-                  </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
+                <li class="dropdown-item">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="ENTJ" id="check14">
                       <label class="form-check-label" for="check14">ENTJ</label>
                     </div>
-                  </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
+                <li class="dropdown-item">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="ESTP" id="check15">
                       <label class="form-check-label" for="check15">ESTP</label>
                     </div>
-                  </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
+                <li class="dropdown-item">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="ENTP" id="check16">
-                    <label class="form-check-label" for="check16">ENTP</label>
+                      <label class="form-check-label" for="check16">ENTP</label>
                   </div>
-                </a>
               </li>
-
             </ul>
           </div>
           <!-- 나머지 목록 -->
