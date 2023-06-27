@@ -15,9 +15,9 @@ def signup(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
-            next_url = request.GET.get('next') or 'profile'
+            # next_url = request.GET.get('next') or 'profile'
             login(request, user)
-            return redirect('next_url')
+            return redirect('index')
     else:
         form = UserForm()
     return render(request, 'common/test_signup.html', {'form': form})
@@ -26,9 +26,10 @@ def signup(request):
 @login_required(login_url='common:login')
 def profile(request):
     """ profile 생성 """
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ProfileForm(request.POST)
         if form.is_valid():
+            form.save()
             # post일때
             profile = Profile()
             # 업로드 이미지
@@ -37,35 +38,45 @@ def profile(request):
             profile.create_date = timezone.now()
             # 작성한 유저
             profile.author = request.user
+            profile.birthdate = form.cleaned_data.get('birthdate')
+            profile.mbti = form.cleaned_data.get('mbti')
+            profile.workout = form.cleaned_data.get('workout')
+            profile.introduce = form.cleaned_data.get('introduce')
+            profile.url = form.cleaned_data.get('url')
+            # messages.add_message(request, '프로필 작성이 완료되었습니다.')
             profile.save()
-            messages.add_message(request, '프로필 작성이 완료되었습니다.')
-            return redirect('pybo:main')
+            return redirect('main')
     else:
         form = ProfileForm()
-        context = { 'form':form }
         # get일때
-        return render(request, 'common/test_profile.html')
+        return render(request, 'common/test_profile.html', {'form': form})
 
 
-@login_required(login_url='common:login')
-def profile_update(request):
-    user = get_object_or_404(User, pk=request.user.pk)
-    """ profile 수정 """
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=request.user.profile)
-        if form.is_valid():
-            profile = form.save(commit=False)
-            profile.user = request.user
-            profile.save()
-            messages.success(request, '회원정보가 수정되었습니다.')
-            return render(request, 'common/test_profile.html')
-        else:
-            form = ProfileForm(instance=request.user.profile)
-            context = { 'form': form }
-            return render(request, 'common/profile_update.html', context)
-
-@login_required
-def mypage(request):
-    return render(request, 'common/mypage.html')
+# @login_required(login_url='common:login')
+# def profile_update(request):
+#     """ profile 수정 """
+#     if request.method == 'POST':
+#         form = ProfileForm(request.POST, request.FILES, instance=request.user)
+#         if form.is_valid():
+#             """ 현재 유저의 프로필을 가져오고 받은 값으로 프로필을 갱신한다 """
+#             old_profile = request.user.profile
+#             old_profile.images = form.cleaned_data['images']
+#             old_profile.img_date = form.cleaned_data['img_date']
+#             old_profile.birthdate = form.cleaned_data['birthdate']
+#             old_profile.mbti = form.cleaned_data['mbti']
+#             old_profile.workout = form.cleaned_data['workout']
+#             old_profile.introduce = form.cleaned_data['introduce']
+#             old_profile.url = form.cleaned_data['url']
+#             old_profile.save()
+#             messages.success(request, '프로필을 수정/저장했습니다.')
+#             return redirect('profile_update')
+#         elif request.method == "GET":
+#             form = ProfileForm(instance=request.user)
+#             context = { 'form': form }
+#             return render(request, 'common/test_profile.html', context)
+#
+# @login_required
+# def mypage(request):
+#     return render(request, 'common/mypage.html')
 
 

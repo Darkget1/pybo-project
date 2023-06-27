@@ -12,14 +12,14 @@ class User(AbstractUser):
 class Profile(models.Model):
     # user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_profile')
-    create_date = models.DateTimeField('프로필생성일')
+    create_date = models.DateTimeField('프로필생성일', blank=True)
     images = models.ImageField('프로필 사진', blank=True, upload_to="images", null=True)
-    birthdate = models.DateField('생년월일')
+    birthdate = models.DateField('생년월일', blank=True)
     mbti = models.CharField('MBTI', max_length=50, blank=True, null=True)
 
     # workout html, forms, models 수정 요망
-    workout = models.CharField('관심 운동', max_length=50, blank=True, null=True)
+    workout = models.CharField('관심 운동', max_length=50, null=True, blank=True)
 
-    introduce = models.TextField('자기소개', max_length=500, blank=True, null=True)
-    url = models.URLField('오픈채팅 url', blank=True)
+    introduce = models.TextField('자기소개', max_length=500, null=True, blank=True)
+    url = models.URLField('오픈채팅 url', null=True, blank=True)
 
