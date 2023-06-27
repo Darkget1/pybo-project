@@ -11,7 +11,7 @@ class Article(models.Model):
     #모집 운동 종목
     Sport_type = models.CharField(max_length=20)
     #모집 성별
-    gender = models.CharField(max_length=3)
+    gender = models.CharField(max_length=10)
     #모집 상태
     status = models.CharField(max_length=10)
     #모집 지역

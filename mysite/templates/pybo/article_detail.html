@@ -87,7 +87,7 @@
 <section class="vh-100" style="background-color: white;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-12 col-xl-10">
+      <div class="col-md-12 col-xl-8">
 
         <div class="card" style="border-radius: 15px;">
           <div class="card-body text-center">
@@ -100,34 +100,60 @@
                 >{{ article.create_date}}</a></p>
             <div class="mb-4 pb-2">
                  <div  class="btn btn-outline-primary btn-floating">
-                    모집중
+                    {{ article.status }}
                   </div>
                   <div  class="btn btn-outline-primary btn-floating">
-                    <img src="{% static 'icon/cycling.svg' %}">
+                    {%  include 'workout_mach.html' %}
                   </div>
                   <div  class="btn btn-outline-primary btn-floating">
-                    <img src="{% static 'icon/gender-female.svg' %}">
+                      {% if article.gender == 'femail' %}
+                        <img src="{% static 'icon/gender-female.svg' %}">
+                      {% else %}
+                        <img src="{% static 'icon/gender-male.svg' %}">
+                      {% endif %}
                   </div>
               <div  class="btn btn-outline-primary btn-floating">
                 mbti
               </div>
             </div>
+
               <!--오픈챗-->
             <button type="button" class="btn btn-primary btn-rounded btn-lg">
-              Message now
+                {% with cnt=0 %}
+                {% if article.articlecomment_set.count > 0 %}
+                    {% for articleComment in article.articlecomment_set.all %}
+                        {% if request.user == articleComment.author %}
+                            {{ cnt|add:1 }}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if cnt == 1 %}
+                        <a>오픈쳇</a>
+                    {% else %}
+                        <a href="{% url 'pybo:articleComment_create_article' article.id %}"
+                           style="text-decoration:none; color:black;"></a>
+                    {% endif %}
+                {% else %}
+                    <a href="{% url 'pybo:articleComment_create_article' article.id %}"
+                       style="text-decoration:none; color:black;">하이파이브</a>
+                {% endif %}
+            {% endwith %}
+
+
+
             </button>
             <div class="d-flex justify-content-between text-center mt-5 mb-2">
-              <div>
-                <p class="mb-2 h5">12321</p>
-                <p class="text-muted mb-0">Wallets Balance</p>
+              <div class="col-4">
+                <p class="mb-2 h7">{{ article.sport_date }}</p>
+                <p class="text-muted mb-0">운동 날자</p>
               </div>
-              <div class="px-3">
-                <p class="mb-2 h5">8512</p>
-                <p class="text-muted mb-0">Income amounts</p>
+              <div class="col-4">
+                <p class="mb-2 h7">{{ article.voter.count }}</p>
+                <p class="text-muted mb-0">추천수</p>
               </div>
-              <div>
-                <p class="mb-2 h5">4751</p>
-                <p class="text-muted mb-0">Total Transactions</p>
+              <div class="col-4">
+                <p class="mb-2 h7">4751</p>
+                <p class="text-muted mb-0">총 운동 맴버</p>
               </div>
             </div>
           </div>
@@ -189,12 +215,6 @@
         </div>
     </div>
 </section>
-
-
-{#<div>#}
-{#    <a href="{% url 'pybo:articleComment_create_article' article.id %}"#}
-{#       class="small"><small>댓글 추가 ..</small></a>#}
-{#</div>#}
 {% endblock %}
 {% block script %}
 <script type="text/javascript">
