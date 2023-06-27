@@ -1,23 +1,16 @@
 {% extends 'base.html' %}
-{% load pybo_filter %}
+{% load posting_filter %}
 {% block content %}
 <div class="container my-3">
     <div class="row justify-content-between my-3">
         <div class="col-2">
             <select class="form-control so">
-                <option value="recent" {% if so =='recent' %}selected{% endif %}> 최신순 </option>
-                <option value="recommend" {% if so =='recommend' %}selected{% endif %}> 추천순 </option>
-                <option value="popular" {% if so =='popular' %}selected{% endif %}> 인기순 </option>
+                <option value="recent" {% if so == 'recent' %}selected{% endif %}> 최신순 </option>
+                <option value="recommend" {% if so == 'recommend' %}selected{% endif %}> 추천순 </option>
+                <option value="popular" {% if so == 'popular' %}selected{% endif %}> 인기순 </option>
             </select>
         </div>
-        <div class="col-4 input-group">
-            <input type="text" class="form-control kw"
-                   value="{{ kw|default_if_none:'' }}">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary"
-                        type="button" id="btn_search">찾기</button>
-            </div>
-        </div>
+
     </div>
     <table class="table">
         <thead>
@@ -44,8 +37,8 @@
                 </span>
                 {% endif %}
             </td>
-            <td class="text-left"> <!-- 답변 개수 대신에 댓글 개수로 변경 -->
-                <a href="{% url 'pybo:detail' posting.id %}">{{ posting.subject }}</a>
+            <td class="text-center"> <!-- 답변 개수 대신에 댓글 개수로 변경 -->
+                <a href="{% url 'posting:detail' posting.id %}">{{ posting.subject }}</a>
                 {% if posting.comment_set.count > 0 %}
                 <span class="text-danger small ml-2">{{ posting.comment_set.count }}</span>
                 {% endif %}
@@ -61,6 +54,15 @@
         {% endif %}
         </tbody>
     </table>
+
+    <div class="col-10 input-group m-4">
+            <input type="text" class="form-control kw"
+                   value="{{ kw|default_if_none:'' }}">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary"
+                        type="button" id="btn_search">찾기</button>
+            </div>
+    </div>
     <!-- 페이징처리 시작 -->
     <ul class="pagination justify-content-center">
         <!-- 이전페이지 -->
@@ -101,9 +103,9 @@
         {% endif %}
     </ul>
     <!-- 페이징처리 끝 -->
-    <a href="{% url 'pybo:posting_create' %}" class="btn btn-primary">게시글 등록하기</a>
+    <a href="{% url 'posting:posting_create' %}" class="btn btn-primary">게시글 등록하기</a>
 </div>
-<form id="searchForm" method="get" action="{% url 'index' %}">
+<form id="searchForm" method="get" action="{% url 'posting:main' %}">
     <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
     <input type="hidden" id="page" name="page" value="{{ page }}">
     <input type="hidden" id="so" name="so" value="{{ so }}">
@@ -113,7 +115,7 @@
 <script type='text/javascript'>
  $(document).ready(function(){
     $(".page-link").on('click', function() {
-       $("#page").vale($(this).data("page"));
+       $("#page").val($(this).data("page"));
        $("#searchForm").submit();
     });
 
