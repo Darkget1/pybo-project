@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from ..models import Posting
 
 
-def index(request):
+def main(request):
     page = request.GET.get('page', '1')  # 페이지
     kw = request.GET.get('kw', '')
     so = request.GET.get('so', 'recent')
@@ -17,7 +17,7 @@ def index(request):
     elif so == 'popular':
         posting_list = Posting.objects.annotate(
             num_commnet=Count('comment')).order_by('-num_comment', '-create_date')
-    else: # recent
+    else:
         posting_list = Posting.objects.order_by('-create_date')
 
     if kw:

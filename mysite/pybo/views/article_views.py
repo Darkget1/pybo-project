@@ -11,10 +11,10 @@ def article_create(request):
     if request.method =='POST':
         form = ArticleForm(request.POST)
         if form.is_valid():
-            aticle = form.save(commit=False)
-            aticle.author = request.user
-            aticle.create_date=timezone.now()
-            aticle.save()
+            article = form.save(commit=False)
+            article.author = request.user
+            article.create_date=timezone.now()
+            article.save()
             return redirect('pybo:main')
     else:
         form = ArticleForm()

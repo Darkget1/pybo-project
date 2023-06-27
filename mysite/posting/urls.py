@@ -4,6 +4,7 @@ from .views import base_views, posting_views, comment_views, vote_views
 app_name = 'posting'
 
 urlpatterns =[
+    path('', base_views.main, name='main'),
     path('<int:posting_id>/', base_views.detail, name='detail'),
 
     # posting_views.py
