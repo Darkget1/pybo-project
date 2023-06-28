@@ -1,13 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
+
     {% for article in article_list %}
-
-
-
-
-        <section style="background-color: white;">
-            <div class="container my-1 py-1">
-                <div class="row d-flex justify-content-center">
+        <section class="vh-100" style="background-color: white;">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-50">
                     <div class="col-md-12 col-lg-8">
                         <!--페이징 처리 시작-->
                         <div class="col-1 float-left">
@@ -19,7 +16,7 @@
                                 <!--    이전페이지  -->
                                 {% if article_list.has_previous %}
                                     <a class="page-link"
-                                       href="?page={{ article_list.previous_page_number }}">
+                                       href="?page={{ article_list.previous_page_number }}" style="">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                              fill="currentColor"
                                              class="bi bi-caret-up-fill" viewBox="0 0 16 16">
@@ -134,6 +131,7 @@
 
                     </div>
                 </div>
+            </div>
         </section>
 
 
@@ -190,8 +188,10 @@
 
     {% endfor %}
     <div>
-        <a href="{% url 'pybo:article_create' %}" class="btn btn-primary">매칭 등록하기 </a>
+        <a href="{% url 'pybo:article_create' %}" class="btn custom-btn bg-color mt-3">매칭 등록하기 </a>
     </div>
+
+
 
 
 {% endblock %}
