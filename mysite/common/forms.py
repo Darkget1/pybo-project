@@ -14,7 +14,7 @@ class UserForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("username","first_name","last_name","email","tel","gender","nickname")
+        fields = ("username", "first_name", "last_name", "email", "tel", "gender", "nickname")
 
 # class ProfileForm(forms.ModelForm):
 #     class Meta:
@@ -24,3 +24,20 @@ class UserForm(UserCreationForm):
 #             'profile_img' :'프로필이미지',
 #             'profile_img_date' : '프로필이미지저장날자',
 #         }
+
+class ProfileForm(forms.ModelForm):
+
+
+    # images = forms.ImageField(label='프로필 사진')
+    # img_date = forms.DateTimeField(label='프로필생성일')
+    birthdate = forms.DateField(label='생년월일')
+    mbti = forms.CharField(label='mbti 선택')
+    workout = forms.CharField(label='관심운동')
+    introduce = forms.CharField(label='자기소개', required=False, widget=forms.Textarea())
+    url = forms.URLField(label='오픈채팅 url')
+
+
+    class Meta:
+        model = Profile
+        fields = ("birthdate", "mbti", "introduce", "url","workout")
+
