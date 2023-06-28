@@ -16,8 +16,9 @@
             <h4>프로필 입력</h4>
         </div>
     </div>
-    <form method="POST" class="post-form" action="{% url 'common:profile' %}" enctype="multipart/form-data">
+    <form method="POST" class="post-form" enctype="multipart/form-data">
         {% csrf_token %}
+        {% include "form_errors.html" %}
         <!-- user ID -->
         <div class="input-group mb-3">
             <label class="col-3 input-group-text" for="username">사용자 ID</label>
@@ -235,8 +236,9 @@
                    placeholder="카카오톡 오픈채팅 링크 입력">
             <!-- https://open.kakao.com/o/seTahcsf -->
         </div>
-        <button type="submit" class="btn btn-outline-secondary">저장</button>
-        <button type="reset" class="btn btn-dark">초기화</button>
+
+        <button type="submit" class="btn btn-dark">저장</button>
+        <button type="reset" class="btn btn-outline-secondary">초기화</button>
     </form>
 </div>
 

@@ -17,7 +17,7 @@ def signup(request):
             user = authenticate(username=username, password=raw_password)
             # next_url = request.GET.get('next') or 'profile'
             login(request, user)
-            return redirect('index')
+            return redirect('main')
     else:
         form = UserForm()
     return render(request, 'common/test_signup.html', {'form': form})
@@ -31,25 +31,42 @@ def profile(request):
         if form.is_valid():
             form.save()
             # post일때
-            profile = Profile()
+
             # 업로드 이미지
             profile.images = request.FILES.get('images')
             # 작성일
             profile.create_date = timezone.now()
             # 작성한 유저
             profile.author = request.user
-            profile.birthdate = form.cleaned_data.get('birthdate')
+            profile.birthdate = timezone.now()
             profile.mbti = form.cleaned_data.get('mbti')
             profile.workout = form.cleaned_data.get('workout')
             profile.introduce = form.cleaned_data.get('introduce')
             profile.url = form.cleaned_data.get('url')
-            # messages.add_message(request, '프로필 작성이 완료되었습니다.')
             profile.save()
-            return redirect('main')
+            messages.add_message(request, '프로필 작성이 완료되었습니다.')
+            return redirect('pybo:main')
     else:
         form = ProfileForm()
         # get일때
         return render(request, 'common/test_profile.html', {'form': form})
+
+# def update_profile(request,):
+#     if request.method == "POST":
+#         # 폼에서 데이터를 받아와 변수화시키기
+#
+#         profile_img = request.FILES["input_file_img"]
+#
+#         # 정보를 파일에 저장하기
+#         save_profile_img = Profile(
+#             profile_img=profile_img
+#         )
+#         save_profile_img.save()
+#
+#     profile_img_list = Profile.objects.all()
+#
+#     return render(request, "common/test_profile.html", context={
+#         "profile_img_list": profile_img_list})
 
 
 # @login_required(login_url='common:login')
