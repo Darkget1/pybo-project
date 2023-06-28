@@ -10,7 +10,7 @@
                 <option value="popular" {% if so == 'popular' %}selected{% endif %}> 인기순 </option>
             </select>
         </div>
-        <div class="col-4 input-group">
+        <div class="col-4 input-group" style="width:50%;">
             <input type="text" class="form-control kw"
                    value="{{ kw|default_if_none:'' }}">
             <div class="input-group-append">
@@ -61,6 +61,7 @@
         {% endif %}
         </tbody>
     </table>
+
     <!-- 페이징처리 시작 -->
     <ul class="pagination justify-content-center">
         <!-- 이전페이지 -->

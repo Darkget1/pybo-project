@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 {% if messages %}
 <div class="alert alert-danger my-3" role="alert">
@@ -82,52 +83,97 @@
 
 
     <!-- ver2 -->
-    HTML
+
 <section class="vh-100" style="background-color: white;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-12 col-xl-4">
+      <div class="col-md-12 col-xl-8">
 
         <div class="card" style="border-radius: 15px;">
+
           <div class="card-body text-center">
+{#            {% if request.user == article.author %}#}
+{#            <div class="bnt col-1 float-right">#}
+{#            <a onclick="location.href='{% url 'pybo:article_modify' article.id %}'">#}
+{#                <img src="{% static 'icon/pencil.svg' %}">#}
+{#                </a>#}
+{#            </div>#}
+{#                <fiv#}
+{#            {% endif %}#}
+
+
             <div class="mt-3 mb-4">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
                 class="rounded-circle img-fluid" style="width: 100px;" />
             </div>
-            <h4 class="mb-2">Julie L. Arsenault</h4>
-            <p class="text-muted mb-4">@Programmer <span class="mx-2">|</span> <a
-                href="#!">mdbootstrap.com</a></p>
+
+            <h4 class="mb-2">{{ article.author }}</h4>
+            <p class="text-muted mb-4">{{ article.subject}} <span class="mx-2">|</span> <a
+                >{{ article.create_date}}</a></p>
+            <div class="mb-2">
+              운동 파트너 요구사항
+          </div>
             <div class="mb-4 pb-2">
-              <button type="button" class="btn btn-outline-primary btn-floating">
-                <i class="fab fa-facebook-f fa-lg"></i>
-              </button>
-              <button type="button" class="btn btn-outline-primary btn-floating">
-                <i class="fab fa-twitter fa-lg"></i>
-              </button>
-              <button type="button" class="btn btn-outline-primary btn-floating">
-                <i class="fab fa-skype fa-lg"></i>
-              </button>
+                 <div  class="btn btn-outline-primary btn-floating">
+                    {{ article.status }}
+                  </div>
+                  <div  class="btn btn-outline-primary btn-floating">
+                    {%  include 'workout_mach.html' %}
+                  </div>
+                  <div  class="btn btn-outline-primary btn-floating">
+                      {% if article.gender == 'femail' %}
+                        <img src="{% static 'icon/gender-female.svg' %}">
+                      {% else %}
+                        <img src="{% static 'icon/gender-male.svg' %}">
+                      {% endif %}
+                  </div>
+              <div  class="btn btn-outline-primary btn-floating">
+                mbti
+              </div>
             </div>
+
+
+              <!--오픈챗-->
             <button type="button" class="btn btn-primary btn-rounded btn-lg">
-              Message now
+{#                {% with cnt=0 %}#}
+                {% if article.articlecomment_set.count > 0 %}
+                    {% for articleComment in article.articlecomment_set.all %}
+                    {% if request.user == articleComment.author %}
+                        <a>오픈쳇</a>
+                        {#                        {% endif %}#}
+                        {#                    {% endfor %}#}
+                        {##}
+                        {#                    {% if cnt == 1 %}#}
+                        {#                        <a>오픈쳇</a>#}
+                    {% else %}
+                        <a href="{% url 'pybo:articleComment_create_article' article.id %}"
+                           style="text-decoration:none; color:black;">하이파이브</a>
+                    {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <a href="{% url 'pybo:articleComment_create_article' article.id %}"
+                       style="text-decoration:none; color:black;">하이파이브</a>
+                {% endif %}
+
+{#            {% endwith %}#}
+
             </button>
             <div class="d-flex justify-content-between text-center mt-5 mb-2">
-              <div>
-                <p class="mb-2 h5">8471</p>
-                <p class="text-muted mb-0">Wallets Balance</p>
+              <div class="col-4">
+                <p class="mb-2 h7">{{ article.sport_date }}</p>
+                <p class="text-muted mb-0">운동 날자</p>
               </div>
-              <div class="px-3">
-                <p class="mb-2 h5">8512</p>
-                <p class="text-muted mb-0">Income amounts</p>
+              <div class="col-4">
+                <p class="mb-2 h7">{{ article.voter.count }}</p>
+                <p class="text-muted mb-0">추천수</p>
               </div>
-              <div>
-                <p class="mb-2 h5">4751</p>
-                <p class="text-muted mb-0">Total Transactions</p>
+              <div class="col-4">
+                <p class="mb-2 h7">4751</p>
+                <p class="text-muted mb-0">{{ article.articlecomment_set.all.count }}</p>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -185,12 +231,6 @@
         </div>
     </div>
 </section>
-
-
-{#<div>#}
-{#    <a href="{% url 'pybo:articleComment_create_article' article.id %}"#}
-{#       class="small"><small>댓글 추가 ..</small></a>#}
-{#</div>#}
 {% endblock %}
 {% block script %}
 <script type="text/javascript">
