@@ -27,9 +27,9 @@ class UserForm(UserCreationForm):
 
 class ProfileForm(forms.ModelForm):
 
-    nickname = forms.CharField(label='닉네임')
-    images = forms.ImageField(label='프로필 사진')
-    img_date = forms.DateTimeField(label='프로필생성일')
+
+    # images = forms.ImageField(label='프로필 사진')
+    # img_date = forms.DateTimeField(label='프로필생성일')
     birthdate = forms.DateField(label='생년월일')
     mbti = forms.CharField(label='mbti 선택')
     workout = forms.CharField(label='관심운동')
@@ -39,5 +39,5 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ("nickname", "images", "img_date", "birthdate", "mbti", "workout", "introduce", "url")
+        fields = ("birthdate", "mbti", "introduce", "url","workout")
 
