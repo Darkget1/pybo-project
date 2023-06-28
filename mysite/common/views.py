@@ -29,54 +29,60 @@ def profile(request):
     if request.method == "POST":
         form = ProfileForm(request.POST)
         if form.is_valid():
-            form.save()
+            profile = form.save(commit=False)
             # post일때
-            profile = Profile()
+            # profile = Profile()
             # 업로드 이미지
             profile.images = request.FILES.get('images')
             # 작성일
             profile.create_date = timezone.now()
             # 작성한 유저
             profile.author = request.user
-            profile.birthdate = form.cleaned_data.get('birthdate')
-            profile.mbti = form.cleaned_data.get('mbti')
-            profile.workout = form.cleaned_data.get('workout')
-            profile.introduce = form.cleaned_data.get('introduce')
-            profile.url = form.cleaned_data.get('url')
+            # profile.birthdate = form.cleaned_data.get('birthdate')
+            # profile.mbti = form.cleaned_data.get('mbti')
+            # profile.workout = form.cleaned_data.get('workout')
+            # profile.introduce = form.cleaned_data.get('introduce')
+            # profile.url = form.cleaned_data.get('url')
             # messages.add_message(request, '프로필 작성이 완료되었습니다.')
             profile.save()
-            return redirect('main')
+            return redirect('pybo:main')
     else:
         form = ProfileForm()
         # get일때
         return render(request, 'common/test_profile.html', {'form': form})
 
 
-# @login_required(login_url='common:login')
-# def profile_update(request):
+@login_required(login_url='common:login')
+class profile_update(UpdateView):
+    model = Profile
+    contex_object_name = 'target_profile'
+    form_class = ProfileForm
+    success_url = reverse_lazy("common:")
+
+# def profile_update(request, user):
 #     """ profile 수정 """
-#     if request.method == 'POST':
-#         form = ProfileForm(request.POST, request.FILES, instance=request.user)
+#     profile = get_object_or_404(Profile, pk=user)
+#     if request.user != profile.author:
+#         messages.error(request, '수정권한이 없습니다')
+#         return redirect('pybo:main')
+#
+#     if request.method == "POST":
+#         form = ProfileForm(request.POST, request.FILES, instance=profile)
 #         if form.is_valid():
 #             """ 현재 유저의 프로필을 가져오고 받은 값으로 프로필을 갱신한다 """
-#             old_profile = request.user.profile
-#             old_profile.images = form.cleaned_data['images']
-#             old_profile.img_date = form.cleaned_data['img_date']
-#             old_profile.birthdate = form.cleaned_data['birthdate']
-#             old_profile.mbti = form.cleaned_data['mbti']
-#             old_profile.workout = form.cleaned_data['workout']
-#             old_profile.introduce = form.cleaned_data['introduce']
-#             old_profile.url = form.cleaned_data['url']
+#             old_profile = form.save(commit=False)
+#             old_profile.author = request.user
+#             old_profile.modify_date = timezone.now() # 수정일시 저장
 #             old_profile.save()
 #             messages.success(request, '프로필을 수정/저장했습니다.')
 #             return redirect('profile_update')
-#         elif request.method == "GET":
+#         else:
 #             form = ProfileForm(instance=request.user)
-#             context = { 'form': form }
-#             return render(request, 'common/test_profile.html', context)
+#             context = {'form': form}
+#             return render(request, 'common/mypage', context)
 #
 # @login_required
 # def mypage(request):
 #     return render(request, 'common/mypage.html')
-
-
+#
+#

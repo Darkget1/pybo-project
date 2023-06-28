@@ -1,0 +1,13 @@
+<!-- 참고 Site : https://gyong0117.tistory.com/entry/Django-Study-10-Profileapp-Implementation -->
+<!-- 프로필이 있으면 그걸 보여주고, 없으면 생성하는 링크를 알려준다 -->
+{% if target_user.profile %}
+<h2>
+    {{ target_user.profile.nickname }}
+</h2>
+{% else %}
+<a href="{% url 'common : create' %}">
+    <h2>
+        Crate Profile
+    </h2>
+</a>
+{% endif %}

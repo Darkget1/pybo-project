@@ -10,7 +10,7 @@
             <span><a href="{% url 'common:profile' %}">프로필 생성하기</a></span>
         </div>
     </div>
-    <form action="{% url 'common:profile_update' %}" enctype="multipart/form-data" method="POST">
+    <form action="{% url 'common:profile' %}" enctype="multipart/form-data" method="POST">
         {% csrf_token %}
 
 
@@ -35,9 +35,12 @@
                 </a>
                 {% endif %}
                 <h4> username: {{ user }} </h4>
+                <h4> 프로필 사진: <img src="{{ profile.images.url }}"</h4>
                 <h4> name: {{ user.first_name }}{{ user.last_name }}</h4>
-                <h4> birth: {{ profile.birth }}</h4>
+                <h4> birth: {{ profile.birthdate }}</h4>
                 <h4> MBTI: {{ profile.mbti }}</h4>
+                <h4> 자기소개: {{ profile.introduce }}</h4>
+                <h4> 채팅: {{ profile.url }}</h4>
             </div>
         </div>
     </form>
