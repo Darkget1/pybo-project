@@ -16,7 +16,7 @@
             <h4>프로필 입력</h4>
         </div>
     </div>
-    <form method="POST" class="post-form">
+    <form method="POST" class="post-form" action="{% url 'common:profile' %}" enctype="multipart/form-data">
         {% csrf_token %}
         <!-- user ID -->
         <div class="input-group mb-3">
@@ -32,12 +32,12 @@
         </div>
 
         <!-- 프로필 삽입 -->
-{#        <div class="input-group">#}
-{#            <label class="col-3 input-group-text" for="images" id="images">프로필 사진</label>#}
-{#            <input class="form-control" type="file" name="images" accept="image/*">#}
-{#            <input class="input-group-text" type="submit" value="이미지 등록">#}
-{#        </div>#}
-{#        <br/>#}
+        <div class="input-group">
+            <label class="col-3 input-group-text" for="images" id="images">프로필 사진</label>
+            <input class="form-control" type="file" name="images" accept="image/*">
+            <input class="input-group-text" type="submit" value="이미지 등록">
+        </div>
+        <br/>
 
         <!-- 생년월일(나이) -->
         <div class="input-group mb-3">
@@ -224,7 +224,7 @@
         <!-- 자기소개 (취미, 주량, ... 등 )-->
         <div class="form-group">
             <label class="input-group-text" for="introduce">자기소개</label>
-            <textarea class="form-control" name="introduce" id="introduce" rows="3"
+            <textarea class="form-control" id="introduce" rows="3"
                       placeholder="취미, 주량 등 자유롭게 자기소개를 적어주세요!"></textarea>
         </div>
 
