@@ -5,6 +5,7 @@ from django.utils import timezone
 
 from ..forms import ArticleForm
 from ..models import Article
+from common.models import Profile
 @login_required(login_url='common:login')
 def article_create(request):
     form = ArticleForm()
@@ -55,5 +56,7 @@ def article_detail(request,article_id):
 
 
     article = get_object_or_404(Article,pk=article_id)
-    context={'article':article,}
+    profile_author_id= article.author_id
+    profile = Profile.objects.get(author_id=profile_author_id)
+    context={'article':article,'profile':profile}
     return render(request,'pybo/article_detail.html',context)
