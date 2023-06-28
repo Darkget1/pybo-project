@@ -9,7 +9,7 @@ from ..models import Article
 
 
 def main(request):
-    return render(request,'pybo/main.html',)
+    return render(request,'index.html',)
 
 
 def article_index(request):

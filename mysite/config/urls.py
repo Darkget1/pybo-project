@@ -25,6 +25,7 @@ urlpatterns = [
     path('common/', include('common.urls')),
     path('admin/', admin.site.urls),
     path('pybo/',include('pybo.urls')),
-    path('',views.base_views.article_index,name='main'),
+    path('posting/',include('posting.urls')),
+    path('',views.base_views.main,name='main'),
     # path('pybo/')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
