@@ -26,10 +26,6 @@ class UserForm(UserCreationForm):
 #         }
 
 class ProfileForm(forms.ModelForm):
-
-
-
-
     birthdate = forms.DateField(label='생년월일')
     mbti = forms.CharField(label='mbti 선택')
     workout = forms.CharField(label='관심운동')
@@ -39,5 +35,5 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ("birthdate", "mbti", "introduce", "url","workout")
+        fields = ("birthdate", "mbti", "workout", "introduce", "url")
 
