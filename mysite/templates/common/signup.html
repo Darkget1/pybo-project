@@ -12,20 +12,6 @@
     <form method="post" class="post-form">
         {% csrf_token %}
         {% include "form_errors.html" %}
-        <!-- 이름 -->
-        <!-- 성 입력 first_name -->
-        <div class="form-group">
-            <label for="first_name">성</label>
-            <input type="text" class="form-control" name="first_name" id="first_name"
-                   value="{{ form.first_name.value|default_if_none:'' }}">
-        </div>
-        <!-- 이름 입력 last_name -->
-        <div class="form-group">
-            <label for="last_name">이름</label>
-            <input type="text" class="form-control" name="last_name" id="last_name"
-                   value="{{ form.last_name.value|default_if_none:'' }}">
-        </div>
-
 
         <!-- 아이디 -->
         <div class="form-group">
@@ -47,6 +33,36 @@
                    name="password2" id="password2"
                    value="{{ form.password2.value|default_if_none:'' }}">
         </div>
+      <!-- 이름 -->
+        <!-- 성 입력 first_name -->
+        <div class="form-group">
+            <label for="first_name">성</label>
+            <input type="text" class="form-control" name="first_name" id="first_name"
+                   value="{{ form.first_name.value|default_if_none:'' }}">
+        </div>
+        <!-- 이름 입력 last_name -->
+        <div class="form-group">
+            <label for="last_name">이름</label>
+            <input type="text" class="form-control" name="last_name" id="last_name"
+                   value="{{ form.last_name.value|default_if_none:'' }}">
+        </div>
+
+          <!-- 성별 -->
+        <div class="form-group">
+            <label for="gender">성별</label><br>
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="gender" id="gender1" autocomplete="off" value="male">
+                <label class="btn" for="gender1">남자</label>
+                <input type="radio" class="btn-check" name="gender" id="gender2" autocomplete="off" value="female">
+                <label class="btn" for="gender2">여자</label>
+            </div>
+        </div>
+
+        <!-- 생년월일(나이) -->
+        <div class="form-group">
+            <label for="birth">생년월일</label>
+            <input type="date" class="form-control" name="birth" id="birth">
+        </div>
 
         <!-- 이메일 -->
         <div class="form-group">
@@ -63,23 +79,8 @@
                    value="{{ form.tel.value|default_if_none:'' }}">
         </div>
 
-        <!-- 생년월일(나이) -->
-        <div class="form-group">
-            <label for="birth">생년월일</label>
-            <input type="date" class="form-control" name="birth" id="birth">
-        </div>
 
-        <!-- 성별 -->
-        <div class="form-group">
-            <label for="gender">성별</label><br>
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="gender" id="gender1" autocomplete="off" value="남자">
-                <label class="btn btn-outline-primary" for="gender1">남자</label>
-                <input type="radio" class="btn-check" name="gender" id="gender2" autocomplete="off" value="여자">
-                <label class="btn btn-outline-primary" for="gender2">여자</label>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">가입하기</button>
+        <button type="submit" class="btn custom-btn bg-color mt-3">가입하기</button>
     </form>
 </div>
 {% endblock %}
