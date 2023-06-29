@@ -12,5 +12,8 @@ def high_five(request, articleComment_id):
     if request.user == articleComment.author:
         messages.error(request, '본인의 글에는 하이파이브 불가능 합니다.')
     else:
-        articleComment.high_five.add(request.user)
+        if articleComment.highfive.filter(pk=request.user.pk).exists():
+            articleComment.highfive.remove(request.user)
+        else:
+            articleComment.highfive.add(request.user)
     return redirect('pybo:article_detail', article_id=articleComment.article.id)

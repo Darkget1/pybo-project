@@ -5,7 +5,7 @@ from django.utils import timezone
 
 from ..forms import ArticleForm
 from ..models import Article,ArticleComment
-from common.models import Profile
+from common.models import Profile,User
 @login_required(login_url='common:login')
 def article_create(request):
     form = ArticleForm()
@@ -57,5 +57,26 @@ def article_detail(request,article_id):
     article = get_object_or_404(Article,pk=article_id)
     profile_author_id= article.author_id
     profile = Profile.objects.get(author_id=profile_author_id)
-    context={'article':article,'profile':profile}
+
+    #하이파이브한 유저 찾기
+    articleComment_highfive_list = ArticleComment.objects.filter(highfive=article_id)
+    #하이파이브한 유저와 request.user 판별
+    highfive_numver = 0
+    for articleComment_highfive in articleComment_highfive_list:
+        if articleComment_highfive.author == request.user:
+            highfive_numver += 1
+    #댓글 단유저 찾기
+    comment_list = ArticleComment.objects.filter(article_id=article_id)
+    comment_user_number = 0
+    for comment in comment_list:
+        if comment.author == request.user:
+            comment_user_number += 1
+
+
+
+
+
+
+    # highfive_user_list = articleComment.highfive.all()
+    context={'article':article,'profile':profile,'highfive_numver':highfive_numver,'comment_user_number':comment_user_number}
     return render(request,'pybo/article_detail.html',context)
