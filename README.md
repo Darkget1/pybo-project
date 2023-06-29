@@ -21,6 +21,12 @@ git : 파이참 clone->  setting메뉴 선택후 project:pybo-project 클릭
 # navbar 관련 페이지
 ![img_1.png](data_share%2Fimg_1.png)
 
+# list 
+
+![a_list](https://github.com/Darkget1/pybo-project/assets/107245422/9a0a5a2b-475c-4b4b-baff-48669cabd86f)
+
+# detail
+![a_list](https://github.com/Darkget1/pybo-project/assets/107245422/2ef5551e-eb4c-4b01-a81a-58edcc4e5a70)
 
 # 설계 개요
 1. db(models 설정) 담당자 : 이인,양경열
