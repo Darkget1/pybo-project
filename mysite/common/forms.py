@@ -32,8 +32,18 @@ class ProfileForm(forms.ModelForm):
     introduce = forms.CharField(label='자기소개', required=False, widget=forms.Textarea())
     url = forms.URLField(label='오픈채팅 url')
 
-
     class Meta:
         model = Profile
         fields = ("birthdate", "mbti", "workout", "introduce", "url")
 
+class UserUpdateForm(forms.ModelForm):
+    birthdate = forms.DateField(label='생년월일')
+    mbti = forms.CharField(label='mbti 선택')
+    workout = forms.CharField(label='관심운동')
+    introduce = forms.CharField(label='자기소개', required=False, widget=forms.Textarea())
+    url = forms.URLField(label='오픈채팅 url')
+
+    class Meta:
+        #...?
+        model = User()
+        fields = ("birthdate", "mbti", "workout", "introduce", "url")

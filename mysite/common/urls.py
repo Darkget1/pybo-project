@@ -12,7 +12,7 @@ urlpatterns = [
         template_name='common/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('signup/', views.signup, name='signup'),
-    path('profile/create/', views.profile, name='profile'),
-    path('mypage/', views.mypage, name='mypage')
-    # path('change/', views.change, name='change'),
+    path('profile/create/', views.Profile, name='profile'),
+    path('mypage/<int:profile_id>/', views.Profile_detail, name='mypage'),
+    # path('profile/update/<int:profile_id>/', views.Profile_update, name='update'),
 ]
