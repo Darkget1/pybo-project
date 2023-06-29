@@ -1,11 +1,12 @@
-from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from common.forms import UserForm, ProfileForm
 from common.models import Profile
 from django.utils import timezone
 
+def index(request):
+    return render(request, 'main.html')
 
 def signup(request):
     if request.method == "POST":
@@ -17,7 +18,7 @@ def signup(request):
             user = authenticate(username=username, password=raw_password)
             # next_url = request.GET.get('next') or 'profile'
             login(request, user)
-            return redirect('main')
+            return redirect('common:profile')
     else:
         form = UserForm()
     return render(request, 'common/test_signup.html', {'form': form})
@@ -37,13 +38,53 @@ def profile(request):
             profile.create_date = timezone.now()
             # 작성한 유저
             profile.author = request.user
-            # messages.add_message(request, '프로필 작성이 완료되었습니다.')
             profile.save()
+            # messages.add_message(request, '프로필 작성이 완료되었습니다.')
             return redirect('main')
     else:
         form = ProfileForm()
         # get일때
     return render(request, 'common/test_profile.html', {'form': form})
+
+# @login_required(login_url='common:login')
+# def mypage(request):
+#     author = Profile.objects.get()
+#     if author.profile:
+#         profile = author.profile
+#         context = {'profile':profile}
+#         return render(request, 'common/mypage.html', context)
+#     else:
+#         return redirect('common/test_profile', author.pk)
+
+@login_required
+def mypage(request):
+    return render(request, 'common/mypage.html')
+
+# def article_detail(request,article_id):
+#     article = get_object_or_404(Article,pk=article_id)
+#     profile_author_id= article.author_id
+#     profile = Profile.objects.get(author_id=profile_author_id)
+#     context={'article':article,'profile':profile}
+#     return render(request,'pybo/article_detail.html',context)
+
+@login_required(login_url='common:login')
+def change(request, user_id):
+    profile = get_object_or_404(Profile)
+    if request.user != profile.author:
+        messages.error(request, '수정권한이 없습니다')
+        return redirect('common:profile')
+
+    if request.method == "POST":
+        form = ProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.author = request.user
+            profile.modify_date = timezone.now()  # 수정일시 저장
+            profile.save()
+            return redirect('/')
+    else:
+        form = ProfileForm()
+    return render(request, 'common/update_profile.html', {'form':form})
 
 
 # @login_required(login_url='common:login')
@@ -68,9 +109,6 @@ def profile(request):
 #             form = ProfileForm(instance=request.user)
 #             context = { 'form': form }
 #             return render(request, 'common/test_profile.html', context)
-#
-# @login_required
-# def mypage(request):
-#     return render(request, 'common/mypage.html')
+
 
 
