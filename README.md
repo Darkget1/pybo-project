@@ -26,7 +26,8 @@ git : 파이참 clone->  setting메뉴 선택후 project:pybo-project 클릭
 ![a_list](https://github.com/Darkget1/pybo-project/assets/107245422/9a0a5a2b-475c-4b4b-baff-48669cabd86f)
 
 # detail
-![a_list](https://github.com/Darkget1/pybo-project/assets/107245422/2ef5551e-eb4c-4b01-a81a-58edcc4e5a70)
+
+![detail](https://github.com/Darkget1/pybo-project/assets/107245422/41699fe5-ed9a-46ec-949a-bdeec725599f)
 
 # 설계 개요
 1. db(models 설정) 담당자 : 이인,양경열
