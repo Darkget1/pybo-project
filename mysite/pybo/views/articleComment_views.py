@@ -5,7 +5,7 @@ from django.utils import timezone
 
 from ..forms import ArticleCommentForm
 from ..models import Article, ArticleComment
-
+from common.models import Profile
 @login_required(login_url='common:login')
 def articleComment_create_article(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
@@ -14,6 +14,7 @@ def articleComment_create_article(request, article_id):
         if form.is_valid():
             articleComment = form.save(commit=False)
             articleComment.author = request.user
+            articleComment.profile = Profile.objects.get(author_id=request.user)
             articleComment.create_date = timezone.now()
             articleComment.article = article
             articleComment.save()

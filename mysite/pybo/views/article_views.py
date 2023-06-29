@@ -4,7 +4,7 @@ from django.shortcuts import render,get_object_or_404, redirect
 from django.utils import timezone
 
 from ..forms import ArticleForm
-from ..models import Article
+from ..models import Article,ArticleComment
 from common.models import Profile
 @login_required(login_url='common:login')
 def article_create(request):
@@ -15,6 +15,7 @@ def article_create(request):
             article = form.save(commit=False)
             article.author = request.user
             article.create_date=timezone.now()
+            article.profile = Profile.objects.get(author_id=request.user)
             article.save()
             return redirect('pybo:main')
     else:
@@ -53,8 +54,6 @@ def article_delete(request, article_id):
     return redirect('pybo:article_list')
 
 def article_detail(request,article_id):
-
-
     article = get_object_or_404(Article,pk=article_id)
     profile_author_id= article.author_id
     profile = Profile.objects.get(author_id=profile_author_id)

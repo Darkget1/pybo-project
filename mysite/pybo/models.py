@@ -1,11 +1,12 @@
 from django.db import models
-from common.models import User
+from common.models import User,Profile
 
 
 
 class Article(models.Model):
     #article 테이블
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_article')
+    profile = models.ForeignKey(Profile,  null=True ,on_delete=models.SET_NULL, related_name='profile_article')
     #제목
     subject = models.CharField(max_length=200)
     #모집 운동 종목
@@ -31,11 +32,12 @@ class Article(models.Model):
 
 class ArticleComment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, null=True, on_delete=models.SET_NULL, related_name='profile_articleComment')
     content = models.TextField()
     create_date = models.DateTimeField()
     modify_date = models.DateTimeField(null=True, blank=True)
     article = models.ForeignKey(Article, null=True,blank=True,on_delete=models.CASCADE)
-
+    high_five = models.ManyToManyField(User,related_name='high_five_ArticleComment')
 
 
 
