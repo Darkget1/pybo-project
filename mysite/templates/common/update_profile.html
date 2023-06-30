@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div style="margin-top: 5rem !important;">
+        <div class="col-12">
+
+            <div class="row justify-content-center">
+                <div class="card">
+                    <div class="card-header" style="padding-bottom:8px;">
+                        <strong style="font-size: 18px;"><a class="fas fa-user-edit"></a>&nbsp;&nbsp;내 프로필 수정</strong>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <table style="color:black; margin-left:10px;">
+                                <div>
+                                    <img style="width:40%" src="{{ profile.images.url}}" width="200"> <br>
+                                </div>
+                                <tr>
+                                    <td class="profile_title">아이디</td>
+                                    <td class="profile_content">{{ profile.author }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="profile_title">닉네임</td>
+                                    <td class="profile_content">{{ user.nickname }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="profile_title">이메일</td>
+                                    <td class="profile_content">{{ user.email }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="profile_title">이름</td>
+                                    <td class="profile_content">{{ user.first_name }}{{ user.last_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="profile_title">연락처</td>
+                                    <td class="profile_content">{{ user.tel }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="profile_title">성별</td>
+                                    <td class="profile_content">{{ user.gender }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="profile_title">생년월일</td>
+                                    <td class="profile_content">{{ profile.birthdate|default:'선택안함' }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="profile_title">MBTI</td>
+                                    <td class="profile_content">{{ profile.mbti|default:'선택안함' }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="profile_title">관심운동</td>
+                                    <td class="profile_content">{{ profile.workout }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="profile_title">자기소개</td>
+                                    <td class="profile_content">{{ profile.introduce }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="profile_title">채팅</td>
+                                    <td class="profile_content"><a href="{{ profile.url }}">Click Link</a></td>
+                                </tr>
+                            </table>
+                            <br>
+                            <div style="text-align: center; margin-bottom:-15px;">
+                                <a onclick="location.href='/common/mypage/'" class="btn btn-sm" id="back_btn"><a
+                                        class="fa fa-reply"></a>&nbsp;돌아가기</a>
+                                <button type="submit" class="btn btn-sm" id="detail_btn"><a class="fas fa-check"></a>&nbsp;수정하기
+                                </button>
+                            </div>
+                        </form>
+
+                        <script type="text/javascript">
+                            function maxLengthCheck(object){
+                                if (object.value.length > object.maxLength) {
+                                    object.value = object.value.slice(0, object.maxLength);
+                                    }
+                                }
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

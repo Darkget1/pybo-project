@@ -12,7 +12,6 @@ class User(AbstractUser):
     nickname = models.CharField('닉네임', max_length=20, null=True, blank=True)
 
 class Profile(models.Model):
-    # user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     author = models.OneToOneField(User, on_delete=models.CASCADE, related_name='author_profile')
     create_date = models.DateTimeField('프로필생성일', blank=True)
     images = models.ImageField('프로필 사진', blank=True, upload_to="images", null=True)
