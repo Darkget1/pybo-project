@@ -18,6 +18,7 @@
     </div>
     <form method="POST" class="post-form" action="{% url 'common:profile' %}" enctype="multipart/form-data">
         {% csrf_token %}
+        {% include "form_errors.html" %}
         <!-- user ID -->
         <div class="input-group mb-3">
             <label class="col-3 input-group-text" for="username">사용자 ID</label>
@@ -35,7 +36,7 @@
         <div class="input-group">
             <label class="col-3 input-group-text" for="images" id="images">프로필 사진</label>
             <input class="form-control" type="file" name="images" accept="image/*">
-            <input class="input-group-text" type="submit" value="이미지 등록">
+            <input class="input-group-text" type="text" value="이미지 등록" disabled>
         </div>
         <br/>
 
@@ -224,7 +225,7 @@
         <!-- 자기소개 (취미, 주량, ... 등 )-->
         <div class="form-group">
             <label class="input-group-text" for="introduce">자기소개</label>
-            <textarea class="form-control" id="introduce"name="introduce" rows="3"
+            <textarea class="form-control" id="introduce" name="introduce" rows="3"
                       placeholder="취미, 주량 등 자유롭게 자기소개를 적어주세요!"></textarea>
         </div>
 
@@ -233,7 +234,7 @@
             <label class="input-group-text" for="url">오픈채팅 url</label>
             <input type="url" class="form-control" name="url" id="url"
                    placeholder="카카오톡 오픈채팅 링크 입력">
-            <!-- https://open.kakao.com/o/seTahcsf -->
+
         </div>
         <button type="submit" class="btn btn-outline-secondary">저장</button>
         <button type="reset" class="btn btn-dark">초기화</button>

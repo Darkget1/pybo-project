@@ -1,47 +1,77 @@
 {% extends "base.html" %}
 {% block content %}
-
 <div class="container">
-    <div class="row my-3">
-        <div class="col-5">
-            <h4>{{ user }}'s 마이페이지</h4>
-        </div>
-        <div class="col text-right">
-            <span><a href="{% url 'common:profile' %}">프로필 생성하기</a></span>
+    <div style="margin-top: 5rem !important;">
+        <div class="col-15">
+
+            <div class="row justify-content-center">
+                <div class="card">
+                    <div class="card-header" style="padding-bottom:8px;">
+                        <strong style="font-size: 18px;"><a class="fas fa-user-cog"></a>&nbsp;&nbsp;{{ user }}'s 마이페이지</strong>
+                    </div>
+                    <div class="card-body">
+                        <table style="color:black; margin-left:10px;">
+                            <div>
+                                <img style="width:40%" src="{{ profile.images.url}}" width="200"> <br>
+                            </div>
+                            <tr>
+                                <td class="profile_title">아이디</td>
+                                <td class="profile_content">{{ profile.author }}</td>
+                            </tr>
+                            <tr>
+                                <td class="profile_title">닉네임</td>
+                                <td class="profile_content">{{ user.nickname }}</td>
+                            </tr>
+                            <tr>
+                                <td class="profile_title">이메일</td>
+                                <td class="profile_content">{{ user.email }}</td>
+                            </tr>
+                            <tr>
+                                <td class="profile_title">이름</td>
+                                <td class="profile_content">{{ user.first_name }}{{ user.last_name }}</td>
+                            </tr>
+                            <tr>
+                                <td class="profile_title">연락처</td>
+                                <td class="profile_content">{{ user.tel }}</td>
+                            </tr>
+                            <tr>
+                                <td class="profile_title">성별</td>
+                                <td class="profile_content">{{ user.gender }}</td>
+                            </tr>
+                            <tr>
+                                <td class="profile_title">생년월일</td>
+                                <td class="profile_content">{{ profile.birthdate|default:'선택안함' }}</td>
+                            </tr>
+                            <tr>
+                                <td class="profile_title">MBTI</td>
+                                <td class="profile_content">{{ profile.mbti|default:'선택안함' }}</td>
+                            </tr>
+
+                            <tr>
+                                <td class="profile_title">관심운동</td>
+                                <td class="profile_content">{{ profile.workout }}</td>
+                            </tr>
+                            <tr>
+                                <td class="profile_title">자기소개</td>
+                                <td class="profile_content">{{ profile.introduce }}</td>
+                            </tr>
+                            <tr>
+                                <td class="profile_title">채팅</td>
+                                <td class="profile_content"><a href="{{ profile.url }}">Click Link</a></td>
+                            </tr>
+
+                        </table>
+
+                        <hr>
+                        <div style="text-align: center;">
+                            <!-- <div style="margin-left: 10px;"> -->
+                            <button type="submit" style="color:#d14040f2; font-size:15px;" class="btn btn-primary">&nbsp;내정보수정</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <form action="{% url 'common:profile_update' %}" enctype="multipart/form-data" method="POST">
-        {% csrf_token %}
-
-
-        <div class="row">
-            <div class="col-xs-6 col-md-3">
-                {% if profile_user.profile.profile_photo %}
-                <img class="round" src="{{profile_user.profile.profile_photo.url}}" width="200"> <br>
-                {% else %}
-                <img class="round" src="" width="200">
-                <br>
-                {% endif %}
-            </div>
-
-            <div class="col-xs-6 col-md-3">
-                {% if user.nickname %}
-                <h2>{{user.nickname}}</h2>
-                {% endif %}
-                {% if user == user %}
-                <!-- 로그인한 사용자와 profile_user(프로필 소유자)가 일치할 때만 프로필 편집이 가능하도록 함 -->
-                <a href="#">
-                    <button type="button" class="btn btn-outline-secondary">프로필 편집</button>
-                </a>
-                {% endif %}
-                <h4> username: {{ user }} </h4>
-                <h4> name: {{ user.first_name }}{{ user.last_name }}</h4>
-                <h4> birth: {{ profile.birth }}</h4>
-                <h4> MBTI: {{ profile.mbti }}</h4>
-            </div>
-        </div>
-    </form>
 </div>
-
 
 {% endblock %}
