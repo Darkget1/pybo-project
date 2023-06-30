@@ -23,7 +23,7 @@ def signup(request):
             return redirect('common:profile')
     else:
         form = UserForm()
-    return render(request, 'common/signup.html', {'form': form})
+    return render(request, 'common/test_signup.html', {'form': form})
 
 
 @login_required(login_url='common:login')
@@ -52,7 +52,7 @@ def profile(request):
 def Profile_detail(request, profile_id):
     profile =get_object_or_404(Profile, pk=profile_id)
     context = {'profile': profile}
-    return render(request, 'common/mypage.html', context)
+    return render(request, 'common/mypage1.html', context)
 
 @login_required(login_url='common:login')
 def Profile_update(request, profile_id):
@@ -71,5 +71,5 @@ def Profile_update(request, profile_id):
             return redirect('common:profile_detail', profile_id=profile_id)
     else:
         profile = ProfileForm(instance=profile)
-    context = {'profile':profile}
-    return render(request, 'common/mypage.html')
+    context = {'profile': profile}
+    return render(request, 'common/test_profile.html', context)
