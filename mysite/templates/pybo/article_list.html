@@ -68,9 +68,18 @@
 
             <div class="mainheading">
             </div>
-            <div class="text-right">
-                <a href="{% url 'pybo:article_create' %}" class="btn custom-btn bg-color mt-3">매칭 등록하기 </a>
-            </div>
+
+
+
+                    <div class="justify-content-end input-group mb-3">
+                        <input type="text" class="form-control col-2 mt-3" style="height: 50px;"value="{{ kw|default_if_none:'' }}">
+                        <a class="input-group-btn custom-btn bg-color mt-3" type="button" id="bnt_search">검색</a>
+                    </div>
+
+                    <div class="text-right">
+                    <a href="{% url 'pybo:article_create' %}" class="btn custom-btn bg-color mt-3">매칭 등록하기 </a>
+                    </div>
+
             <h1 class="sitetitle">My MBTI Mate
             </h1>
             <p class="lead">
@@ -104,25 +113,64 @@
                             <img class="img-fluid" src="{% static 'list/img/demopic/5.jpg' %}" alt="">
 
                             <div class="card-block p-3">
-                                <h2 class="card-title">{{ article.subject }}
-                                </h2>
-                                <h4 class="card-text">{{ article.content }}</h4>
+                                <h3 class="mb-4 pb-2">{{ article.subject }}</h3>
+                                <div class="mb-2">운동 파트너 요구사항</div>
+                                <div class="row">
+                                    <div class="mb-1 ml-3 pb-2 ">
+
+                                        <div class=" card card_custom bg-color mt-3" style="width: 80px;">
+                                            {{ article.status }}
+                                        </div>
+                                        <div class=" card card_custom bg-color mt-3" style="width: 100px;height: 38px">
+                                            {% include 'workout_mach.html' %}
+                                        </div>
+                                        <div class=" card card_custom bg-color mt-3" style="width: 80px;">
+                                            {% if article.gender == 'femail' %}
+                                                <img src="{% static 'icon/gender-female.svg' %}"
+                                                     style="filter:invert()">
+                                            {% else %}
+                                                <img src="{% static 'icon/gender-male.svg' %}" style="filter:invert()">
+                                            {% endif %}
+                                        </div>
+                                        <div class=" card card_custom bg-color mt-3" style="width: 80px;">
+                                            {{ article.profile.mbti }}
+                                        </div>
+                                    </div>
+                                    <hr class="my-2 col-10">
+                                    <div class="container d-flex justify-content-between text-center mt-2 mb-2">
+                                        <div class="col">
+                                            <p class="mb-1 small">날짜</p>
+                                            <p class="text-muted mb-0 small">{{ article.sport_date }}</p>
+                                        </div>
+
+                                        <div class="col">
+                                            <p class="mb-1 small">장소</p>
+                                            <p class="text-muted mb-0 small">{{ article.area }}</p>
+                                        </div>
+                                    </div>
+
+                                    <hr class="my-2 col-10">
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="card-block p-3">
                                 <div class="metafooter">
                                     <div class="wrapfooter">
-						<span class="meta-footer-thumb">
-						<a href="author.html"><img class="author-thumb"
-                                                   src="{{ article.profile.images.url }}"
-                                                   alt="Sal"></a>
-						</span>
+						                <span class="meta-footer-thumb">
+						                    <a href="author.html"><img class="author-thumb"
+                                                                       src="{{ article.profile.images.url }}" alt="Sal"></a>
+						                </span>
                                         <span class="author-meta">
-						<span class="post-name"><a href="author.html">{{ article.author }}</a></span><br/>
-						<span class="post-date">{{ article.create_date }}</span><span class="dot"></span><span
-                                                class="post-read">6 min read</span>
-						</span>
-                                        <span class="post-read-more"><a href="post.html" title="Read Story"><svg
-                                                class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25"><path
-                                                d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z"
-                                                fill-rule="evenodd"></path></svg></a></span>
+						                <span class="post-name">
+                                        <a href="author.html">{{ article.author }}</a>
+                                        </span>
+                                            <br/>
+						                <span class="post-date">{{ article.create_date }}</span><span
+                                                class="dot"></span><span class="post-read">6 min read</span>
+						                </span>
                                     </div>
                                 </div>
                             </div>
