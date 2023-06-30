@@ -71,5 +71,5 @@ def Profile_update(request, profile_id):
             return redirect('common:profile_detail', profile_id=profile_id)
     else:
         profile = ProfileForm(instance=profile)
-    context = {'profile':profile}
-    return render(request, 'common/mypage.html')
+    context = {'profile': profile}
+    return render(request, 'common/test_profile.html', context)
