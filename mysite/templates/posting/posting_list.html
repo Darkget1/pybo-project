@@ -16,8 +16,8 @@
         <div class="col-2">
             <a href="{% url 'posting:posting_create' %}" class="text-center form-control btn custom-btn aos-init aos-animate bg-color" style="padding: 0.375rem 0.75rem;">게시글 작성</a>
         </div>
-
     </div>
+
     <!--자게 메인 게시판-->
     <table class="table">
         <thead>
@@ -87,17 +87,18 @@
         <li class="page-item disabled">
             <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
         </li>
+
         {% endif %}
         <!-- 페이지리스트 -->
         {% for page_number in posting_list.paginator.page_range %}
         {% if page_number >= posting_list.number|add:-5 and page_number <= posting_list.number|add:5 %}
         {% if page_number == posting_list.number %}
         <li class="page-item active" aria-current="page">
-            <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+            <a class="page-link text-dark" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
         </li>
         {% else %}
         <li class="page-item">
-            <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+            <a class="page-link text-dark" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
         </li>
         {% endif %}
         {% endif %}
@@ -105,17 +106,16 @@
         <!-- 다음페이지 -->
         {% if posting_list.has_next %}
         <li class="page-item">
-                <a class="page-link"
+                <a class="page-link text-dark"
                data-page="{{ posting_list.next_page_number }}" href="#">다음</a>
         </li>
         {% else %}
         <li class="page-item disabled">
-            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+            <a class="page-link text-dark" tabindex="-1" aria-disabled="true" href="#">다음</a>
         </li>
         {% endif %}
     </ul>
     <!-- 페이징처리 끝 -->
-
 </div>
 
 <form id="searchForm" method="get" action="{% url 'posting:main' %}">
