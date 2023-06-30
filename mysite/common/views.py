@@ -52,7 +52,7 @@ def profile(request):
 def Profile_detail(request, profile_id):
     profile =get_object_or_404(Profile, pk=profile_id)
     context = {'profile': profile}
-    return render(request, 'common/mypage.html', context)
+    return render(request, 'common/mypage1.html', context)
 
 @login_required(login_url='common:login')
 def Profile_update(request, profile_id):
