@@ -1,57 +1,28 @@
-/*내용 없음*/
-.comment{
-    border-top: dotted 1px #ddd;
-    font-size: 1.5em;
-}
-
-.bd-sidebar {
-  position: sticky;
-  top: 4rem;
-  z-index: 90;
-  height: 70%;
-  background: #eee;
-  border-right: 1px solid rgba(0,0,0,.1);
-  overflow: hidden;
-  min-width: 160px;
-  max-width: 220px;
-}
-
-.bd-sidebar .nav {
-  display: block;
-}
-.bd-sidebar .nav>li>a {
-  display: block;
-  padding: .25rem 1.5rem;
-  font-size: 90%;
-}
-.card-text {
-  font-size: 220%
-}
-.btn-primary {
-    font-family: Raleway-SemiBold;
-  font-size: 13px;
-  color: rgba(58, 133, 191, 0.75);
-  letter-spacing: 1px;
-  line-height: 15px;
-  border: 2px solid rgba(58, 133, 191, 0.75);
-  border-radius: 40px;
-  background: transparent;
-  transition: all 0.3s ease 0s;
-}
-
-.btn-primary:hover {
-  color: #FFF;
-  background: rgba(58, 133, 191, 0.75);
-  border: 2px solid rgba(58, 133, 191, 0.75);
-}
 /*
 Template Name:Mediumish
 Copyright:WowThemes.net,https://www.wowthemes.net
 Version:1.0.1
 License: https://www.wowthemes.net/freebies-license/
 */
-
-
+body {
+	padding-top:5rem;
+}
+.mainheading {
+	padding:1rem 0rem;
+}
+a {
+	color:#00ab6b;
+}
+a,a:hover {
+	transition:all 0.2s;
+}
+.mediumnavigation {
+	background:rgba(255,255,255,.97);
+	box-shadow:0 2px 2px -2px rgba(0,0,0,.15);
+}
+section {
+	margin-bottom:20px;
+}
 .section-title h2 {
 	border-bottom:1px solid rgba(0,0,0,.15);
 	margin-bottom:25px;
@@ -72,7 +43,12 @@ License: https://www.wowthemes.net/freebies-license/
 		column-count:2;
 	}
 }
-
+@media (min-width:992px) {
+	.navbar-toggleable-md .navbar-nav .nav-link {
+		padding-right:.7rem;
+		padding-left:.7rem;
+	}
+}
 .card-columns .card {
 	margin-bottom:20px;
 }
@@ -182,6 +158,52 @@ span.post-name a,span.post-read-more a:hover {
 	content:"·";
 	margin-left:3px;
 	margin-right:3px;
+}
+.mediumnavigation .form-control {
+	font-size:0.8rem;
+	border-radius:30px;
+	overflow:hidden;
+	border:1px solid rgba(0,0,0,0.04);
+}
+.mediumnavigation .form-inline {
+	margin-left:15px;
+}
+.mediumnavigation .form-inline .btn {
+	margin-left:-50px;
+	border:0;
+	border-radius:30px;
+	cursor:pointer;
+}
+.mediumnavigation .form-inline .btn:hover,.mediumnavigation .form-inline .btn:active {
+	background:transparent;
+	color:green;
+}
+.mediumnavigation .navbar-brand {
+	font-weight:500;
+}
+.mediumnavigation .dropdown-menu {
+	border:1px solid rgba(0,0,0,0.08);
+	margin:.5rem 0 0;
+}
+.mediumnavigation .nav-item,.dropdown-menu {
+	font-size:0.9rem;
+}
+.mediumnavigation .search-icon {
+	margin-left:-40px;
+	display:inline-block;
+	margin-top:3px;
+	cursor:pointer;
+}
+.mediumnavigation .navbar-brand img {
+	max-height:30px;
+	margin-right:5px;
+}
+.mainheading h1.sitetitle {
+	font-family:Righteous;
+}
+.mainheading h1.posttitle {
+	font-weight:700;
+	margin-bottom:1rem;
 }
 .footer {
 	border-top:1px solid rgba(0,0,0,.05)!important;
@@ -419,7 +441,3 @@ ul.tags li a:hover {
 	border-radius:50%;
 	font-size:12px;
 }
-.card_custom {display:inline-block;font-weight:400;color:#212529;text-align:center;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background-color:transparent;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;line-height:1.5;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}
-
-
-

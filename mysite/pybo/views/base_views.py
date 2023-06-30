@@ -2,6 +2,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q,Count
 from ..models import Article
+from common.models import Profile
 
 
 
@@ -14,13 +15,13 @@ def main(request):
 
 def article_index(request):
     page = request.GET.get('page','1')
-
+    # article.profile.objects.set_all
     article_list = Article.objects.order_by('-voter','create_date')
-
+    profile = Profile.objects
     #페이징 처리
-    paginator = Paginator(article_list,1)#페이지당 1개씩 보이기
+    paginator = Paginator(article_list,3)#페이지당 1개씩 보이기
     page_obj = paginator.get_page(page)
-    context = {'article_list': page_obj}
+    context = {'article_list': page_obj, 'profile':profile}
 
     return render(request, 'pybo/article_list.html' ,context)
 

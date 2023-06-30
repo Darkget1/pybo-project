@@ -1,253 +1,214 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-{% if messages %}
-<div class="alert alert-danger my-3" role="alert">
-    {% for message in messages %}
-        <strong>{{ message.tags }}</strong>
-        <ul><li>{{ message.message }}</li></ul>
-    {% endfor %}
-</div>
-{% endif %}
-    <!-- 매칭 글 -->
-{#<section style="background-color: white;">#}
-{#  <div class="container my-5 py-5">#}
-{#    <div class="row d-flex justify-content-center">#}
-{#      <div class="col-md-12 col-lg-10">#}
-{#        <div class="card">#}
-{#          <div class="card-body">#}
-{#            <div class="d-flex flex-start align-items-center">#}
-{#              <img class="rounded-circle shadow-1-strong me-3"#}
-{#                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" width="60"#}
-{#                height="60" />#}
-{#              <div>#}
-{#                  <h6 class="fw-bold text-primary mb-1">{{ article.author }}</h6>#}
-{#                  <p class="text-muted small mb-0">#}
-{#                    {% if article.modify_date %}#}
-{#                        {{ article.modify_date }}#}
-{#                    {% else %}#}
-{#                        {{ article.create_date }}#}
-{#                    {% endif %}#}
-{#                    {% if request.user == article.author %}#}
-{#                        <a onclick="location.href='{% url 'pybo:article_modify' article.id %}'" class="btn btn-sm btn-outline-secondary">#}
-{#                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">#}
-{#                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>#}
-{#                            </svg>#}
-{#                        </a>#}
-{#                        <a href="#" data-uri="{% url 'pybo:article_delete' article.id %}" class="delete btn btn-sm btn-outline-secondary">#}
-{#                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">#}
-{#                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>#}
-{#                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>#}
-{#                            </svg>#}
-{#                        </a>#}
-{#                    {% endif %}#}
-{#                  </p>#}
-{#              </div>#}
-{#            </div>#}
-{#            <p class="mt-3 mb-4 pb-2">#}
-{#                  {{ article.Sport_type }}#}
-{#            </p>#}
-{#            <a class="mt-3 mb-4 pb-2">#}
-{#                {{ article.gender }}#}
-{#            </a>#}
-{#            <a class="mt-3 mb-4 pb-2">#}
-{#                {{ article.status }}#}
-{#            </a>#}
-{#            <a class="mt-3 mb-4 pb-2">#}
-{#                {{ article.area }}#}
-{#            </a>#}
-{##}
-{#            <a class="mt-3 mb-4 pb-2">#}
-{#                {{ article.sport_date }}#}
-{#            </a>#}
-{#            <p class="mt-3 mb-4 pb-2">#}
-{#                  {{ article.content }}#}
-{#            </p>#}
-{#              <div class="float-end mt-2 pt-1">#}
-{#                  <button type="button" class="btn btn-primary" onclick="location.href='{% url 'pybo:articleComment_create_article' article.id %}'"#} >#}
-{#                      <span class="flex items-center justify-center">#}
-{#                          <span class="flex mr-xs">#}
-{#                              <svg rpl="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" height="20" width="20" icon-name="add-outline" fill="currentColor">#}
-{#                                  <path d="M19 9.375h-8.375V1h-1.25v8.375H1v1.25h8.375V19h1.25v-8.375H19v-1.25z"></path>#}
-{#                              </svg>#}
-{#                          </span>#}
-{#                          <span class="flex items-center gap-xs ">comment</span>#}
-{#                      </span>#}
-{#                  </button>#}
-{#              </div>#}
-{#          </div>#}
-{#        </div>#}
-{#      </div>#}
-{#    </div>#}
-{#</section>#}
-
-
-    <!-- ver2 -->
-
-<section class="vh-100" style="background-color: white;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-12 col-xl-8">
-
-        <div class="card" style="border-radius: 15px;">
-
-          <div class="card-body text-center">
-{#            {% if request.user == article.author %}#}
-{#            <div class="bnt col-1 float-right">#}
-{#            <a onclick="location.href='{% url 'pybo:article_modify' article.id %}'">#}
-{#                <img src="{% static 'icon/pencil.svg' %}">#}
-{#                </a>#}
-{#            </div>#}
-{#                <fiv#}
-{#            {% endif %}#}
-
-
-            <div class="mt-3 mb-4">
-              <img src="{{ profile.images.url }}"
-                class="rounded-circle img-fluid" style="width: 100px;" />
-            </div>
-
-            <h4 class="mb-2">{{ article.author }}</h4>
-            <p class="text-muted mb-4">{{ article.subject}} <span class="mx-2">|</span> <a
-                ></a></p>
-            <div class="mb-2">
-              운동 파트너 요구사항 테스트
-          </div>
-            <div class="mb-4 pb-2">
-                 <div  class="btn btn-outline-primary btn-floating">
-                    {{ article.status }}
-                  </div>
-                  <div  class="btn btn-outline-primary btn-floating">
-                    {%  include 'workout_mach.html' %}
-                  </div>
-                  <div  class="btn btn-outline-primary btn-floating">
-                      {% if article.gender == 'femail' %}
-                        <img src="{% static 'icon/gender-female.svg' %}">
-                      {% else %}
-                        <img src="{% static 'icon/gender-male.svg' %}">
-                      {% endif %}
-                  </div>
-              <div  class="btn btn-outline-primary btn-floating">
-                {{ profile.mbti }}
-              </div>
-            </div>
-
-
-              <!--오픈챗-->
-            <button type="button" class="btn btn-primary btn-rounded btn-lg">
-{#                {% with cnt=0 %}#}
-                {% if article.articlecomment_set.count > 0 %}
-                    {% for articleComment in article.articlecomment_set.all %}
-                    {% if request.user == articleComment.author %}
-                        <a>오픈쳇</a>
-                        {#                        {% endif %}#}
-                        {#                    {% endfor %}#}
-                        {##}
-                        {#                    {% if cnt == 1 %}#}
-                        {#                        <a>오픈쳇</a>#}
-                    {% else %}
-                        <a href="{% url 'pybo:articleComment_create_article' article.id %}"
-                           style="text-decoration:none; color:black;">하이파이브</a>
-                    {% endif %}
-                    {% endfor %}
-                {% else %}
-                    <a href="{% url 'pybo:articleComment_create_article' article.id %}"
-                       style="text-decoration:none; color:black;">하이파이브</a>
-                {% endif %}
-
-{#            {% endwith %}#}
-
-            </button>
-            <div class="d-flex justify-content-between text-center mt-5 mb-2">
-              <div class="col-4">
-                <p class="mb-2 h7">{{ article.sport_date }}</p>
-                <p class="text-muted mb-0">운동 날자</p>
-              </div>
-              <div class="col-4">
-                <p class="mb-2 h7">{{ article.voter.count }}</p>
-                <p class="text-muted mb-0">추천수</p>
-              </div>
-              <div class="col-4">
-                <p class="mb-2 h7">4751</p>
-                <p class="text-muted mb-0">{{ article.articlecomment_set.all.count }}</p>
-              </div>
-            </div>
-          </div>
+    {% if messages %}
+        <div class="alert alert-danger my-3" role="alert">
+            {% for message in messages %}
+                <strong>{{ message.tags }}</strong>
+                <ul>
+                    <li>{{ message.message }}</li>
+                </ul>
+            {% endfor %}
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    {% endif %}
+    <!-- 매칭 글 -->
 
-    <!--     댓글 부분      -->
-<section style="background-color: white;">
-    <div class="container my-5 py-5">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                <div class="card text-dark">
-                    {% if article.articlecomment_set.count > 0  %}
-                        {% for articleComment in article.articlecomment_set.all %}
-                            <div class="card-body p-4">
-                                <div class="d-flex flex-start">
-                                    <img class="rounded-circle shadow-1-strong me-3"
-                                         src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp" alt="avatar" width="60"
-                                         height="60" />
-                                    <div>
-                                        <h6 class="fw-bold mb-1">{{ articleComment.author }}</h6>
-                                        <div class="d-flex align-items-center mb-3">
-                                            <p class="mb-0">
-                                                {% if articleComment.modify_date %}
-                                                    {{ articleComment.modify_date }}
-                                                {% else %}
-                                                    {{ articleComment.create_date }}
-                                                {% endif %}
-                                                {% if request.user == articleComment.author %}
-                                                    <a onclick="location.href='{% url 'pybo:articleComment_modify_article' articleComment.id %}'" class="btn btn-sm btn-outline-secondary">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                                                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                                                        </svg>
-                                                    </a>
-                                                    <a href="#" data-uri="{% url 'pybo:articleComment_delete_article' articleComment.id %}" class="delete btn btn-sm btn-outline-secondary">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
-                                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-                                                        </svg>
-                                                    </a>
-                                                {% endif %}
-                                        </div>
 
-                                        <p class="mb-0">
+    <section>
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center ">
+                <div class="col-md-12 col-xl-10">
 
-                                            {{ articleComment.content }}
-                                        </p>
-                                    </div>
+                    <div class="card" style="border-radius: 15px;">
+
+                        <div class="card-body text-center">
+                            {#            {% if request.user == article.author %}#}
+                            {#            <div class="bnt col-1 float-right">#}
+                            {#            <a onclick="location.href='{% url 'pybo:article_modify' article.id %}'">#}
+                            {#                <img src="{% static 'icon/pencil.svg' %}">#}
+                            {#                </a>#}
+                            {#            </div>#}
+                            {#                <fiv#}
+                            {#            {% endif %}#}
+
+
+                            <div class="mt-3 mb-4">
+                                <img src="{{ profile.images.url }}"
+                                     class="rounded-circle img-fluid" style="width: 100px;"/>
+                            </div>
+
+                            <h4 class="mb-2">{{ article.author }}</h4>
+                            <p class="text-muted mb-4">{{ article.subject }} <span
+                                    class="mx-2">|</span>{{ article.create_date }} <a
+                            ></a></p>
+                            <div class="mb-2">
+                                운동 파트너 요구사항
+                            </div>
+                            <div class="mb-4 pb-2">
+                                <div class="card card_custom bg-color mt-3">
+                                    {{ article.status }}
+                                </div>
+                                <div class="card card_custom bg-color mt-3">
+                                    {% include 'workout_mach.html' %}
+                                </div>
+                                <div class="card card_custom bg-color mt-3">
+                                    {% if article.gender == 'femail' %}
+                                        <img src="{% static 'icon/gender-female.svg' %}" style="filter:invert()">
+                                    {% else %}
+                                        <img src="{% static 'icon/gender-male.svg' %}" style="filter:invert()">
+                                    {% endif %}
+                                </div>
+                                <div class="card card_custom bg-color mt-3">
+                                    {{ profile.mbti }}
                                 </div>
                             </div>
-                            <hr class="my-0" />
-                        {% endfor %}
-                    {% endif %}
+
+
+                            <!--오픈챗 & 하이파이브 필터 -->
+                            <div>
+                                {% if highfive_numver == 1 %}
+                                    <a class="btn custom-btn bg-color mt-3" href="{{ profile.url }}">오픈쳇</a>
+                                {% else %}
+                                    {% if comment_user_number == 0 %}
+                                        {% if article.author != request.user %}
+                                            <a class="btn custom-btn bg-color mt-3"
+                                               href="{% url 'pybo:articleComment_create_article' article.id %}">
+                                                <img  src="{% static 'icon/high_five.png' %}"style="height: 60px; padding: -5px;margin: -5px"></a>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+
+
+                            <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                                <div class="col-4">
+                                    <p class="mb-2 h7">운동 날자</p>
+                                    <p class="text-muted mb-0">{{ article.sport_date }}</p>
+                                </div>
+                                <div class="col-4">
+                                    <p class="mb-2 h7">추천수</p>
+                                    <p class="text-muted mb-0">{{ article.voter.count }}</p>
+                                </div>
+                                <div class="col-4">
+                                    <p class="mb-2 h7">운동 파트너</p>
+                                    <p class="text-muted mb-0">{{ article.articlecomment_set.all.count }}</p>
+                                </div>
+                            </div>
+                            <hr class="my-2">
+                            <div class="card-body text-center">
+                                {{ article.content }}
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!--     댓글 부분      -->
+    <section style="margin-top: -100px">
+        <div class="container my-5 py-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <div class="card" style="border-radius: 15px;">
+                        {% if article.articlecomment_set.count > 0 %}
+                            {% for articleComment in article.articlecomment_set.all %}
+                                <div class="card-body p-4">
+                                    <div class="d-flex flex-start">
+                                        <img class="author-thumb"
+                                             src="{{ articleComment.profile.images.url }}"
+                                             alt="Sal">
+
+                                        <div>
+                                            <h6 class="fw-bold mb-1">{{ articleComment.author }}</h6>
+                                            <div class="d-flex align-items-center mb-3">
+                                                <p class="mb-0">
+                                                    {% if articleComment.modify_date %}
+                                                        {{ articleComment.modify_date }}
+                                                    {% else %}
+                                                        {{ articleComment.create_date }}
+                                                    {% endif %}
+                                                    {% if request.user == articleComment.author %}
+                                                        <a onclick="location.href='{% url 'pybo:articleComment_modify_article' articleComment.id %}'"
+                                                           class="btn btn-sm btn-outline-secondary">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                 height="16" fill="currentColor" class="bi bi-pencil"
+                                                                 viewBox="0 0 16 16">
+                                                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                                                            </svg>
+                                                        </a>
+                                                        <a href="#"
+                                                           data-uri="{% url 'pybo:articleComment_delete_article' articleComment.id %}"
+                                                           class="delete btn btn-sm btn-outline-secondary">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                 height="16" fill="currentColor" class="bi bi-trash"
+                                                                 viewBox="0 0 16 16">
+                                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                                            </svg>
+                                                        </a>
+                                                    {% endif %}
+                                            </div>
+
+                                            <p class="mb-0">
+
+                                                {{ articleComment.content }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    {#                                하이파이브 수정중#}
+                                    {% if request.user == article.author %}
+                                        <div>
+
+                                            {% if request.user in articleComment.highfive.all %}
+                                                 <a href="#"
+                                               data-uri="{% url 'pybo:articleComment_high_five' articleComment.id %}"
+                                               class="highfive_canceled btn btn-sm btn-secondary btn-block my-1">
+                                                <img src="{% static 'icon/high_five.png' %}" style="height: 30px">하이파이브 취소</a>
+                                                {% else  %}
+                                                 <a href="#"
+                                               data-uri="{% url 'pybo:articleComment_high_five' articleComment.id %}"
+                                               class="highfive btn btn-sm btn-secondary btn-block my-1">
+                                                <img src="{% static 'icon/high_five.png' %}" style="height: 30px">하이파이브</a>
+                                                {% endif %}
+
+                                            </a>
+
+
+                                        </div>
+                                        </div>
+                                    {% endif %}
+                                <hr class="my-0"/>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
 {% block script %}
-<script type="text/javascript">
-    $(document).ready(function(){
-        $(".delete").on('click',function (){
-            if(confirm("정말로 삭제하시겠습니까?")){
-                location.href = $(this).data('uri');
-            }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".delete").on('click', function () {
+                if (confirm("정말로 삭제하시겠습니까?")) {
+                    location.href = $(this).data('uri');
+                }
+            });
+            $(".highfive_canceled").on('click', function () {
+                if (confirm("정말 하이파이프 취소 하시겠습니까?")) {
+                    location.href = $(this).data('uri');
+                }
+            });
+            $(".highfive").on('click', function () {
+                if (confirm("정말 하이파이프 수락 하시겠습니까?")) {
+                    location.href = $(this).data('uri');
+                }
+            });
         });
-        $(".recommend").on('click',function (){
-            if(confirm("정말로 추천하시겠습니까?")){
-                location.href = $(this).data('uri');
-            }
-        });
-    });
 
-</script>
+    </script>
 {% endblock %}
 
 
