@@ -45,21 +45,21 @@
             <div class="col-3 ml-5 mt-3">
                 <h3 class="mb-4 pb-2">{{ article.subject }}</h3>
                 <div class="mb-2">운동 파트너 요구사항</div>
-                <div class="mb-4 pb-2">
-                    <div class="card card_custom bg-color mt-3">
+                <div class="container row">
+                    <div class="card card_custom bg-color mt-3 mr-1" style="height: 40px;width: 100px">
                         {{ article.status }}
                     </div>
-                    <div class="card card_custom bg-color mt-3">
+                    <div class="card card_custom bg-color mt-3 mr-1" style="height: 40px;width: 120px">
                         {% include 'workout_mach.html' %}
                     </div>
-                    <div class="card card_custom bg-color mt-3">
+                    <div class="card card_custom bg-color mt-3 mr-1" style="height: 40px;width: 100px">
                         {% if article.gender == 'femail' %}
-                            <img src="{% static 'icon/gender-female.svg' %}" style="filter:invert()">
+                            <img src="{% static 'icon/gender-female.svg' %}" style="filter:invert(); height: 30px;width: 30px">
                         {% else %}
-                            <img src="{% static 'icon/gender-male.svg' %}" style="filter:invert()">
+                            <img src="{% static 'icon/gender-male.svg' %}" style="filter:invert(); height: 30px;width: 30px">
                         {% endif %}
                     </div>
-                    <div class="card card_custom bg-color mt-3">
+                    <div class="card card_custom bg-color mt-3 mr-1" style="height: 40px;width: 100px">
                         {{ profile.mbti }}
                     </div>
 
