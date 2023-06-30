@@ -18,8 +18,8 @@
             <div class="text-center">
                 <!--    이전페이지  -->
                 {% if article_list.has_previous %}
-                    <a class="btn custom-btn bg-color mt-3"
-                       href="?page={{ article_list.previous_page_number }}" style="">
+                    <a class="btn custom-btn bg-color mt-3 page-link-page"
+                       data-page="{{ article_list.previous_page_number }}" href="#" style="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                              fill="currentColor"
                              class="bi bi-caret-up-fill" viewBox="0 0 16 16">
@@ -38,11 +38,11 @@
 
                 {% endif %}
                 <!--페이지 리스트-->
-                <div class="">{{ article_list.number }}</div>
+                <div class="text-center lead pt-2">{{ article_list.number }}</div>
                 <!--    다음페이지 -->
                 {% if article_list.has_next %}
-                    <a class="btn custom-btn bg-color mt-3"
-                       href="?page={{ article_list.next_page_number }}">
+                    <a class="btn custom-btn bg-color mt-3 page-link-page"
+                       data-page="{{ article_list.next_page_number }}" href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                              fill="currentColor"
                              class="bi bi-caret-down-fill" viewBox="0 0 16 16">#}
@@ -63,6 +63,12 @@
             </div>
         </div>
         <!--페이징 처리 끝-->
+    <!--검색-->
+     <form id="searchForm" method="get" action="{% url 'pybo:main' %}">
+        <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+        <input type="hidden" id="page" name="page" value="{{ page }}">
+        <input type="hidden" id="so" name="so" value="{{ so }}">
+    </form>
 
         <div class="container col-8">
 
@@ -72,8 +78,8 @@
 
 
                     <div class="justify-content-end input-group mb-3">
-                        <input type="text" class="form-control col-2 mt-3" style="height: 50px;"value="{{ kw|default_if_none:'' }}">
-                        <a class="input-group-btn custom-btn bg-color mt-3" type="button" id="bnt_search">검색</a>
+                        <input type="text" class="form-control col-2 mt-3 kw" style="height: 50px;"value="{{ kw|default_if_none:'' }}">
+                        <button class="input-group-btn  custom-btn bg-color mt-3" type="button" id="btn_search">검색</button>
                     </div>
 
                     <div class="text-right">
@@ -161,7 +167,8 @@
                                     <div class="wrapfooter">
 						                <span class="meta-footer-thumb">
 						                    <a href="author.html"><img class="author-thumb"
-                                                                       src="{{ article.profile.images.url }}" alt="Sal"></a>
+                                                                       src="{{ article.profile.images.url }}" alt="Sal">
+                                            </a>
 						                </span>
                                         <span class="author-meta">
 						                <span class="post-name">
@@ -201,17 +208,29 @@
 
         </div>
     </div>
-    <!-- /.container -->
 
-    <!-- Bootstrap core JavaScript
-        ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->]
-    {#{% block script %}#}
-    {##}
-    {#<script src="assets/js/jquery.min.js"></script>#}
-    {#<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>#}
-    {#<script src="assets/js/bootstrap.min.js"></script>#}
-    {#<script src="assets/js/ie10-viewport-bug-workaround.js"></script>#}
-    {#{% endblock %}#}
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".page-link-page").on('click', function () {
+            $("#page").val($(this).data("page"));
+            $("#searchForm").submit();
+        });
 
+        $("#btn_search").on('click', function () {
+            $("#kw").val($(".kw").val());
+            $("#page").val(1)//검색버튼을 클릭할 경우 1페이지부터 조회한다.
+            $("#searchForm").submit();
+
+        });
+        $('.so').on('change',function (){
+            $('#so').val($(this).val());
+            $('#page').val(1);
+            $("#searchForm").submit();
+
+        });
+    });
+
+</script>
 {% endblock %}
