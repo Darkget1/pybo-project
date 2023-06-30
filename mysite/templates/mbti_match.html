@@ -1,0 +1,45 @@
+{% load static %}
+
+{% if profile.mbti == 'ISTJ' %}
+    <img src="{% static 'icon/mbti/ISTJ.svg' %}" style="width: 20px;height: 20px;"> ISTJ
+{% elif profile.mbti == 'ISFJ' %}
+    <img src="{% static 'icon/golf.svg' %}" style="width: 20px;height: 20px;"> ISFJ
+
+{% elif profile.mbti == 'INFJ' %}
+    <img src="https://files.sportpartner.com/assets/images/sports/running.svg" style="width: 20px;height: 20px;"> INFJ
+
+{% elif profile.mbti == 'INTJ' %}
+    <img src="https://files.sportpartner.com/assets/images/sports/walking.svg" style="width: 20px;height: 20px;"> INTJ
+
+{% elif profile.mbti == 'ISTP' %}
+    <img src="https://files.sportpartner.com/assets/images/sports/fitness.svg" style="width: 20px;height: 20px;"> ISTP
+
+{% elif profile.mbti == 'ISFP' %}
+    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/9717f77a-c366-4f66-9a2b-09dbfd17694f.svg"
+         style="width: 20px;height: 20px;"> ISFP
+{% elif profile.mbti == 'INFP' %}
+    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/8b7f5d07-fc46-4820-8edb-e2f7f8094586.svg"
+         style="width: 20px;height: 20px;"> INFP
+{% elif profile.mbti == 'INTP' %}
+    <img src="https://files.sportpartner.com/assets/images/sports/hiking.svg" style="width: 20px;height: 20px;"> INTP
+{% elif profile.mbti == 'ESTJ' %}
+    <img src="https://files.sportpartner.com/assets/images/sports/climbing.svg" style="width: 20px;height: 20px;"> ESTJ
+{% elif profile.mbti == 'ESFJ' %}
+    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/f0a07a11-fbc6-49e2-9264-d3afd6b290d5.svg"
+         style="width: 20px;height: 20px;"> ESFJ
+{% elif profile.mbti == 'ENFJ' %}
+    <img src="https://files.sportpartner.com/assets/images/sports/fishing.svg" style="width: 20px;height: 20px;"> ENFJ
+{% elif profile.mbti == 'ENTJ' %}
+    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/c5c724e1-7b03-4820-80e0-2fb6d15e7641.svg"
+         style="width: 20px;height: 20px;"> ENTJ
+{% elif profile.mbti == 'ESTP' %}
+    <img src="https://files.sportpartner.com/assets/images/sports/swimming.svg" style="width: 20px;height: 20px;"> ESTP
+{% elif profile.mbti == 'ESFP' %}
+    <img src="https://files.sportpartner.com/assets/images/sports/skating.svg" style="width: 20px;height: 20px;"> ESFP
+{% elif profile.mbti == 'ENFP' %}
+    <img src="https://files.sportpartner.com/assets/images/sports/iceskating.svg" style="width: 20px;height: 20px;filter:invert()"> 인라인
+    ESFP
+{% elif profile.mbti == 'ENTP' %}
+    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/fecd876a-5680-49d8-9c41-676509106e67.svg"
+         style="width: 20px;height: 20px;"> ENTP
+{% endif %}
