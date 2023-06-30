@@ -23,29 +23,28 @@
         </div>
 
         <div class="form-group">
-{#            <label for="subject">운동 선택</label>#}
-{#            <input type="text" class="form-control" name="Sport_type" id="Sport_type:"#}
-{#                   value="{{ form.subject.value|default_if_none:'' }}">#}
             {%  include 'workout.html' %}
         </div>
 
         <div class="form-group">
             <label for="gender">성별</label><br>
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="gender" id="gender1" autocomplete="off" value="male">
-                <label class="btn btn-outline-primary" for="gender1">남자</label>
-                <input type="radio" class="btn-check" name="gender" id="gender2" autocomplete="off" value="female">
-                <label class="btn btn-outline-primary" for="gender2">여자</label>
+                    <input type="radio" class="btn-check buttons-hidden check-css" name="gender" id="gender1" autocomplete="off" value="male">
+                    <label class="btn custom-btn aos-init aos-animate bg-color rounded check-css-label" for="gender1">남자</label>
+
+                    <input type="radio" class="btn-check buttons-hidden check-css" name="gender" id="gender2" autocomplete="off" value="female">
+                    <label class="btn custom-btn aos-init aos-animate bg-color rounded check-css-label" for="gender2">여자</label>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="status">모집상태</label><br>
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="status" id="status1" autocomplete="off" value="모집중" checked>
-                <label class="btn btn-outline-primary" for="status1">모집중</label>
-                <input type="radio" class="btn-check" name="status" id="status2" autocomplete="off" value="모집완료">
-                <label class="btn btn-outline-primary" for="status2">모집완료</label>
+            <label for="status">모집 상태</label><br>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check buttons-hidden check-css" name="status" id="status1" autocomplete="off" value="모집중">
+                    <label class="btn custom-btn aos-init aos-animate bg-color rounded check-css-label" for="status1">모집중</label>
+
+                    <input type="radio" class="btn-check buttons-hidden check-css" name="status" id="status2" autocomplete="off" value="모집완료">
+                    <label class="btn custom-btn aos-init aos-animate bg-color rounded check-css-label" for="status2">모집 완료</label>
             </div>
         </div>
 
@@ -67,7 +66,7 @@
                       rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
 
         </div>
-        <button type="submit" class="btn btn-primary">저장하기</button>
+        <button type="submit" class="btn custom-btn aos-init aos-animate bg-color rounded">저장하기</button>
     </form>
 </div>
 {% endblock %}
