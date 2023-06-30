@@ -23,7 +23,7 @@ def signup(request):
             return redirect('common:profile')
     else:
         form = UserForm()
-    return render(request, 'common/signup.html', {'form': form})
+    return render(request, 'common/test_signup.html', {'form': form})
 
 
 @login_required(login_url='common:login')
