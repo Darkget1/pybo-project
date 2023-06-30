@@ -19,7 +19,8 @@ class Profile(models.Model):
     mbti = models.CharField('MBTI', max_length=50, blank=True, null=True)
 
     # workout html, forms, models 수정 요망
-    workout = models.CharField('관심 운동', max_length=50, null=True, blank=True)
+    workout = models.CharField('즐겨하는 스포츠', max_length=50, null=True, blank=True)
+    Sport_type = models.CharField('관심 스포츠', max_length=50, null=True, blank=True)
 
     introduce = models.TextField('자기소개', max_length=500, null=True, blank=True)
     url = models.URLField('오픈채팅 url', null=True, blank=True)
