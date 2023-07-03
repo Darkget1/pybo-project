@@ -44,6 +44,10 @@ class ProfileForm(forms.ModelForm):
         fields = ("birthdate", "mbti", "workout", "Sport_type", "career", "car_num", "career2", "car_num2", "introduce", "url")
 
 
+# 참고 사이트
+# https://parkhyeonchae.github.io/2020/03/30/django-project-13/
+# https://github.com/ParkHyeonChae/django-reborn-web/blob/master/users/views.py
+
 # from django.contrib.auth.forms import UserChangeForm
 # from .choice import *
 #

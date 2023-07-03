@@ -1,5 +1,8 @@
 ﻿# pybo-project
 
+# PT 메일 전송
+- cksup@naver.com 으로 ppt 전송 
+
 # 카톡 오픈채팅 링크
 https://open.kakao.com/o/seTahcsf
 
