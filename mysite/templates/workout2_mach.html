@@ -1,9 +1,9 @@
 {% load static %}
 
 {% if profile.Sport_type == '댄스' %}
-    <img class="rect" src="{% static 'rect/dancing.svg' %}" style="width: 70px;height: 70px;">
+    <img class="rect" src="{% static 'icon/dancing.svg' %}" style="width: 70px;height: 70px;">
 {% elif profile.Sport_type == '골프' %}
-    <img class="rect" src="{% static 'rect/golf.svg' %}" style="width: 70px;height: 70px;">
+    <img class="rect" src="{% static 'icon/golf.svg' %}" style="width: 70px;height: 70px;">
 
 {% elif profile.Sport_type == '러닝' %}
     <img class="rect" src="https://files.sportpartner.com/assets/images/sports/running.svg" style="width: 70px;height: 70px;">
@@ -45,7 +45,7 @@
     <img class="rect" src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/b26704a2-06fc-4831-8136-6a58abe51272.svg"
          style="width: 70px;height: 70px;">
 {% elif profile.Sport_type == '자전거' %}
-    <img class="rect" src="{% static 'rect/cycling.svg' %}"
+    <img class="rect" src="{% static 'icon/cycling.svg' %}"
          style="width: 70px;height: 70px ">
 {% elif profile.Sport_type == '스키' %}
     <img class="rect" src="https://files.sportpartner.com/assets/images/sports/skiing.svg" style="width: 70px;height: 70px">

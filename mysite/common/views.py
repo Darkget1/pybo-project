@@ -58,19 +58,20 @@ def Profile_detail(request):
 @login_required(login_url='common:login')
 def Profile_update(request,profile_id):
     profile = get_object_or_404(Profile, pk=profile_id)
-    print(profile)
+
     if request.user != profile.author:
         messages.error(request, '수정권한이 없습니다')
-        return redirect('pybo:article_detail',profile_id=profile.id)
+        return redirect('common:mypage',profile_id=profile.id)
 
     if request.method == "POST":
         form = ProfileForm(request.POST, instance=profile)
         if form.is_valid():
             profile = form.save(commit=False)
+            profile.images = request.FILES.get('images')
             profile.author = request.user
             profile.save()
-            return redirect('common:mypage', profile_id=profile.id)
+            return redirect('common:mypage')
     else:
         form = ProfileForm(instance=profile)
-    context = {'from': form}
+    context = {'form': form}
     return render(request, 'common/test_profile.html', context)
