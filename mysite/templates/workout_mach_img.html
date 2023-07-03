@@ -1,50 +1,42 @@
 {% load static %}
 
 {% if article.Sport_type == '댄스' %}
-    <img class="img-fluid" src="{%  static 'workout_images/dance.jpg' %}" alt="댄스">
-    {% static 'icon/cycling.svg' %}
+    <img class="img-fluid" src="{% static 'images/sport/dancing.jpg' %}" alt="댄스">
+<!--    {% static 'icon/cycling.svg' %}-->
 {% elif article.Sport_type == '골프' %}
-    <img class="img-fluid" src="" alt="골프">
-
+    <img class="img-fluid" src="{% static 'images/sport/golf.jpg' %}" alt="골프">
 {% elif article.Sport_type == '러닝' %}
-    <img class="img-fluid" src="" alt="러닝">
-
+    <img class="img-fluid" src="{% static 'images/sport/running.jpg' %}" alt="러닝">
 {% elif article.Sport_type == '걷기' %}
-    <img class="img-fluid" src="" alt="걷기">
-
+    <img class="img-fluid" src="{% static 'images/sport/walking.jpg' %}" alt="걷기">
 {% elif article.Sport_type == '헬스' %}
-    <img class="img-fluid" src="" alt="헬스">
-
+    <img class="img-fluid" src="{% static 'images/sport/health.jpg' %}" alt="헬스">
 {% elif article.Sport_type == '테니스' %}
-    <img class="img-fluid" src="" alt="테니스">
+    <img class="img-fluid" src="{% static 'images/sport/tennis.jpg' %}" alt="테니스">
 {% elif article.Sport_type == '패들' %}
-    <img class="img-fluid" src="" alt="패들">
+    <img class="img-fluid" src="{% static 'images/sport/paddle.jpg' %}" alt="패들">
 {% elif article.Sport_type == '하이킹' %}
-    <img class="img-fluid" src="" alt="하이킹">
+    <img class="img-fluid" src="{% static 'images/sport/hiking.jpg' %}" alt="하이킹">
 {% elif article.Sport_type == '클라이밍' %}
-    <img class="img-fluid" src="" alt="클라이밍">
+    <img class="img-fluid" src="{% static 'images/sport/climbing.jpg' %}" alt="클라이밍">
 {% elif article.Sport_type == '보트타기' %}
-    <<img class="img-fluid" src="" alt="보트타기">
+    <<img class="img-fluid" src="{% static 'images/sport/boating.jpg' %}" alt="보트타기">
 {% elif article.Sport_type == '낚시' %}
-    <img src="https://files.sportpartner.com/assets/images/sports/fishing.svg" style="width: 20px;height: 20px; filter:invert()">
+    <img class="img-fluid" src="{% static 'images/sport/fishing.jpg' %}" alt="낚시">
 {% elif article.Sport_type == '스쿼시' %}
-    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/c5c724e1-7b03-4820-80e0-2fb6d15e7641.svg"
-         style="width: 20px;height: 20px; filter:invert()"> 스쿼시
+    <img class="img-fluid" src="{% static 'images/sport/squash.jpg' %}" alt="스쿼시">
 {% elif article.Sport_type == '수영' %}
-    <img src="https://files.sportpartner.com/assets/images/sports/swimming.svg" style="width: 20px;height: 20px; filter:invert()">
+    <img class="img-fluid" src="{% static 'images/sport/swimming.jpg' %}" alt="수영">
 {% elif article.Sport_type == '스케이팅' %}
-    <img src="https://files.sportpartner.com/assets/images/sports/skating.svg" style="width: 20px;height: 20px; filter:invert()">
+    <img class="img-fluid" src="{% static 'images/sport/skating.jpg' %}" alt="스케이팅">
 {% elif article.Sport_type == '인라인스케이팅' %}
-    <img src="https://files.sportpartner.com/assets/images/sports/iceskating.svg" style="width: 20px;height: 20px;filter:invert()">
+    <img class="img-fluid" src="{% static 'images/sport/inline_skating.jpg' %}" alt="인라인스케이팅">
 {% elif article.Sport_type == '브리지' %}
-    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/fecd876a-5680-49d8-9c41-676509106e67.svg"
-         style="width: 20px;height: 20px; filter:invert()">
+    <img class="img-fluid" src="{% static 'images/sport/card_game.jpg' %}" alt="브리지">
 {% elif article.Sport_type == '배드민턴' %}
-    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/b26704a2-06fc-4831-8136-6a58abe51272.svg"
-         style="width: 20px;height: 20px; filter:invert()">
+    <img class="img-fluid" src="{% static 'images/sport/badminton.jpg' %}" alt="배드민턴">
 {% elif article.Sport_type == '자전거' %}
-    <img src="{% static 'icon/cycling.svg' %}"
-         style="width: 20px;height: 20px;filter:invert() ">
+    <img class="img-fluid" src="{% static 'images/sport/cycling.jpg' %}" alt="자전거">
 {% elif article.Sport_type == '스키' %}
-    <img src="https://files.sportpartner.com/assets/images/sports/skiing.svg" style="width: 20px;height: 20px;filter:invert()">
+    <img class="img-fluid" src="{% static 'images/sport/skiing.jpg' %}" alt="스키">
 {% endif %}
