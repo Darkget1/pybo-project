@@ -35,14 +35,16 @@
         <!-- 프로필 삽입 -->
         <div class="form-group">
             <strong><label for="images" id="images">프로필 사진</label></strong>
-            <input class="form-control" type="file" name="images" accept="image/*">
+            <input class="form-control" type="file" name="images" accept="image/*"
+                   value="{{ form.images.value|default_if_none:'' }}">
         </div>
         <br/>
 
         <!-- 생년월일(나이) -->
         <div class="form-group">
             <strong><label for="birthdate">생년월일</label></strong>
-            <input type="date" class="form-control text-center" name="birthdate" id="birthdate">
+            <input type="date" class="form-control text-center" name="birthdate" id="birthdate"
+                   value="{{ form.birthdate.value|default_if_none:'' }}">
         </div>
         <br/>
 
@@ -70,38 +72,60 @@
             </select>
         </div>
 
-        <!-- 관심 운동 DB 수정 요망 -->
-
+        <!-- 즐겨하는 운동 경력 및 달성도 -->
         <div class="form-group">
             {# <label for="workout">좋아하는 운동</label>#}
             {# <input type="text" class="form-control" name="workout" id="workout:" #}
                       {# value="{{ form.workout.value|default_if_none:'' }}">#}
             {% include 'workout1.html' %}
         </div>
-
+        <div class="form-group">
+            <label for="career">즐겨하는 운동 목표</label>
+            <input type="text" class="form-control" name="career" id="career"
+                   placeholder="자신의 즐겨하는 운동 목표 1가지를 적어주세요. Ex)100대 명산, 마라톤 10개 완주"
+                   value="{{ form.career.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <label for="car_num">즐겨하는 운동 목표 달성도 (0 ~ 100%)</label>
+            <input type="number" class="form-control" name="car_num" id="car_num" min="0" max="100"
+                   value="{{ form.car_num.value|default_if_none:'' }}">
+        </div>
+        <!-- 관심 운동 경력 및 달성도 -->
         <div class="form-group">
             {# <label for="Sport_type">관심 운동</label>#}
             {# <input type="text" class="form-control" name="Sport_type" id="Sport_type:" #}
                       {# value="{{ form.Sport_type.value|default_if_none:'' }}">#}
             {% include 'workout2.html' %}
         </div>
-
+        <div class="form-group">
+            <label for="career2">관심 운동 목표</label>
+            <input type="text" class="form-control" name="career2" id="career2"
+                   placeholder="자신의 관심 운동 목표 1가지를 적어주세요. Ex)철인 3종 완주, 매일 10000보 걷기"
+                   value="{{ form.career2.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <label for="car_num2">관심 운동 목표 달성도 (0 ~ 100%)</label>
+            <input type="number" class="form-control" name="car_num2" id="car_num2" min="0" max="100"
+                   value="{{ form.car_num2.value|default_if_none:'' }}">
+        </div>
         <!-- 자기소개 (취미, 주량, ... 등 )-->
         <div class="form-group">
             <strong><label for="introduce">자기소개</label></strong>
-            <textarea class="form-control" id="introduce" name="introduce" rows="3"
-                      placeholder="취미, 주량 등 자유롭게 자기소개를 적어주세요!"></textarea>
+            <input type="text" class="form-control" id="introduce" name="introduce"
+                   placeholder="취미, 주량 등 자유롭게 자기소개를 적어주세요!"
+                   value="{{ form.introduce.value|default_if_none:'' }}">
         </div>
 
         <!-- 연락 받을 오픈 채팅 url 링크 입력 -->
         <div class="form-group">
             <strong><label for="url">오픈채팅 url</label></strong>
             <input type="url" class="form-control" name="url" id="url"
-                   placeholder="카카오톡 오픈채팅 링크 입력">
+                   placeholder="카카오톡 오픈채팅 링크 입력"
+                   value="{{ form.url.value|default_if_none:'' }}">
 
         </div>
-        <button type="submit" class="btn btn-outline-secondary">저장</button>
-        <button type="reset" class="btn btn-dark">초기화</button>
+        <button type="submit" class="btn custom-btn aos-init aos-animate bg-color rounded">저장</button>
+        <button type="reset" class="btn custom-btn aos-init aos-animate bg-color rounded">초기화</button>
     </form>
 </div>
 
