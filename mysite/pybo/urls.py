@@ -13,7 +13,7 @@ urlpatterns =[
     #articleComment
     path('articleComment/create/article/<int:article_id>/', articleComment_views.articleComment_create_article, name='articleComment_create_article'),
     path('articleComment/modify/article/<int:articleComment_id>/', articleComment_views.articleComment_modify_article, name='articleComment_modify_article'),
-    path('articleComment/deletearticle/<int:articleComment_id>/', articleComment_views.articleComment_delete_article, name='articleComment_delete_article'),
+    path('articleComment/delete/article/<int:articleComment_id>/', articleComment_views.articleComment_delete_article, name='articleComment_delete_article'),
     path('articleComment/vote/<int:articleComment_id>/', vote_views.high_five, name='articleComment_high_five'),
 
 ]
