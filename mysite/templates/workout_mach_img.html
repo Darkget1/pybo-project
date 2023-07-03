@@ -1,7 +1,8 @@
 {% load static %}
 
 {% if article.Sport_type == '댄스' %}
-    <img class="img-fluid" src="" alt="댄스">
+    <img class="img-fluid" src="{%  static 'workout_images/dance.jpg' %}" alt="댄스">
+    {% static 'icon/cycling.svg' %}
 {% elif article.Sport_type == '골프' %}
     <img class="img-fluid" src="" alt="골프">
 

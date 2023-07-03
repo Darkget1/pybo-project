@@ -21,6 +21,11 @@ class Profile(models.Model):
     # workout html, forms, models 수정 요망
     workout = models.CharField('즐겨하는 스포츠', max_length=50, null=True, blank=True)
     Sport_type = models.CharField('관심 스포츠', max_length=50, null=True, blank=True)
+    career = models.TextField('즐겨하는 운동 목표', max_length=50, null=True, blank=True)
+    car_num = models.IntegerField('즐겨하는 운동 목표 달성도', null=True, blank=True)
+    career2 = models.TextField('관심 운동 목표', max_length=50, null=True, blank=True)
+    car_num2 = models.IntegerField('관심 운동 목표 달성도', null=True, blank=True)
+
 
     introduce = models.TextField('자기소개', max_length=500, null=True, blank=True)
     url = models.URLField('오픈채팅 url', null=True, blank=True)

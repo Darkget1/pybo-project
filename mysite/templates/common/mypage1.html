@@ -51,7 +51,6 @@
                     <li><b>성별:</b> {{ user.gender }}</li>
                 </ul>
                 <p class="text-muted">{{ profile.introduce }}</p>
-                <!-- <button class="btn btn-theme-outline">Download CV</button> -->
             </div>
         </div>
     </div>
@@ -64,20 +63,22 @@
             <div class="row mt-5">
                 <div class="col-md-6 col-lg-4 col-xl-4">
                     <div class="card card-service wow fadeInUp">
+
                         <div class="icon">
-                            <span class="ti-paint-bucket"></span>
+                            {% include 'mbti_match.html' %}
                         </div>
                         <div class="caption">
-                            <h4 class="fg-theme">{{ profile.mbti|default:'선택안함' }}</h4>
-                            <p>저의 MBTI는 '{{ profile.mbti|default:'선택안함' }}' 입니다.</p>
+                            <h4 class="fg-theme">{{ profile.mbti|default:'선택하세요' }}</h4>
+                            <p>저의 MBTI는 '{{ profile.mbti|default:'선택하세요' }}' 입니다.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 col-xl-4">
                     <div class="card card-service wow fadeInUp">
                         <div class="icon">
-                            <span class="ti-search"></span>
+                            {% include 'workout1_mach.html' %}
                         </div>
+
                         <div class="caption">
                             <h4 class="fg-theme">{{ profile.workout }}</h4>
                             <p>제가 즐겨하는 스포츠는 '{{ profile.workout }}' 입니다.</p>
@@ -87,7 +88,7 @@
                 <div class="col-md-6 col-lg-4 col-xl-4">
                     <div class="card card-service wow fadeInUp">
                         <div class="icon">
-                            <span class="ti-vector"></span>
+                            {% include 'workout2_mach.html' %}
                         </div>
                         <div class="caption">
                             <h4 class="fg-theme">{{ profile.Sport_type }}</h4>
@@ -99,45 +100,28 @@
         </div>
     </div>
     <div class="container py-5">
-        <h1 class="text-center fw-normal wow fadeIn">운동 현황</h1>
-        <div class="row py-3">
-            <div class="col-md-6">
+        <h1 class="text-center fw-normal wow fadeIn">운동 목표 현황</h1>
+        <div class="row">
+            <div class="col">
                 <div class="px-lg-3">
-                    <h4 class="wow fadeInUp">등산 경력</h4>
+                    <h4 class="wow fadeInUp">즐겨하는 운동 목표</h4>
                     <div class="progress-wrapper wow fadeInUp">
-                        <span class="caption">100대 명산</span>
+                        <span class="caption">{{ profile.career }}</span>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="75"
-                                 aria-valuemin="0" aria-valuemax="100">25%
+                            <div class="progress-bar" role="progressbar" style="width:{{ profile.car_num }}%;"
+                                 aria-valuenow="75"
+                                 aria-valuemin="0" aria-valuemax="100">{{ profile.car_num }}%
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="px-lg-3">
-                    <h4 class="wow fadeInUp">목표 달성</h4>
+                    <br>
+                    <h4 class="wow fadeInUp">관심 운동 목표</h4>
                     <div class="progress-wrapper wow fadeInUp">
-                        <span class="caption">체중 70KG</span>
+                        <span class="caption">{{ profile.career2 }}</span>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 76%;" aria-valuenow="75"
-                                 aria-valuemin="0" aria-valuemax="100">76%
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-wrapper wow fadeInUp">
-                        <span class="caption">골격근량 37KG</span>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 74%;" aria-valuenow="75"
-                                 aria-valuemin="0" aria-valuemax="100">74%
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-wrapper wow fadeInUp">
-                        <span class="caption">체지방량 19KG</span>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 62%;" aria-valuenow="75"
-                                 aria-valuemin="0" aria-valuemax="100">62%
+                            <div class="progress-bar" role="progressbar" style="width:{{ profile.car_num2 }}%;"
+                                 aria-valuenow="75"
+                                 aria-valuemin="0" aria-valuemax="100">{{ profile.car_num2 }}%
                             </div>
                         </div>
                     </div>
@@ -145,63 +129,11 @@
             </div>
         </div>
     </div>
-
-    <!-- Testimonial -->
-    <div class="vg-page page-testimonial">
-        <div class="container">
-            <h1 class="text-center fw-normal wow fadeInUp">매칭 후기</h1>
-            <div class="row justify-content-center mt-5 wow fadeInUp">
-                <div class="col-md-9">
-                    <div class="owl-carousel testi-carousel">
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="img-place">
-                                        <img src="../assets/img/testimonials/testimonials_1.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="caption">
-                                        <div class="testi-content">김상추는 전생에 산다람쥐가 아니였을까 싶어요</div>
-                                        <div class="testi-info">
-                                            <div class="thumb-profile">
-                                                <img src="../assets/img/testimonials/testimonials_1.jpg" alt="">
-                                            </div>
-                                            <div class="tagline">
-                                                <h5 class="mb-0">홍길동</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="img-place">
-                                        <img src="../assets/img/testimonials/testimonials_2.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="caption">
-                                        <div class="testi-content">이정도로 산에 미친 사람은 오랜만에 봅니다.</div>
-                                        <div class="testi-info">
-                                            <div class="thumb-profile">
-                                                <img src="../assets/img/testimonials/testimonials_2.jpg" alt="">
-                                            </div>
-                                            <div class="tagline">
-                                                <h5 class="mb-0">임꺽정</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End testimonial -->
+    { if request.user == author }일 때만 수정버튼 보이게..
+    <div style="text-align: center;">
+        <button type="{}" style="color:; font-size:15px;" class="btn">내 프로필 수정</button>
+    </div>
+    { endblock }
 </div>
 </body>
 
