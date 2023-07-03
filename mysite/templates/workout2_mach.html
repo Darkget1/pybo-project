@@ -1,53 +1,52 @@
 {% load static %}
 
 {% if profile.Sport_type == '댄스' %}
-    <img src="{% static 'icon/dancing.svg' %}" style="width: 20px;height: 20px; filter:invert()"> 댄스
+    <img class="rect" src="{% static 'rect/dancing.svg' %}" style="width: 70px;height: 70px;">
 {% elif profile.Sport_type == '골프' %}
-    <img src="{% static 'icon/golf.svg' %}" style="width: 20px;height: 20px; filter:invert()"> 골프
+    <img class="rect" src="{% static 'rect/golf.svg' %}" style="width: 70px;height: 70px;">
 
 {% elif profile.Sport_type == '러닝' %}
-    <img src="https://files.sportpartner.com/assets/images/sports/running.svg" style="width: 20px;height: 20px; filter:invert()"> 러닝
+    <img class="rect" src="https://files.sportpartner.com/assets/images/sports/running.svg" style="width: 70px;height: 70px;">
 
 {% elif profile.Sport_type == '걷기' %}
-    <img src="https://files.sportpartner.com/assets/images/sports/walking.svg" style="width: 20px;height: 20px; filter:invert()"> 걷기
+    <img class="rect" src="https://files.sportpartner.com/assets/images/sports/walking.svg" style="width: 70px;height: 70px;">
 
 {% elif profile.Sport_type == '헬스' %}
-    <img src="https://files.sportpartner.com/assets/images/sports/fitness.svg" style="width: 20px;height: 20px; filter:invert()"> 헬스
+    <img class="rect" src="https://files.sportpartner.com/assets/images/sports/fitness.svg" style="width: 70px;height: 70px;">
 
 {% elif profile.Sport_type == '테니스' %}
-    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/9717f77a-c366-4f66-9a2b-09dbfd17694f.svg"
-         style="width: 20px;height: 20px; filter:invert()"> 테니스
+    <img class="rect" src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/9717f77a-c366-4f66-9a2b-09dbfd17694f.svg"
+         style="width: 70px;height: 70px;">
 {% elif profile.Sport_type == '패들' %}
-    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/8b7f5d07-fc46-4820-8edb-e2f7f8094586.svg"
-         style="width: 20px;height: 20px; filter:invert()"> 패들
+    <img class="rect" src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/8b7f5d07-fc46-4820-8edb-e2f7f8094586.svg"
+         style="width: 70px;height: 70px;">
 {% elif profile.Sport_type == '하이킹' %}
-    <img src="https://files.sportpartner.com/assets/images/sports/hiking.svg" style="width: 20px;height: 20px; filter:invert()"> 하이킹
+    <img class="rect" src="https://files.sportpartner.com/assets/images/sports/hiking.svg" style="width: 70px;height: 70px;">
 {% elif profile.Sport_type == '클라이밍' %}
-    <img src="https://files.sportpartner.com/assets/images/sports/climbing.svg" style="width: 20px;height: 20px; filter:invert()"> 클라이밍
+    <img class="rect" src="https://files.sportpartner.com/assets/images/sports/climbing.svg" style="width: 70px;height: 70px;">
 {% elif profile.Sport_type == '보트타기' %}
-    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/f0a07a11-fbc6-49e2-9264-d3afd6b290d5.svg"
-         style="width: 20px;height: 20px; filter:invert()"> 보트타기
+    <img class="rect" src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/f0a07a11-fbc6-49e2-9264-d3afd6b290d5.svg"
+         style="width: 70px;height: 70px;">
 {% elif profile.Sport_type == '낚시' %}
-    <img src="https://files.sportpartner.com/assets/images/sports/fishing.svg" style="width: 20px;height: 20px; filter:invert()"> 낚시
+    <img class="rect" src="https://files.sportpartner.com/assets/images/sports/fishing.svg" style="width: 70px;height: 70px;">
 {% elif profile.Sport_type == '스쿼시' %}
-    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/c5c724e1-7b03-4820-80e0-2fb6d15e7641.svg"
-         style="width: 20px;height: 20px; filter:invert()"> 스쿼시
+    <img class="rect" src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/c5c724e1-7b03-4820-80e0-2fb6d15e7641.svg"
+         style="width: 70px;height: 70px;">
 {% elif profile.Sport_type == '수영' %}
-    <img src="https://files.sportpartner.com/assets/images/sports/swimming.svg" style="width: 20px;height: 20px; filter:invert()"> 수영
+    <img class="rect" src="https://files.sportpartner.com/assets/images/sports/swimming.svg" style="width: 70px;height: 70px;">
 {% elif profile.Sport_type == '스케이팅' %}
-    <img src="https://files.sportpartner.com/assets/images/sports/skating.svg" style="width: 20px;height: 20px; filter:invert()"> 스케이팅
+    <img class="rect" src="https://files.sportpartner.com/assets/images/sports/skating.svg" style="width: 70px;height: 70px;">
 {% elif profile.Sport_type == '인라인스케이팅' %}
-    <img src="https://files.sportpartner.com/assets/images/sports/iceskating.svg" style="width: 20px;height: 20px;filter:invert()"> 인라인
-    스케이팅
+    <img class="rect" src="https://files.sportpartner.com/assets/images/sports/iceskating.svg" style="width: 70px;height: 70px">
 {% elif profile.Sport_type == '브리지' %}
-    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/fecd876a-5680-49d8-9c41-676509106e67.svg"
-         style="width: 20px;height: 20px; filter:invert()"> 브리지
+    <img class="rect" src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/fecd876a-5680-49d8-9c41-676509106e67.svg"
+         style="width: 70px;height: 70px;">
 {% elif profile.Sport_type == '배드민턴' %}
-    <img src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/b26704a2-06fc-4831-8136-6a58abe51272.svg"
-         style="width: 20px;height: 20px; filter:invert()"> 배드민턴
+    <img class="rect" src="https://sportpartner-prd.s3.eu-central-1.amazonaws.com/b26704a2-06fc-4831-8136-6a58abe51272.svg"
+         style="width: 70px;height: 70px;">
 {% elif profile.Sport_type == '자전거' %}
-    <img src="{% static 'icon/cycling.svg' %}"
-         style="width: 20px;height: 20px;filter:invert() "> 자전거
+    <img class="rect" src="{% static 'rect/cycling.svg' %}"
+         style="width: 70px;height: 70px ">
 {% elif profile.Sport_type == '스키' %}
-    <img src="https://files.sportpartner.com/assets/images/sports/skiing.svg" style="width: 20px;height: 20px;filter:invert()">스키
+    <img class="rect" src="https://files.sportpartner.com/assets/images/sports/skiing.svg" style="width: 70px;height: 70px">
 {% endif %}

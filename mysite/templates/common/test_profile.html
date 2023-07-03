@@ -70,22 +70,38 @@
             </select>
         </div>
 
-        <!-- 관심 운동 DB 수정 요망 -->
-
+        <!-- 즐겨하는 운동 경력 및 달성도 -->
         <div class="form-group">
             {# <label for="workout">좋아하는 운동</label>#}
             {# <input type="text" class="form-control" name="workout" id="workout:" #}
                       {# value="{{ form.workout.value|default_if_none:'' }}">#}
             {% include 'workout1.html' %}
         </div>
-
+        <div class="form-group">
+            <label for="career">즐겨하는 운동 목표</label>
+            <input type="text" class="form-control" name="career" id="career"
+                   placeholder="자신의 즐겨하는 운동 목표 1가지를 적어주세요. Ex)100대 명산, 마라톤 10개 완주">
+        </div>
+        <div class="form-group">
+            <label for="car_num">즐겨하는 운동 목표 달성도 (0 ~ 100%)</label>
+            <input type="number" class="form-control" name="car_num" id="car_num" min="0" max="100">
+        </div>
+        <!-- 관심 운동 경력 및 달성도 -->
         <div class="form-group">
             {# <label for="Sport_type">관심 운동</label>#}
             {# <input type="text" class="form-control" name="Sport_type" id="Sport_type:" #}
                       {# value="{{ form.Sport_type.value|default_if_none:'' }}">#}
             {% include 'workout2.html' %}
         </div>
-
+        <div class="form-group">
+            <label for="career2">관심 운동 목표</label>
+            <input type="text" class="form-control" name="career2" id="career2"
+                   placeholder="자신의 관심 운동 목표 1가지를 적어주세요. Ex)철인 3종 완주, 매일 10000보 걷기">
+        </div>
+        <div class="form-group">
+            <label for="car_num2">관심 운동 목표 달성도 (0 ~ 100%)</label>
+            <input type="number" class="form-control" name="car_num2" id="car_num2" min="0" max="100">
+        </div>
         <!-- 자기소개 (취미, 주량, ... 등 )-->
         <div class="form-group">
             <strong><label for="introduce">자기소개</label></strong>
