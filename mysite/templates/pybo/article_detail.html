@@ -78,13 +78,13 @@
                 <h3 class="mb-4 pb-2">{{ article.subject }}</h3>
                 <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3" style="text-align: center;">파트너 요구사항</div>
                 <div class="container row">
-                    <div class="btn btn-dark mt-3 mr-2" style="height: 40px;width: 100px">
+                    <div class="card card_custom bg-color  mt-3 mr-2" style="height: 40px; width: 100px;">
                         {{ article.status }}
                     </div>
-                    <div class="btn btn-dark mt-3 mr-2" style="height: 40px;width: 100px">
+                    <div class="card card_custom bg-color mt-3 mr-2" style="height: 40px;width: auto;">
                         {% include 'workout_mach.html' %}
                     </div>
-                    <div class="btn btn-dark mt-3 mr-2 pt-2" style="height: 40px;width: 60px">
+                    <div class="card card_custom bg-color  mt-3 mr-2 pt-2" style="height: 40px; width: 60px;">
                         {% if article.gender == 'female' %}
                             <img src="{% static 'icon/gender-female.svg' %}"
                                  style="filter:invert(); height: 25px;width: 25px">
@@ -93,7 +93,7 @@
                                  style="filter:invert(); height: 25px;width: 25px">
                         {% endif %}
                     </div>
-                    <div class="btn btn-dark mt-3 mr-2 mt-3 mr-2" style="height: 40px;width: 100px">
+                    <div class="card card_custom bg-color  mt-3 mr-2 mt-3 mr-2" style="height: 40px;width: 100px">
                         {{ profile.mbti }}
                     </div>
 
