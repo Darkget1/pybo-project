@@ -3,8 +3,9 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from common.forms import UserForm, ProfileForm
-from common.models import Profile
+from common.models import Profile, User
 from django.utils import timezone
+from pybo.models import ArticleComment,Article
 from datetime import datetime
 
 
@@ -52,8 +53,12 @@ def profile(request):
 
 @login_required(login_url='common:login')
 def Profile_detail(request):
+    articlecomment=get_object_or_404(Article,author=request.user)
+    article=get_object_or_404(Article,author=request.user)
+    user = get_object_or_404(User,username=request.user)
+    print(user.author_article)
     profile =get_object_or_404(Profile, author=request.user)
-    context = {'profile': profile}
+    context = {'profile': profile,'articlecomment':articlecomment,'article':article,'user':user}
     return render(request, 'common/mypage1.html', context)
 #수정중
 @login_required(login_url='common:login')
