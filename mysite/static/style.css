@@ -425,6 +425,11 @@ ul.tags li a:hover {
     opacity: 0;
 }
 
+.img-hover:hover{
+	filter: invert(100%) sepia(0%) saturate(7465%) hue-rotate(274deg) brightness(125%) contrast(95%);
+}
+
+
 .check-css:checked + .check-css-label {
     color: #000 !important;
     font-weight: bold;

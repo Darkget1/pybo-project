@@ -17,22 +17,54 @@
     <section>
         <div class="row col-12 mt-lg-5">
             <div class="col-2"></div>
-            <div class="col-8">
+            <div class="col-5">
                 <div class="row">
-                    <div class="col-2">
-                        <img src="{{ profile.images.url }}"
-                             class="rounded-circle img-fluid" style="width: 100px; height: 100px;"/>
+                    <div class="col-3">
+                        <img  src="{{ profile.images.url }}"
+                             class="author-thumb" style="width: 100px; height: 100px;"/>
                     </div>
-                    <div class="col-10">
+                    <div class="col-8">
                         <h4 class="mb-2">{{ article.author }}</h4>
+                        {% if article.modify_date %}
+                            <p class="text-muted mb-4">{{ article.subject }} <span
+                                class="mx-2">|</span>{{ article.modify_date }} <a
+                        ></a></p>
+
+                        {% else %}
                         <p class="text-muted mb-4">{{ article.subject }} <span
                                 class="mx-2">|</span>{{ article.create_date }} <a
                         ></a></p>
+                        {% endif %}
                     </div>
-                    <hr class="my-2 col-12">
+
                 </div>
 
+
             </div>
+            <div class="col2">
+                {% if request.user == article.author %}
+                    <a onclick="location.href='{% url 'pybo:article_modify' article.id %}'"
+                       class="btn btn-sm btn-outline-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                             height="16" fill="currentColor" class="bi bi-pencil"
+                             viewBox="0 0 16 16">
+                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                        </svg>
+                    </a>
+                    <a href="#"
+                       data-uri="{% url 'pybo:article_modify' article.id %}"
+                       class="delete btn btn-sm btn-outline-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                             height="16" fill="currentColor" class="bi bi-trash"
+                             viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                        </svg>
+                    </a>
+                {% endif %}
+            </div>
+            <hr class="col-8">
+
         </div>
 
         <div class="row mt-lg-2">
@@ -46,50 +78,52 @@
                 <h3 class="mb-4 pb-2">{{ article.subject }}</h3>
                 <div class="mb-2">운동 파트너 요구사항</div>
                 <div class="container row">
-                    <div class="card card_custom bg-color mt-3 mr-1" style="height: 40px;width: 100px">
+                    <div class="card card_custom bg-color mt-3 mr-2" style="height: 40px;width: 100px">
                         {{ article.status }}
                     </div>
-                    <div class="card card_custom bg-color mt-3 mr-1" style="height: 40px;width: 120px">
+                    <div class="card card_custom row bg-color mt-3 mr-2 ml-1" style="height: 40px;width: 100px">
                         {% include 'workout_mach.html' %}
                     </div>
-                    <div class="card card_custom bg-color mt-3 mr-1" style="height: 40px;width: 100px">
+                    <div class="card card_custom bg-color mt-3 mr-2 pt-2" style="height: 40px;width: 60px">
                         {% if article.gender == 'femail' %}
-                            <img src="{% static 'icon/gender-female.svg' %}" style="filter:invert(); height: 30px;width: 30px">
+                            <img src="{% static 'icon/gender-female.svg' %}"
+                                 style="filter:invert(); height: 25px;width: 25px">
                         {% else %}
-                            <img src="{% static 'icon/gender-male.svg' %}" style="filter:invert(); height: 30px;width: 30px">
+                            <img src="{% static 'icon/gender-male.svg' %}"
+                                 style="filter:invert(); height: 25px;width: 25px">
                         {% endif %}
                     </div>
-                    <div class="card card_custom bg-color mt-3 mr-1" style="height: 40px;width: 100px">
+                    <div class="card card_custom bg-color mt-3 mr-2" style="height: 40px;width: 100px">
                         {{ profile.mbti }}
                     </div>
 
 
                 </div>
-                <!--오픈챗 & 하이파이브 필터 -->
+
 
             </div>
+            <!--오픈챗 & 하이파이브 필터 -->
             <div class="col-1">
 
-                    {% if highfive_numver == 1 %}
+                {% if highfive_number == 1 %}
 
-                        <a class="btn custom-btn bg-color" href="{{ profile.url }}">오픈쳇</a>
-                    {% else %}
-                        {% if comment_user_number == 0 %}
-                            {% if article.author != request.user %}
-                                <a class="btn custom-btn bg-color"
-                                   href="{% url 'pybo:articleComment_create_article' article.id %}">
-                                    <img src="{% static 'icon/high_five.png' %}"
-                                         style="width: 30px;"></a>
+                    <a class="btn custom-btn bg-color" style="width: 100px" href="{{ profile.url }}">오픈쳇</a>
+                {% else %}
+                    {% if comment_user_number == 0 %}
+                        {% if article.author != request.user %}
+                            <a class="btn custom-btn bg-color text-center" style="width: 100px; height: 50px"
+                               href="{% url 'pybo:articleComment_create_article' article.id %}">
+                                <img class="img-hover" src="{% static 'icon/high_five.png' %}"
+                                     style="width: 30px;filter: invert(98%) sepia(94%) saturate(6%) hue-rotate(203deg) brightness(106%) contrast(95%); "></a>
 
-                            {% endif %}
                         {% endif %}
                     {% endif %}
-                </div>
+                {% endif %}
             </div>
+        </div>
 
 
-
-        <hr class="my-2 col-8">
+        <hr class="my-2 col-8 mt-5">
 
         <div class="row">
             <div class="col-2"></div>
@@ -126,16 +160,21 @@
         </div>
         <div class="row">
             <div class="col-2"></div>
-
         </div>
 
 
     </section>
-
+    <div class="row mb-0">
+    <div class="col-1">
+    </div>
+    <div class="section-title col-10 mt-5">
+            <h2><span>하이파이브 LIST!</span></h2>
+        </div>
+    </div>
 
     <!--     댓글 부분      -->
-    <section class="mt-5" style="margin-top: -100px">
-        <div class="container my-5 py-5">
+    <section class="mt-0">
+        <div class="container my-3 py-3">
             <div class="row d-flex justify-content-center">
                 <div class="col-10">
                     <div class="card" style="border-radius: 15px;">
@@ -184,24 +223,24 @@
                                             </p>
                                         </div>
                                     </div>
-                                    {#                                하이파이브 수정중#}
+{#                                하이파이브 #}
                                     {% if request.user == article.author %}
-                                        <div>
+                                        <div class="text-center">
 
                                             {% if request.user in articleComment.highfive.all %}
                                                 <a href="#"
                                                    data-uri="{% url 'pybo:articleComment_high_five' articleComment.id %}"
-                                                   class="highfive_canceled btn btn-sm btn-secondary btn-block my-1">
-                                                    <img src="{% static 'icon/high_five.png' %}" style="height: 30px">하이파이브
+                                                   class="highfive_canceled btn btn-custom bg-color my-1">
+                                                    <img src="{% static 'icon/high_five.png' %}" style="height: 30px;filter: invert();"> 하이파이브
                                                     취소</a>
                                             {% else %}
                                                 <a href="#"
                                                    data-uri="{% url 'pybo:articleComment_high_five' articleComment.id %}"
-                                                   class="highfive btn btn-sm btn-secondary btn-block my-1">
-                                                    <img src="{% static 'icon/high_five.png' %}" style="height: 30px">하이파이브</a>
+                                                   class="highfive btn btn-custom bg-color my-1">
+                                                    <img src="{% static 'icon/high_five.png' %}" style="height: 30px;filter: invert();"> 하이파이브</a>
                                             {% endif %}
 
-                                            </a>
+
 
 
                                         </div>

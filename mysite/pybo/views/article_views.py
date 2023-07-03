@@ -59,24 +59,23 @@ def article_detail(request,article_id):
     profile = Profile.objects.get(author_id=profile_author_id)
 
     #하이파이브한 유저 찾기
-    articleComment_highfive_list = ArticleComment.objects.filter(highfive=article_id)
+    #글쓴이가 추천(즉 하이파이브를 해줘야) 가능!!
+    articleComment_highfive_list = ArticleComment.objects.filter(highfive=article.author)
+    print(articleComment_highfive_list)
     #하이파이브한 유저와 request.user 판별
-    highfive_numver = 0
+    highfive_number = 0
     for articleComment_highfive in articleComment_highfive_list:
+        print(articleComment_highfive)
         if articleComment_highfive.author == request.user:
-            highfive_numver += 1
+            highfive_number += 1
     #댓글 단유저 찾기
+
     comment_list = ArticleComment.objects.filter(article_id=article_id)
+
     comment_user_number = 0
     for comment in comment_list:
         if comment.author == request.user:
             comment_user_number += 1
-
-
-
-
-
-
     # highfive_user_list = articleComment.highfive.all()
-    context={'article':article,'profile':profile,'highfive_numver':highfive_numver,'comment_user_number':comment_user_number}
+    context={'article':article,'profile':profile,'highfive_number':highfive_number,'comment_user_number':comment_user_number}
     return render(request,'pybo/article_detail.html',context)
