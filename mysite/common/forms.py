@@ -43,3 +43,28 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ("birthdate", "mbti", "workout", "Sport_type", "career", "car_num", "career2", "car_num2", "introduce", "url")
 
+
+# from django.contrib.auth.forms import UserChangeForm
+# from .choice import *
+#
+# class CustomCsUserChangeForm(UserChangeForm):
+#     password = None
+#     tel = forms.CharField(label='연락처', widget=forms.NumberInput(
+#         attrs={'class': 'form-control', 'maxlength':'13', 'oninput':"maxLengthCheck(this)",}),
+#     )
+#     name = forms.CharField(label='이름', widget=forms.TextInput(
+#         attrs={'class': 'form-control', 'maxlength':'8',}),
+#     )
+#     student_id = forms.IntegerField(label='학번', widget=forms.NumberInput(
+#         attrs={'class': 'form-control', 'maxlength':'8', 'oninput':"maxLengthCheck(this)",}),
+#     )
+#     grade = forms.ChoiceField(choices=GRADE_CHOICES, label='학년', widget=forms.Select(
+#         attrs={'class': 'form-control',}),
+#     )
+#     circles = forms.ChoiceField(choices=CIRCLES_CHOICES, label='동아리', widget=forms.Select(
+#         attrs={'class': 'form-control',}),
+#     )
+#
+#     class Meta:
+#         model = User()
+#         fields = ['tel', 'name', 'student_id', 'grade', 'circles']
