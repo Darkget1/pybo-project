@@ -16,7 +16,8 @@
         <div class="col-1"> <!-- 추천영역 -->
             <div class="bg-light text-center p-3 border font-weight-bolder mb-1">{{posting.voter.count}}</div>
             <a href="#" data-uri="{% url 'posting:vote_posting' posting.id  %}"
-               class="recommend btn btn-sm btn-secondary btn-block my-1">추천</a>
+               class="recommend btn btn-sm btn-block custom-btn aos-init aos-animate bg-color my-1"
+               style="padding: 0.25rem 0.5rem;">추천</a>
         </div>
         <div class="col-11"> <!-- 게시글 영역 -->
             <div class="card">
@@ -24,12 +25,12 @@
                     <div class="card-text">{{ posting.content|mark }}</div>
                     <div class="d-flex justify-content-end">
                         {% if posting.modify_date %}
-                        <div class="badge badge-dark p-2 text-left my-3">
+                        <div class="badge badge-info p-2 text-left my-3 mx-2 bg-color">
                             <div class="mb-2">modified at</div>
                             <div>{{ posting.modify_date }}</div>
                         </div>
                         {% endif %}
-                        <div class="badge badge-dark p-2 text-left">
+                        <div class="badge badge-info p-2 text-left my-3 mx-2 bg-color">
                             <div class="mb-2">{{ posting.author.username }}</div>
                             <div>{{ posting.create_date }}</div>
                         </div>
@@ -37,16 +38,19 @@
                     {% if request.user == posting.author %}
                     <div class="my-3">
                         <a href="{% url 'posting:posting_modify' posting.id  %}"
-                           class="btn btn-sm btn-outline-secondary">수정</a>
-                        <a href="#" class="delete btn btn-sm btn-outline-secondary"
-                           data-uri="{% url 'posting:posting_delete' posting.id  %}">삭제</a>
+                           class="btn custom-btn aos-init aos-animate bg-color"
+                           style="padding: 0.25rem 0.5rem;font-size: 0.875rem;line-height: 1.5;border-radius: 0.2rem;"
+                        >수정</a>
+                        <a href="#" class="delete btn btn-sm custom-btn aos-init aos-animate bg-color"
+                           data-uri="{% url 'posting:posting_delete' posting.id  %}"
+                           style="padding: 0.25rem 0.5rem;font-size: 0.875rem;line-height: 1.5;border-radius: 0.2rem;"
+                        >삭제</a>
                     </div>
                     {% endif %}
                     <!-- 게시글 댓글 Start -->
-
                     <div>
                         <a href="{% url 'posting:comment_create_posting' posting.id  %}"
-                           class="btn btn-primary"><small>댓글 추가</small></a>
+                           class="btn custom-btn aos-init aos-animate bg-color"><small>댓글 추가</small></a>
                     </div>
                     {% if posting.comment_set.count > 0 %}
                     <div class="mt-3">

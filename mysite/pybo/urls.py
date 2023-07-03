@@ -4,8 +4,8 @@ from .views import base_views,article_views,articleComment_views,vote_views
 app_name = 'pybo'
 
 urlpatterns =[
-    path('article/list',base_views.article_index,name='main'),
-    path('article/detail/<int:article_id>/  ',article_views.article_detail,name='article_detail'),
+    path('article/list',base_views.main,name='main'),
+    path('article/detail/<int:article_id>/',article_views.article_detail,name='article_detail'),
     path('article/create/',article_views.article_create,name='article_create'),
     path('article/index/',base_views.article_index,name='article_index'),
     path('article/modify/<int:article_id>/', article_views.article_modify, name='article_modify'),
