@@ -29,17 +29,15 @@ class ProfileForm(forms.ModelForm):
     birthdate = forms.DateField(label='생년월일')
     mbti = forms.CharField(label='mbti 선택')
     workout = forms.CharField(label='즐겨하는 스포츠')
-    Sport_type = forms.CharField(label='관심 스포츠')
-
+    sport_type = forms.CharField(label='관심 스포츠')
     career = forms.CharField(label='즐겨하는 운동 목표')
     car_num = forms.IntegerField(label='즐겨하는 운동 목표 달성도')
     career2 = forms.CharField(label='관심 운동 목표')
     car_num2 = forms.IntegerField(label='관심 운동 목표 달성도')
-
     introduce = forms.CharField(label='자기소개', required=False, widget=forms.Textarea())
     url = forms.URLField(label='오픈채팅 url')
 
     class Meta:
         model = Profile
-        fields = ("birthdate", "mbti", "workout", "Sport_type", "career", "car_num", "career2", "car_num2", "introduce", "url")
+        fields = ("birthdate", "mbti", "workout", "sport_type", "career", "car_num", "career2", "car_num2", "introduce", "url")
 

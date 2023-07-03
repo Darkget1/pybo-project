@@ -29,6 +29,7 @@ def signup(request):
 @login_required(login_url='common:login')
 def profile(request):
     """ profile 생성 """
+
     if request.method == "POST":
         form = ProfileForm(request.POST)
         if form.is_valid():
@@ -49,27 +50,27 @@ def profile(request):
     return render(request, 'common/test_profile.html', {'form': form})
 
 @login_required(login_url='common:login')
-def Profile_detail(request, profile_id):
-    profile =get_object_or_404(Profile, pk=profile_id)
+def Profile_detail(request):
+    profile =get_object_or_404(Profile, author=request.user)
     context = {'profile': profile}
     return render(request, 'common/mypage1.html', context)
-
+#수정중
 @login_required(login_url='common:login')
-def Profile_update(request, profile_id):
+def Profile_update(request,profile_id):
     profile = get_object_or_404(Profile, pk=profile_id)
+    print(profile)
     if request.user != profile.author:
         messages.error(request, '수정권한이 없습니다')
-        return redirect('common:mypage', profile_id=profile_id)
+        return redirect('pybo:article_detail',profile_id=profile.id)
 
     if request.method == "POST":
-        profile = ProfileForm(request.POST, instance=profile)
-        if profile.is_valid():
-            profile = profile.save(commit=False)
+        form = ProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            profile = form.save(commit=False)
             profile.author = request.user
-            profile.modify_date = timezone.now() # 수정일시 저장
             profile.save()
-            return redirect('common:profile_detail', profile_id=profile_id)
+            return redirect('common:mypage', profile_id=profile.id)
     else:
-        profile = ProfileForm(instance=profile)
-    context = {'profile': profile}
+        form = ProfileForm(instance=profile)
+    context = {'from': form}
     return render(request, 'common/test_profile.html', context)

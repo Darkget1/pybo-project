@@ -10,7 +10,7 @@
     ================================================== -->
     <!--페이징 처리 시작-->
     <div class="row">
-        <div class="container col-1" style="margin-top: 400px;margin-right: -250px">
+        <div class="container col-1" style="margin: auto;">
             {#                <div class="bg-light text-center p-3 border font-weight-bolder mb-1">#}
             {#                    {{ article.voter.count }}#}
             {#                </div>#}
@@ -114,7 +114,7 @@
                         <!-- begin post -->
                         <div class="card" onclick="location.href='{% url 'pybo:article_detail' article.id %}'" alt="">
 
-                            <img class="img-fluid" src="" alt="">
+                            {% include 'workout_mach_img.html' %}
 
                             <div class="card-block p-3">
                                 <h3 class="mb-4 pb-2">{{ article.subject }}</h3>
@@ -125,7 +125,7 @@
                                         <div class=" card card_custom bg-color mt-3" style="width: 80px;">
                                             {{ article.status }}
                                         </div>
-                                        <div class=" card card_custom bg-color mt-3" style="width: 100px;height: 38px">
+                                        <div class=" card card_custom bg-color mt-3"style="width: 120px;height: 38px">
                                             {% include 'workout_mach.html' %}
                                         </div>
                                         <div class=" card card_custom bg-color mt-3" style="width: 80px;">

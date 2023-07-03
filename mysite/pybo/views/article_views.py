@@ -28,7 +28,7 @@ def article_modify(request,article_id):
     article = get_object_or_404(Article,pk=article_id)
     if request.user != article.author:
         messages.error(request,'수정권한이 없습니다')
-        return redirect('pybo:detail',article_id=article.id)
+        return redirect('pybo:article_detail',article_id=article.id)
 
     if request.method == "POST":
         form = ArticleForm(request.POST, instance=article)
