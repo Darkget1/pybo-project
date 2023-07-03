@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from common.forms import UserForm, ProfileForm
 from common.models import Profile
 from django.utils import timezone
+from datetime import datetime
 
 
 def index(request):
@@ -67,11 +68,18 @@ def Profile_update(request,profile_id):
         form = ProfileForm(request.POST, instance=profile)
         if form.is_valid():
             profile = form.save(commit=False)
+            if request.FILES.get('images') is None:
+                messages.error(request, '이미지가 없습니다.')
+                return redirect('common:profile_update',profile_id=profile.id)
             profile.images = request.FILES.get('images')
+
+
             profile.author = request.user
             profile.save()
             return redirect('common:mypage')
     else:
         form = ProfileForm(instance=profile)
+
+
     context = {'form': form}
     return render(request, 'common/test_profile.html', context)

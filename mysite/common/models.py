@@ -14,7 +14,7 @@ class User(AbstractUser):
 class Profile(models.Model):
     author = models.OneToOneField(User, on_delete=models.CASCADE, related_name='author_profile')
     create_date = models.DateTimeField('프로필생성일', blank=True)
-    images = models.ImageField('프로필 사진', blank=True, upload_to="images", null=True)
+    images = models.ImageField('프로필 사진', blank=True, upload_to="images", null=False)
     birthdate = models.DateField('생년월일', blank=True)
     mbti = models.CharField('MBTI', max_length=50, blank=True, null=True)
 

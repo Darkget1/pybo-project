@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from common.models import User, Profile
-
+import datetime
 class UserForm(UserCreationForm):
 
     email = forms.EmailField(label='이메일')
@@ -27,6 +27,8 @@ class UserForm(UserCreationForm):
 
 class ProfileForm(forms.ModelForm):
     birthdate = forms.DateField(label='생년월일')
+    images = forms.ImageField(label='프로필 사진')
+
     mbti = forms.CharField(label='mbti 선택')
     workout = forms.CharField(label='즐겨하는 스포츠')
     Sport_type = forms.CharField(label='관심 스포츠')
@@ -39,7 +41,8 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ("birthdate", "mbti", "workout", "Sport_type", "career", "car_num", "career2", "car_num2", "introduce", "url")
+        fields = ("birthdate", "mbti", "workout", "Sport_type", "career", "car_num", "career2", "car_num2", "introduce",
+                  "url", "images")
 
 # 참고 사이트
 # https://parkhyeonchae.github.io/2020/03/30/django-project-13/
