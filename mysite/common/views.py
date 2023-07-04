@@ -53,12 +53,12 @@ def profile(request):
 
 @login_required(login_url='common:login')
 def Profile_detail(request):
-    # articlecomment=get_object_or_404(Article,author=request.user)
-    # article=get_object_or_404(Article,author=request.user)
+    articlecomment = ArticleComment.objects.filter(author=request.user)
+    article = Article.objects.filter(author=request.user)
 
-    user = get_object_or_404(User,username=request.user)
-    profile =get_object_or_404(Profile, author=request.user)
-    context = {'profile': profile}
+    user = get_object_or_404(User, username=request.user)
+    profile = get_object_or_404(Profile, author=request.user)
+    context = {'profile': profile, 'articlecomment': articlecomment, 'article': article}
     return render(request, 'common/mypage1.html', context)
 #수정중
 @login_required(login_url='common:login')

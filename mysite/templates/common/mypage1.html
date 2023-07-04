@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    {% load static %}
+<!--    {% load static %}-->
 
     <div class="theme-red">
 
@@ -11,23 +11,23 @@
     <!-- 게시판 이용 수치 -->
     <div class="vg-page page-funfact" style="background-image: url({% static 'images/climbing.jpg' %});">
         <div class="container">
-            <div class="row section-counter">
+            <div class="row section-counter justify-content-between">
                 <div class="col-md-6 col-lg-3 py-4 wow fadeIn">
-                    <h1 class="number" data-number="{{ article.articlecomment_set.all.count }}">{{ article.articlecomment_set.all.count }}</h1>
+                    <h1 class="number" data-number="">{{ at.count }}</h1>
                     <span>함께 운동한 회원수</span>
                 </div>
                 <div class="col-md-6 col-lg-3 py-4 wow fadeIn">
-                    <h1 class="number" data-number="{{ user.article_set.all.count }}">{{ article.count }}</h1>
+                    <h1 class="number" data-number="{{ article.count }}">{{ article.count }}</h1>
                     <span>작성한 모집글</span>
                 </div>
                 <div class="col-md-6 col-lg-3 py-4 wow fadeIn">
-                    <h1 class="number" data-number="78">78</h1>
+                    <h1 class="number" data-number="{{ articlecomment.count }}">{{ articlecomment.count }}</h1>
                     <span>작성한 댓글</span>
                 </div>
-                <div class="col-md-6 col-lg-3 py-4 wow fadeIn">
-                    <h1 class="number" data-number="143">143</h1>
-                    <span>추천수</span>
-                </div>
+<!--                <div class="col-md-6 col-lg-3 py-4 wow fadeIn">-->
+<!--                    <h1 class="number" data-number="143">143</h1>-->
+<!--                    <span>추천수</span>-->
+<!--                </div>-->
             </div>
         </div>
     </div>
