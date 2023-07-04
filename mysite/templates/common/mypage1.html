@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-md-6 col-lg-3 py-4 wow fadeIn">
                     <h1 class="number" data-number="{{ articlecomment.count }}">{{ articlecomment.count }}</h1>
-                    <span>작성한 댓글</span>
+                    <span>신청한 하이파이브</span>
                 </div>
 <!--                <div class="col-md-6 col-lg-3 py-4 wow fadeIn">-->
 <!--                    <h1 class="number" data-number="143">143</h1>-->
@@ -134,7 +134,7 @@
             <a class="btn custom-btn bg-color" href="{% url 'common:profile_update' profile.id%}">내 프로필 수정</a>
         </div>
 
-    {% endif %} }
+
     <div class="section-title container py-5 mt-5">
             <h2><span>하이파이브 LIST!</span></h2>
         </div>
@@ -150,9 +150,13 @@
                             {% for articleComment in articleComment_list %}
                                 <div class="card-body p-4">
                                     <div class="d-flex flex-start">
+                                    <a href="{% url 'common:profilepage' articleComment.profile_id %}">
+
+
                                         <img class="author-thumb"
                                              src="{{ articleComment.profile.images.url }}"
-                                             alt="Sal">
+                                             alt="profilepage">
+                                       </a>
 
                                         <div>
                                             <h6 class="fw-bold mb-1">{{ articleComment.author }}</h6>
@@ -221,7 +225,7 @@
             </div>
         </div>
     </section>
-
+{% endif %} }
 
 
 

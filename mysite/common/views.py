@@ -88,3 +88,17 @@ def Profile_update(request,profile_id):
 
     context = {'form': form}
     return render(request, 'common/test_profile.html', context)
+
+
+
+
+@login_required(login_url='common:login')
+def Profile_page_detail(request,profile_id):
+    profile = get_object_or_404(Profile, id=profile_id)
+    articlecomment = ArticleComment.objects.filter(author=profile.author)
+    article = Article.objects.filter(author=profile.author)
+    #역참조
+    articleComment_list=ArticleComment.objects.filter(highfive__username__startswith=profile.author)
+
+    context = {'profile': profile,'articleComment_list':articleComment_list,'articlecomment': articlecomment, 'article': article}
+    return render(request, 'common/mypage1.html', context)
