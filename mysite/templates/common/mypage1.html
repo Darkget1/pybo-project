@@ -46,7 +46,7 @@
                     <ul class="theme-list">
                         <li><b>아이디:</b> {{ profile.author }}</li>
                         <li><b>이메일:</b> {{ user.email }}</li>
-                        <li><b>생일:</b> {{ profile.birthdate|default:'선택안함' }}</li>
+                        <li><b>생일:</b> {{ profile.birthdate }}</li>
                         <li><b>성별:</b> {{ user.gender }}</li>
                     </ul>
                     <p class="text-muted">{{ profile.introduce }}</p>
@@ -61,37 +61,37 @@
                 <h1 class="fw-normal text-center wow fadeInUp">운동 프로필</h1>
                 <div class="row mt-5">
                     <div class="col-md-6 col-lg-4 col-xl-4">
-                        <div class="card card-service wow fadeInUp">
+                        <div class="card card-service wow fadeInUp" style="height:80%;width:100%">
 
                             <div CLASS="text-center">
                                 {% include 'mbti_match.html' %}
                             </div>
                             <div class="caption">
-                                <h4 class="fg-theme">{{ profile.mbti|default:'선택하세요' }}</h4>
-                                <p>저의 MBTI는 '{{ profile.mbti|default:'선택하세요' }}' 입니다.</p>
+                                <h4 class="fg-theme">{{ profile.mbti }}</h4>
+                                <p>저의 MBTI는 <strong>'{{ profile.mbti }}'</strong> 입니다.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 col-xl-4">
-                        <div class="card card-service wow fadeInUp">
+                        <div class="card card-service wow fadeInUp" style="height:80%;width:100%">
                             <div class="icon">
                                 {% include 'workout1_mach.html' %}
                             </div>
 
                             <div class="caption">
                                 <h4 class="fg-theme">{{ profile.workout }}</h4>
-                                <p>제가 즐겨하는 스포츠는 '{{ profile.workout }}' 입니다.</p>
+                                <p>제가 즐겨하는 스포츠는 <strong>'{{ profile.workout }}'</strong> 입니다.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 col-xl-4">
-                        <div class="card card-service wow fadeInUp">
+                        <div class="card card-service wow fadeInUp" style="height:80%;width:100%">
                             <div class="icon">
                                 {% include 'workout2_mach.html' %}
                             </div>
                             <div class="caption">
                                 <h4 class="fg-theme">{{ profile.Sport_type }}</h4>
-                                <p>저의 관심 스포츠는 '{{ profile.Sport_type }}' 입니다.</p>
+                                <p>저의 관심 스포츠는 <strong>'{{ profile.Sport_type }}'</strong> 입니다.</p>
                             </div>
                         </div>
                     </div>
