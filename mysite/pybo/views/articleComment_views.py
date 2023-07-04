@@ -31,7 +31,7 @@ def articleComment_modify_article(request, articleComment_id):
     articleComment = get_object_or_404(ArticleComment, pk=articleComment_id)
     if request.user != articleComment.author:
         messages.error(request,'댓글수정권한이 없습니다')
-        return redirect('pybo:detail',article_id=articleComment.question.id)
+        return redirect('pybo:article_detail',article_id=articleComment.article.id)
 
     if request.method == "POST":
         form = ArticleCommentForm(request.POST,instance=articleComment)
