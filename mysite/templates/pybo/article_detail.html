@@ -74,15 +74,15 @@
                     <source src="{% static 'video/ocean-sea-wave-video.mp4' %}" type="video/mp4">
                 </video>
             </div>
-            <div class="col-3 ml-5 mt-3">
+            <div class="col-6 ml-5 mt-3">
                 <h3 class="mb-4 pb-2">{{ article.subject }}</h3>
                 <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3" style="text-align: center;">파트너 요구사항</div>
                 <div class="container row">
-                    <div class="card card_custom bg-color  mt-3 mr-2" style="height: 40px; width: 100px;">
+                    <div class="card card_custom bg-color mt-3 mr-2" style="height: 40px; width: 100px;">
                         {{ article.status }}
                     </div>
-                    <div class="card card_custom bg-color mt-3 mr-2" style="height: 40px;width: auto;">
-                        {% include 'workout_mach.html' %}
+                    <div class=" card card_custom bg-color mt-3 mr-2" style="display:block;">
+                                            {% include 'workout_mach.html' %}
                     </div>
                     <div class="card card_custom bg-color  mt-3 mr-2 pt-2" style="height: 40px; width: 60px;">
                         {% if article.gender == 'female' %}
