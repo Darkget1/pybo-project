@@ -74,7 +74,7 @@ def Profile_update(request,profile_id):
         if form.is_valid():
             profile = form.save(commit=False)
             if request.FILES.get('images') is None:
-                messages.error(request, '이미지가 없습니다.')
+                messages.error(request, '선택된 파일이 없습니다.')
                 return redirect('common:profile_update',profile_id=profile.id)
             profile.images = request.FILES.get('images')
 
