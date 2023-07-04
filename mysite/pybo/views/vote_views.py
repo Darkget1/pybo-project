@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect
 
-from ..models import ArticleComment
+from ..models import ArticleComment,Article
 
 
 @login_required(login_url='common:login')
@@ -17,3 +17,13 @@ def high_five(request, articleComment_id):
         else:
             articleComment.highfive.add(request.user)
     return redirect('pybo:article_detail', article_id=articleComment.article.id)
+
+@login_required(login_url='common:login')
+def profile_high_five(request,articleComment_id):
+    articleComment = get_object_or_404(ArticleComment, pk=articleComment_id)
+
+
+    if articleComment.highfive.filter(pk=request.user.pk).exists():
+        articleComment.highfive.remove(request.user)
+
+    return redirect('common:mypage')
