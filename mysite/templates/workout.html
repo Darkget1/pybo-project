@@ -7,9 +7,9 @@
 </div>-->
 
         <div class="form-group">
-            <strong><label for="Sport_type">Mate 운동</label></strong>
+            <strong><label style="color:rgb(241,58,18)" for="Sport_type">Mate 운동</label></strong>
             <select class="form-select form-control" name="Sport_type" id="Sport_type">
-                <option selected="" class="text-center" value="none">===== 선택하세요 =====</option>
+                <option selected="" class="text-center" value="none">=====  Mate와 함께 하고 싶은 운동을 선택하세요  =====</option>
                 <option value="댄스" {% if form.Sport_type.value == '댄스'%}selected{% endif %}>댄스</option>
                 <option value="골프" {% if form.Sport_type.value == '골프'%}selected{% endif %}>골프</option>
                 <option value="러닝" {% if form.Sport_type.value == '러닝'%}selected{% endif %}>러닝</option>

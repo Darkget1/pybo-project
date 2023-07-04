@@ -23,21 +23,20 @@
         {% include "form_errors.html" %}
         <!-- user ID -->
         <div class="form-group">
-            <strong><label for="username">사용자 ID</label></strong>
+            <strong><label style="color:rgb(241,58,18)"  for="username">사용자 ID</label></strong>
             <input type="text" class="form-control" name="username" id="username"
                    value="{{ user.username}}" disabled>
         </div>
         <!-- 닉네임 -->
         <div class="form-group">
-            <strong><label for="nickname">닉네임</label></strong>
+            <strong><label style="color:rgb(241,58,18)"  for="nickname">닉네임</label></strong>
             <input type="text" class="form-control" name="nickname" id="nickname"
                    value="{{ user.nickname }}" disabled>
-        </div>
-             <br/>
-        <!-- 프로필 사진 삽입 -->
+        </div><hr>
 
+        <!-- 프로필 사진 삽입 -->
         <div class="form-group">
-            <strong><label for="images" id="images">프로필 사진</label></strong><br>
+            <strong><label style="color:rgb(241,58,18)"  for="images" id="images">프로필 사진</label></strong><br/>
             <img class="col-3 card-img-bottom img-responsive" src="{% static 'images/default.png' %}" id="preview"/>
             {% if messages %}
             {% for message in messages %}
@@ -49,21 +48,21 @@
             <input class="form-control" type="file" name="images" accept="image/*"
                    value="" onchange="readURL(this);">
         </div>
-        <br/>
+        <hr>
+
 
         <!-- 생년월일(나이) -->
         <div class="form-group">
-            <strong><label for="birthdate">생년월일</label></strong>
+            <strong><label style="color:rgb(241,58,18)"  for="birthdate">생년월일</label></strong>
             <input type="date" class="form-control text-center" name="birthdate" id="birthdate"
                    value="{{ form.birthdate.value|date:'Y-m-d' }}">
-        </div>
-        <br/>
+        </div><hr>
 
         <!-- MBTI 선택 -->
         <div class="form-group">
-            <strong><label for="mbti">MBTI 선택</label></strong><br>
+            <strong><label style="color:rgb(241,58,18)"  for="mbti">MBTI 선택</label></strong><br>
             <select class="form-select form-control" name="mbti" id="mbti">
-                <option selected="" class="text-center" value="none">===== 선택하세요 =====</option>
+                <option selected="" class="text-center" value="none">===== MBTI 선택 =====</option>
                 <option value="ISTJ" {% if form.mbti.value == 'ISTJ'%}selected{% endif %}>ISTJ - 청렴결백한 논리주의자</option>
                 <option value="ISFJ" {% if form.mbti.value == 'ISFJ'%}selected{% endif %}>ISFJ - 용감한 수호자</option>
                 <option value="INFJ" {% if form.mbti.value == 'INFJ'%}selected{% endif %}>INFJ - 선의의 옹호자</option>
@@ -81,13 +80,13 @@
                 <option value="ENFP" {% if form.mbti.value == 'ENFP'%}selected{% endif %}>ENFP - 재기 발랄한 활동가</option>
                 <option value="ENTP" {% if form.mbti.value == 'ENTP'%}selected{% endif %}>ENTP - 논쟁을 즐기는 변론가</option>
             </select>
-        </div>
+        </div><hr>
 
         <!-- 즐겨하는 운동 경력 및 달성도 -->
         <div class="form-group">
-            <strong><label for="mbti">즐겨하는 운동 선택</label></strong><br>
+            <strong><label style="color:rgb(241,58,18)"  for="mbti">즐겨하는 운동</label></strong><br>
             <select class="form-select form-control" name="workout" id="workout">
-                <option selected="" class="text-center" value="none">===== 선택하세요 =====</option>
+                <option selected="" class="text-center" value="none">===== 즐겨하는 운동을 선택하세요 =====</option>
                 <option value="댄스" {% if form.workout.value == '댄스'%}selected{% endif %}>댄스</option>
                 <option value="골프" {% if form.workout.value == '골프'%}selected{% endif %}>골프</option>
                 <option value="러닝" {% if form.workout.value == '러닝'%}selected{% endif %}>러닝</option>
@@ -110,24 +109,25 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="career">즐겨하는 운동 목표</label>
+            <strong><label style="color:rgb(241,58,18)"  for="career">즐겨하는 운동 목표</label></strong>
             <input type="text" class="form-control" name="career" id="career"
                    placeholder="자신의 즐겨하는 운동 목표 1가지를 적어주세요. Ex)100대 명산, 마라톤 10개 완주"
                    value="{{ form.career.value|default_if_none:'' }}">
         </div>
         <div class="form-group">
-            <label for="car_num">즐겨하는 운동 목표 달성도 (0 ~ 100%)</label>
+            <strong><label style="color:rgb(241,58,18)" for="car_num">즐겨하는 운동 목표 달성도</label></strong>
             <input type="number" class="form-control" name="car_num" id="car_num" min="0" max="100"
+                   placeholder="0 - 100 %"
                    value="{{ form.car_num.value|default_if_none:'' }}">
-        </div>
+        </div><hr>
         <!-- 관심 운동 경력 및 달성도 -->
         <div class="form-group">
-            {# <label for="Sport_type">관심 운동</label>#}
+            {# <label style="color:rgb(241,58,18)" for="Sport_type">관심 운동</label>#}
             {# <input type="text" class="form-control" name="Sport_type" id="Sport_type:" #}
                       {# value="{{ form.Sport_type.value|default_if_none:'' }}">#}
-            <strong><label for="mbti">관심 스포츠 선택</label></strong><br>
+            <strong><label style="color:rgb(241,58,18)"  for="mbti">관심 스포츠</label></strong><br>
             <select class="form-select form-control" name="Sport_type" id="Sport_type">
-                <option selected="" class="text-center" value="none">===== 선택하세요 =====</option>
+                <option selected="" class="text-center" value="none">===== 관심있는 스포츠를 선택하세요 =====</option>
                 <option value="댄스" {% if form.Sport_type.value == '댄스'%}selected{% endif %}>댄스</option>
                 <option value="골프" {% if form.Sport_type.value == '골프'%}selected{% endif %}>골프</option>
                 <option value="러닝" {% if form.Sport_type.value == '러닝'%}selected{% endif %}>러닝</option>
@@ -151,28 +151,29 @@
 {#            {% include 'workout2.html' %}#}
         </div>
         <div class="form-group">
-            <label for="career2">관심 운동 목표</label>
+            <strong><label style="color:rgb(241,58,18)" for="career2">관심 운동 목표</label></strong>
             <input type="text" class="form-control" name="career2" id="career2"
                    placeholder="자신의 관심 운동 목표 1가지를 적어주세요. Ex)철인 3종 완주, 매일 10000보 걷기"
                    value="{{ form.career2.value|default_if_none:'' }}">
         </div>
         <div class="form-group">
-            <label for="car_num2">관심 운동 목표 달성도 (0 ~ 100%)</label>
+            <strong><label style="color:rgb(241,58,18)" for="car_num2">관심 운동 목표 달성도</label></strong>
             <input type="number" class="form-control" name="car_num2" id="car_num2" min="0" max="100"
+                   placeholder="0 - 100 %"
                    value="{{ form.car_num2.value|default_if_none:'' }}">
-        </div>
+        </div><hr>
         <!-- 자기소개 (취미, 주량, ... 등 )-->
         <div class="form-group">
-            <strong><label for="introduce">자기소개</label></strong>
+            <strong><label style="color:rgb(241,58,18)" for="introduce">자기소개</label></strong>
             <input type="text" class="form-control" id="introduce" name="introduce"
                    style="height:80px; width:100%;"
                    placeholder="취미, 주량 등 자유롭게 자기소개를 적어주세요!"
                    value="{{ form.introduce.value|default_if_none:'' }}">
-        </div>
+        </div><hr>
 
         <!-- 연락 받을 오픈 채팅 url 링크 입력 -->
         <div class="form-group">
-            <strong><label for="url">오픈채팅 url</label></strong>
+            <strong><label style="color:rgb(241,58,18)" for="url">오픈채팅 url</label></strong>
             <input type="url" class="form-control" name="url" id="url"
                    placeholder="카카오톡 오픈채팅 링크 입력"
                    value="{{ form.url.value|default_if_none:'' }}">
