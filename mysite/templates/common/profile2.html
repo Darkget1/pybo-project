@@ -1,114 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- MAIN CSS -->
-    <link rel="stylesheet" href="profile-css.css">
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<!--
+{#    <h5>{{ profile.count }}</h5>#}
+{#<div>#}
+{#    <ul>#}
+{# {% for profile in %} #}
+{#    </ul>    #}
+{#</div>#}
+{#<br>#} -->
+
 <div class="container">
-    <form method="POST" class="post-form" action="{% url 'common:profile' %}" enctype="multipart/form-data">
-        <div class="input-group mb-3">
-            <label class="col-3 input-group-text" for="username">사용자 아이디</label>
-            <input class='text-input' id='name' name='name' required type='text' value='Use Tab'>
+
+
+    <div class="row my-3">
+        <div class="col-5">
+            <h4>프로필 입력</h4>
         </div>
-        <div class="input-group mb-3">
-            <label class='label' for='email'>E-mail</label>
-            <input class='text-input' id='email' name='email' required type='email'>
-        </div>
-        <p class='field half'>
-            <label class='label' for='phone'>Phone</label>
-            <input class='text-input' id='phone' name='phone' type='phone'>
-        </p>
-        <p class='field half required error'>
-            <label class='label' for='login'>Login</label>
-            <input class='text-input' id='login' name='login' required type='text' value='mican'>
-        </p>
-        <p class='field half required'>
-            <label class='label' for='password'>Password</label>
-            <input class='text-input' id='password' name='password' required type='password'>
-        </p>
-        <div class='field'>
-            <label class='label'>Sport?</label>
-            <ul class='checkboxes'>
-                <li class='checkbox'>
-                    <input class='checkbox-input' id='choice-0' name='choice' type='checkbox' value='0'>
-                    <label class='checkbox-label' for='choice-0'>Football</label>
-                </li>
-                <li class='checkbox'>
-                    <input class='checkbox-input' id='choice-1' name='choice' type='checkbox' value='1'>
-                    <label class='checkbox-label' for='choice-1'>Basketball</label>
-                </li>
-                <li class='checkbox'>
-                    <input class='checkbox-input' id='choice-2' name='choice' type='checkbox' value='2'>
-                    <label class='checkbox-label' for='choice-2'>Volleyball</label>
-                </li>
-                <li class='checkbox'>
-                    <input class='checkbox-input' id='choice-3' name='choice' type='checkbox' value='3'>
-                    <label class='checkbox-label' for='choice-3'>Golf</label>
-                </li>
-                <li class='checkbox'>
-                    <input class='checkbox-input' id='choice-4' name='choice' type='checkbox' value='4'>
-                    <label class='checkbox-label' for='choice-4'>Swimming</label>
-                </li>
-            </ul>
-        </div>
-        <div class='field'>
-            <label class='label'>Favourite JS framework</label>
-            <ul class='options'>
-                <li class='option'>
-                    <input class='option-input' id='option-0' name='option' type='radio' value='0'>
-                    <label class='option-label' for='option-0'>React</label>
-                </li>
-                <li class='option'>
-                    <input class='option-input' id='option-1' name='option' type='radio' value='1'>
-                    <label class='option-label' for='option-1'>Vue</label>
-                </li>
-                <li class='option'>
-                    <input class='option-input' id='option-2' name='option' type='radio' value='2'>
-                    <label class='option-label' for='option-2'>Angular</label>
-                </li>
-                <li class='option'>
-                    <input class='option-input' id='option-3' name='option' type='radio' value='3'>
-                    <label class='option-label' for='option-3'>Riot</label>
-                </li>
-                <li class='option'>
-                    <input class='option-input' id='option-4' name='option' type='radio' value='4'>
-                    <label class='option-label' for='option-4'>Polymer</label>
-                </li>
-                <li class='option'>
-                    <input class='option-input' id='option-5' name='option' type='radio' value='5'>
-                    <label class='option-label' for='option-5'>Ember</label>
-                </li>
-                <li class='option'>
-                    <input class='option-input' id='option-6' name='option' type='radio' value='6'>
-                    <label class='option-label' for='option-6'>Meteor</label>
-                </li>
-                <li class='option'>
-                    <input class='option-input' id='option-7' name='option' type='radio' value='7'>
-                    <label class='option-label' for='option-7'>Knockout</label>
-                </li>
-            </ul>
-        </div>
-        <p class='field'>
-            <label class='label' for='about'>About</label>
-            <textarea class='textarea' cols='50' id='about' name='about' rows='4'></textarea>
-        </p>
-        <p class='field half'>
-            <label class='label' for='select'>Position</label>
-            <select class='select' id='select'>
-                <option selected value=''></option>
-                <option value='ceo'>CEO</option>
-                <option value='front-end'>Front-end developer</option>
-                <option value='back-end'>Back-end developer</option>
-            </select>
-        </p>
-        <p class='field half'>
-            <input class='button' type='submit' value='Send'>
-        </p>
+    </div>
+    <form method="POST" class="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group {% if field.errors|length > 0 %}has-error{%endif %}">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <input name="{{ field.html_name }}" id="{{ field.id_for_lable }}" class="form-control" type="{{ field.field.widget.input_type }}" value="{{ field.value|default_if_none:'' }}">
+                    {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                <strong>{{ field.label }}</strong>
+                {{ error }}
+            </div>
+                        <label class="alert alert-danger" for="{{ field.id_for_label }}">{{ error }}</label>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        <button type="submit" class="btn custom-btn aos-init aos-animate bg-color rounded">저장</button>
+        {#
+        <button type="reset" class="btn custom-btn aos-init aos-animate bg-color rounded">초기화</button>
+        #}
     </form>
 </div>
-</body>
-</html>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('preview').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                document.getElementById('preview').src = "";
+            }
+        }
+
+</script>
+{% endblock %}
