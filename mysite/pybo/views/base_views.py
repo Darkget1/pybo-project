@@ -10,7 +10,23 @@ from common.models import Profile
 
 
 def main(request):
-    return render(request,'index.html',)
+    page = request.GET.get('page','1')
+    kw = request.GET.get('kw','')#검색어
+
+    article_list = Article.objects.annotate(articlecomment_count=Count('articlecomment')).order_by('-articlecomment_count')
+    if kw:
+        article_list = article_list.filter(
+            Q(subject__icontains=kw) |  # 제목검색
+            Q(content__icontains=kw)  # 내용검색
+        ).distinct()
+    profile = Profile.objects
+    #페이징 처리
+    paginator = Paginator(article_list,3)#페이지당 1개씩 보이기
+    page_obj = paginator.get_page(page)
+    context = {'article_list': page_obj, 'profile':profile,'page':page,'kw':kw}
+
+
+    return render(request,'index.html',context)
 
 
 def article_index(request):
@@ -34,23 +50,6 @@ def article_index(request):
 
     return render(request, 'pybo/article_list.html' ,context)
 
-def main_index(request):
-    page = request.GET.get('page','1')
-    kw = request.GET.get('kw','')#검색어
 
 
-
-    article_list = Article.objects.order_by()
-    if kw:
-        article_list = article_list.filter(
-            Q(subject__icontains=kw) |  # 제목검색
-            Q(content__icontains=kw)  # 내용검색
-        ).distinct()
-    profile = Profile.objects
-    #페이징 처리
-    paginator = Paginator(article_list,3)#페이지당 1개씩 보이기
-    page_obj = paginator.get_page(page)
-    context = {'article_list': page_obj, 'profile':profile,'page':page,'kw':kw}
-
-    return render(request, 'pybo/article_list.html' ,context)
 

@@ -165,10 +165,11 @@
         <!-- 자기소개 (취미, 주량, ... 등 )-->
         <div class="form-group">
             <strong><label style="color:rgb(241,58,18)" for="introduce">자기소개</label></strong>
-            <input type="text" class="form-control" id="introduce" name="introduce"
+            <textarea type="text" class="form-control" id="introduce" name="introduce"
                    style="height:80px; width:100%;"
                    placeholder="취미, 주량 등 자유롭게 자기소개를 적어주세요!"
                    value="{{ form.introduce.value|default_if_none:'' }}">
+            </textarea>
         </div><hr>
 
         <!-- 연락 받을 오픈 채팅 url 링크 입력 -->

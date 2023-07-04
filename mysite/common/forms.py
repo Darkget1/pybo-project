@@ -36,7 +36,7 @@ class ProfileForm(forms.ModelForm):
     car_num = forms.IntegerField(label='즐겨하는 운동 목표 달성도')
     career2 = forms.CharField(label='관심 운동 목표')
     car_num2 = forms.IntegerField(label='관심 운동 목표 달성도')
-    introduce = forms.CharField(label='자기소개', required=False, widget=forms.Textarea())
+    introduce = forms.CharField(label='자기소개')
     url = forms.URLField(label='오픈채팅 url')
 
     class Meta:
