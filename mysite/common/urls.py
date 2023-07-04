@@ -14,5 +14,6 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('profile/create/', views.profile, name='profile'),
     path('mypage/', views.Profile_detail, name='mypage'),
+    path('profilepage/<int:profile_id>', views.Profile_page_detail, name='profilepage'),
     path('profile/update/<int:profile_id>/', views.Profile_update, name='profile_update'),
 ]

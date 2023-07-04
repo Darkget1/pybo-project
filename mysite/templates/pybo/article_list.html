@@ -129,7 +129,7 @@
                                             {% include 'workout_mach.html' %}
                                         </div>
                                         <div class=" card card_custom bg-color mt-3" style="width: 80px;">
-                                            {% if article.gender == 'femail' %}
+                                            {% if article.gender == 'female' %}
                                                 <img src="{% static 'icon/gender-female.svg' %}"
                                                      style="filter:invert()">
                                             {% else %}
@@ -160,17 +160,17 @@
                             </div>
 
 
-                            <div class="card-block p-3">
+                            <div class="card-block p-3 mb-3">
                                 <div class="metafooter">
                                     <div class="wrapfooter">
 						                <span class="meta-footer-thumb">
-						                    <a href="author.html"><img class="author-thumb"
+						                    <a href="{% url 'common:profilepage' article.profile_id  %}"><img class="author-thumb"
                                                                        src="{{ article.profile.images.url }}" alt="Sal">
                                             </a>
 						                </span>
                                         <span class="author-meta">
 						                <span class="post-name">
-                                        <a href="author.html">{{ article.author }}</a>
+                                        <a href="{% url 'common:profilepage' article.profile_id  %}">{{ article.author }}</a>
                                         </span>
                                             <br/>
 						                <span class="post-date">{{ article.create_date }}</span><span

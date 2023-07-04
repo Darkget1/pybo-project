@@ -17,7 +17,7 @@ def article_create(request):
             article.create_date=timezone.now()
             article.profile = Profile.objects.get(author_id=request.user)
             article.save()
-            return redirect('pybo:main')
+            return redirect('pybo:article_index')
     else:
         form = ArticleForm()
     context = {'form':form}
@@ -51,7 +51,7 @@ def article_delete(request, article_id):
         messages.error(request,'삭제권한이 없습니다.')
         return redirect('pybo:article_detail', article_id=article.id)
     article.delete()
-    return redirect('pybo:article_list')
+    return redirect('pybo:article_index')
 
 def article_detail(request,article_id):
     article = get_object_or_404(Article,pk=article_id)
