@@ -49,11 +49,18 @@
             </div>
         </div>
 
+
         <div class="form-group">
-            <strong><label style="color:rgb(241,58,18)" for="area">모집 지역</label></strong>
-            <input type="text" class="form-control" name="area" id="area:"
-                   value="{{ form.area.value|default_if_none:'' }}">
-        </div>
+            <table>
+			<tr>
+				<label style="color:rgb(241,58,18)" for="area">모집 지역</label></strong>
+				<td><input type="text" class="form-control" name="area" id="area"
+                value="{{ form.area.value|default_if_none:'' }}"></td>
+				<td><button type="button" id="searchBtn">검색</button></td>
+			</tr>
+		</table>
+            <div class="card-img" id="map" style="width:100%;height:350px;"></div>
+
 
         <div class="form-group">
             <strong><label style="color:rgb(241,58,18)" for="sport_date">운동 할 날</label></strong>
