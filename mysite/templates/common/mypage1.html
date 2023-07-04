@@ -41,13 +41,13 @@
                     </div>
                 </div>
                 <div class="col-lg-6 offset-lg-1 wow fadeInRight">
-                    <h1 class="fw-light">{{ user.first_name }}{{ user.last_name }}</h1>
-                    <h5 class="fg-theme mb-3">{{ user.nickname }}</h5>
+                    <h1 class="fw-light">{{ profile.author.first_name }}{{ profile.author.last_name }}</h1>
+                    <h5 class="fg-theme mb-3">{{ profile.author.nickname }}</h5>
                     <ul class="theme-list">
                         <li><b>아이디:</b> {{ profile.author }}</li>
-                        <li><b>이메일:</b> {{ user.email }}</li>
+                        <li><b>이메일:</b> {{ profile.author.email }}</li>
                         <li><b>생일:</b> {{ profile.birthdate }}</li>
-                        <li><b>성별:</b> {{ user.gender }}</li>
+                        <li><b>성별:</b> {{ profile.author.gender }}</li>
                     </ul>
                     <p class="text-muted">{{ profile.introduce }}</p>
                 </div>
