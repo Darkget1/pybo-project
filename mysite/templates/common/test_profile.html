@@ -37,7 +37,11 @@
         <!-- 프로필 사진 삽입 -->
         <div class="form-group">
             <strong><label style="color:rgb(241,58,18)"  for="images" id="images">프로필 사진</label></strong><br/>
-            <img class="col-3 card-img-bottom img-responsive" src="{% static 'images/default.png' %}" id="preview"/>
+            {% if profile.images.url %}
+                <img class="col-3 card-img-bottom img-responsive" src="{{ profile.images.url }}" id="preview"/>
+            {% else %}
+                <img class="col-3 card-img-bottom img-responsive" src="{% static 'images/default.png' %}" id="preview"/>
+            {% endif %}
             {% if messages %}
             {% for message in messages %}
             <div class="alert alert-danger">

@@ -61,15 +61,15 @@ def article_detail(request,article_id):
     #하이파이브한 유저 찾기
     #글쓴이가 추천(즉 하이파이브를 해줘야) 가능!!
     articleComment_highfive_list = ArticleComment.objects.filter(highfive=article.author)
-    print(articleComment_highfive_list)
-    #하이파이브한 유저와 request.user 판별
-    #오류 발생 하이파이브와 관련된 모든곳이에 오픈쳇으로 열림
+
+
+
     highfive_number = 0
     for articleComment_highfive in articleComment_highfive_list:
-        print(articleComment_highfive)
+
         if articleComment_highfive.author == request.user:
             highfive_number += 1
-    #댓글 단유저 찾기
+
 
     comment_list = ArticleComment.objects.filter(article_id=article_id)
 

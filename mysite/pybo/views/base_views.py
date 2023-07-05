@@ -13,7 +13,8 @@ def main(request):
     page = request.GET.get('page','1')
     kw = request.GET.get('kw','')#검색어
 
-    article_list = Article.objects.annotate(articlecomment_count=Count('articlecomment')).order_by('-articlecomment_count','-create_date')
+    article_list = Article.objects.annotate(articlecomment_count=Count('articlecomment')).\
+        order_by('-articlecomment_count','-create_date')
     if kw:
         article_list = article_list.filter(
             Q(subject__icontains=kw) |  # 제목검색

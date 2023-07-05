@@ -36,6 +36,9 @@ def profile(request):
         form = ProfileForm(request.POST)
         if form.is_valid():
             profile = form.save(commit=False)
+            if request.FILES.get('images') is None:
+                messages.error(request, '이미지가 없습니다.')
+                return redirect('common:profile')
             # post일때
             # 업로드 이미지
             profile.images = request.FILES.get('images')
@@ -73,11 +76,8 @@ def Profile_update(request,profile_id):
         form = ProfileForm(request.POST, instance=profile)
         if form.is_valid():
             profile = form.save(commit=False)
-            if request.FILES.get('images') is None:
-                messages.error(request, '이미지가 없습니다.')
-                return redirect('common:profile_update',profile_id=profile.id)
-            profile.images = request.FILES.get('images')
-
+            if request.FILES.get('images') is not None:
+                profile.images = request.FILES.get('images')
 
             profile.author = request.user
             profile.save()
@@ -86,7 +86,7 @@ def Profile_update(request,profile_id):
         form = ProfileForm(instance=profile)
 
 
-    context = {'form': form}
+    context = {'form': form,'profile':profile}
     return render(request, 'common/test_profile.html', context)
 
 
